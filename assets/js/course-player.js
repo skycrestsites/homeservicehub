@@ -24,9 +24,13 @@
     return idx >= 0 ? idx : null;
   };
 
+  const arrow = (name = "arrow-right") => `<span class="dot"><span data-i="${name}"></span></span>`;
+
   function renderSidebar() {
+    const openMods = new Set([...sideEl.querySelectorAll(".cs-module.open")].map((m) => m.dataset.mi));
     sideEl.innerHTML = course.modules
       .map((m, mi) => {
+        const count = m.lessons.filter((_, li) => done.has(`${mi}-${li}`)).length;
         const lessons = m.lessons
           .map((l, li) => {
             const key = `${mi}-${li}`;
@@ -38,8 +42,8 @@
             </button>`;
           })
           .join("");
-        const count = m.lessons.filter((_, li) => done.has(`${mi}-${li}`)).length;
-        return `<div class="cs-module" data-mi="${mi}">
+        const cls = ["cs-module", openMods.has(String(mi)) ? "open" : "", count === m.lessons.length ? "done-all" : ""].join(" ");
+        return `<div class="${cls}" data-mi="${mi}">
           <button class="cs-module-btn" type="button">
             <span class="num">${String(mi + 1).padStart(2, "0")}</span>
             <span class="ttl">${m.title}<small>${count} of ${m.lessons.length} complete</small></span>
@@ -60,14 +64,10 @@
       })
     );
     window.HSH.renderIcons(sideEl);
-    markActive();
-  }
 
-  function markActive() {
     const lesson = flat[current];
     sideEl.querySelectorAll(".cs-lesson").forEach((b) => b.classList.toggle("active", Number(b.dataset.idx) === current));
-    const mod = sideEl.querySelector(`.cs-module[data-mi="${lesson.mi}"]`);
-    if (mod) mod.classList.add("open");
+    sideEl.querySelector(`.cs-module[data-mi="${lesson.mi}"]`)?.classList.add("open");
   }
 
   function renderProgress() {
@@ -80,15 +80,15 @@
   function nudgeHtml(type) {
     if (type === "crewty") {
       return `<div class="nudge">
-        <span class="crewty-mark"><img src="../assets/img/crewty-logo.png" alt="" width="28" height="28"></span>
-        <div><b>Run this inside Crewty</b><span>The scheduling, quoting and invoicing tool most owners in our community use.</span></div>
-        <a class="btn btn-white btn-sm" href="${window.HSH.LINKS.crewty}" target="_blank" rel="noopener">Try Crewty <span data-i="arrow-right"></span></a>
+        <span class="nudge-icon"><img src="../assets/img/crewty-logo.png" alt=""></span>
+        <div class="nudge-text"><b>Run this inside Crewty</b><span>The scheduling, quoting and invoicing app most owners in our community use.</span></div>
+        <a class="pill pill-white pill-sm" href="${window.HSH.LINKS.crewty}" target="_blank" rel="noopener">Try Crewty${arrow()}</a>
       </div>`;
     }
     return `<div class="nudge">
-      <span class="comm-logo"><span data-i="discord"></span></span>
-      <div><b>Stuck on this lesson?</b><span>Ask in the Discord. Pros answer questions in the help channels for free.</span></div>
-      <a class="btn btn-discord btn-sm" href="${window.HSH.LINKS.discord}">Join the Discord</a>
+      <span class="nudge-icon discord"><span data-i="discord"></span></span>
+      <div class="nudge-text"><b>Stuck on this lesson?</b><span>Ask in the Discord. Pros answer questions in the help channels for free.</span></div>
+      <a class="pill pill-white pill-sm" href="${window.HSH.LINKS.discord}">Join the Discord${arrow()}</a>
     </div>`;
   }
 
@@ -101,17 +101,17 @@
     $("#lesson").innerHTML = `
       <div class="lesson-top">
         <div class="lesson-crumb">Module ${l.mi + 1}<span data-i="chevron-right"></span>${mod.title}</div>
-        <button class="btn btn-secondary btn-sm side-toggle" type="button" id="side-open"><span data-i="sidebar"></span>Lessons</button>
+        <button class="pill pill-ghost pill-sm side-toggle" type="button" id="side-open">Lessons${arrow("list")}</button>
       </div>
       <h1 class="lesson-title">${l.title}</h1>
       <div class="lesson-meta">
         <span><span data-i="book-open"></span>Lesson ${l.mi + 1}.${l.li + 1}</span>
         <span><span data-i="clock"></span>${l.duration}</span>
-        ${isDone ? '<span style="color:#0b7a4f"><span data-i="check-circle"></span>Completed</span>' : ""}
+        ${isDone ? '<span class="ok"><span data-i="check-circle"></span>Completed</span>' : ""}
       </div>
       <div class="lesson-video">
         <div class="inner">
-          <div class="pm-play"><span data-i="play"></span></div>
+          <div class="play"><span data-i="play"></span></div>
           <p>Video lesson coming soon. Read the written lesson below.</p>
         </div>
       </div>
@@ -122,14 +122,12 @@
       </div>` : ""}
       ${nudgeHtml(l.nudge || "discord")}
       <div class="lesson-actions">
-        <button class="btn btn-secondary" type="button" id="prev" ${current === 0 ? "disabled" : ""}><span data-i="arrow-left"></span>Previous</button>
-        <div class="btn-row">
-          <button class="btn btn-secondary complete-btn${isDone ? " is-done" : ""}" type="button" id="complete">
-            <span data-i="${isDone ? "check-circle" : "check"}"></span>${isDone ? "Completed" : "Mark complete"}
-          </button>
+        <button class="pill pill-ghost" type="button" id="prev" ${current === 0 ? "disabled" : ""}>Previous${arrow("arrow-left")}</button>
+        <div class="pill-row">
+          <button class="pill pill-ghost complete-btn${isDone ? " is-done" : ""}" type="button" id="complete">${isDone ? "Completed" : "Mark complete"}${arrow("check")}</button>
           ${current < flat.length - 1
-            ? '<button class="btn btn-primary" type="button" id="next">Next lesson<span data-i="arrow-right"></span></button>'
-            : '<a class="btn btn-primary" href="../index.html#community">Finish and join the community<span data-i="arrow-right"></span></a>'}
+            ? `<button class="pill pill-blue" type="button" id="next">Next lesson${arrow()}</button>`
+            : `<a class="pill pill-blue" href="../index.html#community">Join the community${arrow()}</a>`}
         </div>
       </div>
     `;

@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cleaning Business Course | Home Service Hub</title>
 <meta name="description" content="Free Cleaning Business course from Home Service Hub. Six modules on setup, pricing, getting clients, hiring, systems and scaling, all readable in your browser.">
-<meta name="theme-color" content="#1f5bd0">
+<meta name="theme-color" content="#071330">
 <meta property="og:title" content="Free Cleaning Business Course | Home Service Hub">
 <meta property="og:description" content="Six modules and 21 lessons to start, price, staff and scale a cleaning business. Free.">
 <meta property="og:image" content="../assets/img/logo.jpg">
@@ -14,7 +14,7 @@
 <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/css/styles.css">
 <script src="../assets/js/main.js" defer></script>
 <script src="../assets/js/course-cleaning.js" defer></script>
@@ -22,55 +22,46 @@
 </head>
 <body>
 
-<header class="site-header scrolled">
-  <div class="container nav" style="max-width:none">
+<header class="site-head player-top">
+  <div class="nav" style="padding:0 20px">
     <a class="brand" href="../index.html"><img src="../assets/img/logo.jpg" alt="" width="34" height="34">Home Service Hub</a>
     <nav class="nav-links" aria-label="Primary">
       <div class="dropdown">
         <button class="nav-link" type="button" aria-expanded="false" aria-haspopup="true" aria-current="page">Courses <span data-i="chevron-down"></span></button>
         <div class="dropdown-menu">
-          <a class="dd-item" href="cleaning.html">
-            <span class="dd-icon"><span data-i="sparkles"></span></span>
-            <span><span class="dd-title">Cleaning Business <span class="badge badge-green">Free</span></span><span class="dd-desc">Start, price, staff and scale a cleaning company.</span></span>
-          </a>
-          <a class="dd-item" href="junk-removal.html">
-            <span class="dd-icon gray"><span data-i="truck"></span></span>
-            <span><span class="dd-title">Junk Removal <span class="badge badge-gray">Soon</span></span><span class="dd-desc">Trucks, pricing by volume and landing jobs.</span></span>
-          </a>
-          <a class="dd-item" href="landscaping.html">
-            <span class="dd-icon gray"><span data-i="sprout"></span></span>
-            <span><span class="dd-title">Landscaping <span class="badge badge-gray">Soon</span></span><span class="dd-desc">Routes, recurring contracts and crews.</span></span>
-          </a>
+          <a class="dd-item" href="cleaning.html"><span class="dd-icon"><span data-i="sparkles"></span></span><span><span class="dd-title">Cleaning Business <span class="mini-tag live">Free</span></span><span class="dd-desc">Start, price, staff and scale a cleaning company.</span></span></a>
+          <a class="dd-item" href="junk-removal.html"><span class="dd-icon"><span data-i="truck"></span></span><span><span class="dd-title">Junk Removal <span class="mini-tag">Soon</span></span><span class="dd-desc">Trucks, pricing by volume and landing jobs.</span></span></a>
+          <a class="dd-item" href="landscaping.html"><span class="dd-icon"><span data-i="sprout"></span></span><span><span class="dd-title">Landscaping <span class="mini-tag">Soon</span></span><span class="dd-desc">Routes, recurring contracts and crews.</span></span></a>
         </div>
       </div>
       <a class="nav-link" href="../management.html">Management</a>
       <a class="nav-link" href="../index.html#community">Community</a>
       <a class="nav-link" href="../index.html#faq">FAQ</a>
     </nav>
-    <div class="nav-actions">
-      <a class="btn btn-secondary btn-sm" href="#" data-link="discord"><span data-i="discord"></span>Join Discord</a>
-      <a class="btn btn-primary btn-sm" href="https://crewty.com" data-link="crewty">Try Crewty</a>
-      <button class="menu-toggle" type="button" aria-label="Toggle menu" aria-expanded="false"><span data-i="menu"></span></button>
+    <div class="nav-right">
+      <a class="pill pill-discord pill-sm" href="#" data-link="discord">Join Discord<span class="dot"><span data-i="discord"></span></span></a>
+      <button class="menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false"><span data-i="menu"></span></button>
     </div>
   </div>
-  <div class="mobile-menu">
+  <div class="mobile-menu" style="top:72px">
     <span class="label">Courses</span>
-    <a class="sub" href="cleaning.html">Cleaning Business <span class="badge badge-green">Free</span></a>
-    <a class="sub" href="junk-removal.html">Junk Removal <span class="badge badge-gray">Soon</span></a>
-    <a class="sub" href="landscaping.html">Landscaping <span class="badge badge-gray">Soon</span></a>
+    <a href="cleaning.html">Cleaning Business <span class="mini-tag live">Free</span></a>
+    <a href="junk-removal.html">Junk Removal <span class="mini-tag">Soon</span></a>
+    <a href="landscaping.html">Landscaping <span class="mini-tag">Soon</span></a>
+    <span class="label">More</span>
     <a href="../management.html">Management</a>
     <a href="../index.html#community">Community</a>
     <a href="../index.html#faq">FAQ</a>
-    <a class="btn btn-primary" href="#" data-link="discord">Join the Discord</a>
+    <a class="pill pill-discord" href="#" data-link="discord">Join the Discord<span class="dot"><span data-i="discord"></span></span></a>
   </div>
 </header>
 
 <div class="course-layout">
   <aside class="course-side" aria-label="Course lessons">
     <div class="cs-head">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <span class="badge badge-green">Free course</span>
-        <button class="btn btn-secondary btn-sm side-toggle" type="button" id="side-close" aria-label="Close lessons"><span data-i="x"></span></button>
+      <div class="cs-head-top">
+        <span class="tag">Free course</span>
+        <button class="round-btn side-toggle" type="button" id="side-close" aria-label="Close lessons" style="width:34px;height:34px;background:rgba(255,255,255,.1)"><span data-i="x"></span></button>
       </div>
       <h2>Cleaning Business</h2>
       <div class="cs-progress">
