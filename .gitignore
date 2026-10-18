@@ -1,0 +1,6 @@
+style 3/
+*.csv
+HomeServiceBannerLOGO.jpg
+.DS_Store
+Thumbs.db
+.vscode/
