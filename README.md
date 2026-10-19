@@ -7,8 +7,8 @@ Static marketing site and course player for Home Service Hub. Plain HTML, CSS an
 | Page | File |
 | --- | --- |
 | Home | `index.html` |
-| Tools and Software | `tools.html` |
-| Management (Crewty) | `management.html` |
+| Manage your service business (Crewty) | `management.html` |
+| Tools used in the course | section `#tools` on `courses/cleaning.html` (`tools.html` redirects there) |
 | Course catalog | `courses/index.html` |
 | Cleaning course overview | `courses/cleaning.html` |
 | Cleaning guide player | `courses/cleaning-guides.html` |
@@ -37,13 +37,13 @@ Videos use embed URLs (for example `https://www.youtube.com/embed/VIDEO_ID` or `
 
 One stylesheet, `assets/css/styles.css`. Manrope from Google Fonts, primary blue `#1152d4`, yellow accent `#ffd500`, dark `#101622`, 2px radii. Icons are inline SVGs from the `ICONS` map in `assets/js/main.js`, rendered into any element with `data-i="name"`, drawn in the current text colour with no background boxes.
 
-The homepage hero rotates three messages (courses, Discord, Facebook group). Slides live in `index.html` inside `[data-slides]`; `data-interval` sets the time per slide in ms and the tabs under the text show a progress bar for the active slide. Edit the text in the `.slide` blocks and the tabs in `.slide-nav`.
+The homepage is light. The hero rotates three messages (course, Discord, Facebook group) next to the intro video. The community section uses the real Discord recording in `assets/video/discord-community.mp4` (compressed from the original, which stays out of git) and two screenshots in `assets/img/`. Slides live in `index.html` inside `[data-slides]`; `data-interval` sets the time per slide in ms and the tabs under the text show a progress bar for the active slide. Edit the text in the `.slide` blocks and the tabs in `.slide-nav`.
 
 ## How the course is structured
 
 - Every course opens with a free intro video (`introVideo` in the course data). It plays on the course page and on guide 01.
 - The free path is the written guides, with no lesson videos.
-- Premium is the video course. Each guide has a locked "Video lesson" tab that links to `LINKS.members`.
+- Premium adds a video lesson for every topic plus 1-1 mentorship, setup help, a VA system setup, ads training and hiring support. Each guide has a locked "Video lesson" tab that links to `LINKS.members`.
 - The homepage only promotes the free course. Premium is shown on the course pages.
 
 ## Editing the Cleaning course

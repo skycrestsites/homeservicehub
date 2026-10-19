@@ -150,7 +150,7 @@
     }
 
     function lockedHtml(l) {
-      const items = ["The full video lesson", ...l.detail, "Templates and downloads"];
+      const items = ["The full video lesson", ...l.detail, "1-1 mentorship and help setting things up"];
       return `<div class="locked">
         <div class="locked-video">
           <span class="locked-play"><span data-i="play"></span></span>
@@ -159,7 +159,7 @@
         <div class="locked-body">
           <span class="tag">Premium lesson ${l.num}</span>
           <h2>${l.title}, the video lesson</h2>
-          <p>The free guide gives you the essentials in writing. Premium members watch every topic as a filmed lesson, with the in-depth version and templates.</p>
+          <p>The free guide gives you the essentials in writing. Premium members watch every topic as a filmed lesson and get 1-1 mentorship, help setting things up, a VA system, ads training and hiring support.</p>
           <ul class="locked-list">${items.map((i) => `<li><span data-i="check-circle"></span>${i}</li>`).join("")}</ul>
           <div class="btn-row">
             <a class="btn btn-white" href="${membersHref()}" target="_blank" rel="noopener">Get Premium${arrow("lock")}</a>
