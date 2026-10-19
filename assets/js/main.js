@@ -64,6 +64,7 @@ const ICONS = {
   wrench: '<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/>',
   "file-text": '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/>',
   hash: '<path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
   discord: { fill: true, d: '<path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.61 1.25a18.27 18.27 0 0 0-5.49 0 12.64 12.64 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.74 19.74 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.23-1.99a.08.08 0 0 0-.04-.11 13.1 13.1 0 0 1-1.87-.89.08.08 0 0 1-.01-.13c.13-.09.25-.19.37-.29a.07.07 0 0 1 .08-.01c3.93 1.79 8.18 1.79 12.06 0a.07.07 0 0 1 .08.01c.12.1.25.2.37.29a.08.08 0 0 1-.01.13 12.3 12.3 0 0 1-1.87.89.08.08 0 0 0-.04.11c.36.7.77 1.36 1.23 1.99a.08.08 0 0 0 .08.03 19.84 19.84 0 0 0 6-3.03.08.08 0 0 0 .03-.06c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42Z"/>' },
   facebook: { fill: true, d: '<path d="M9.1 23.69v-7.98H6.63v-3.67H9.1v-1.58c0-4.09 1.85-5.98 5.86-5.98.4 0 .96.04 1.47.1.39.04.77.11 1.14.2v3.32a8.6 8.6 0 0 0-.65-.03 26.8 26.8 0 0 0-.73-.01c-.71 0-1.26.1-1.68.31-.28.14-.52.36-.68.62-.26.42-.37 1-.37 1.75v1.3h3.92l-.39 2.1-.29 1.57h-3.25v8.24C19.4 23.24 24 18.18 24 12.04c0-6.63-5.37-12-12-12S0 5.42 0 12.04c0 5.63 3.87 10.35 9.1 11.65Z"/>' },
 };
@@ -199,23 +200,48 @@ function initVideos() {
   });
 }
 
-function initLoop() {
-  document.querySelectorAll("[data-loop]").forEach((loop) => {
-    const tabs = [...loop.querySelectorAll('[role="tab"]')];
-    const slides = [...loop.querySelectorAll(".hs-slide")];
-    const show = (n) => {
-      tabs.forEach((t, i) => t.setAttribute("aria-selected", String(i === n)));
-      slides.forEach((s, i) => {
-        s.classList.toggle("is-on", i === n);
-        s.tabIndex = i === n ? 0 : -1;
-      });
-    };
-    tabs.forEach((t, i) => {
-      t.addEventListener("click", () => show(i));
-      t.querySelector("i")?.addEventListener("animationend", () => show((i + 1) % tabs.length));
-    });
-    show(0);
+// Homepage search: matches guide titles and subtitles from window.COURSE.
+function initGuideSearch() {
+  const form = document.querySelector("[data-guide-search]");
+  if (!form) return;
+  const input = form.querySelector("input");
+  const box = form.querySelector(".search-results");
+  const course = window.COURSE;
+  const base = "courses/cleaning-guides.html#";
+  const guides = course
+    ? course.categories.flatMap((c) => c.lessons.map((l) => ({ ...l, cat: c.title })))
+    : [];
+  let hl = -1;
+
+  const render = (q) => {
+    const term = q.trim().toLowerCase();
+    if (!term) { box.hidden = true; box.innerHTML = ""; hl = -1; return; }
+    const hits = guides.filter((g) => `${g.title} ${g.sub} ${g.cat}`.toLowerCase().includes(term)).slice(0, 6);
+    box.innerHTML = hits.length
+      ? hits.map((g) => `<a href="${base}${g.slug}"><span class="sr-num">${g.num}</span><span><b>${g.title}</b><small>${g.cat}</small></span></a>`).join("")
+      : `<div class="sr-empty">No guide matches that yet. Try "pricing", "hiring" or "ads".</div>`;
+    box.hidden = false;
+    hl = -1;
+  };
+
+  input.addEventListener("input", () => render(input.value));
+  input.addEventListener("focus", () => input.value && render(input.value));
+  input.addEventListener("keydown", (e) => {
+    const items = [...box.querySelectorAll("a")];
+    if (!items.length) return;
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      hl = (hl + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length;
+      items.forEach((a, i) => a.classList.toggle("is-hl", i === hl));
+    }
   });
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const items = [...box.querySelectorAll("a")];
+    const pick = items[hl] || items[0];
+    location.href = pick ? pick.href : "courses/cleaning.html#curriculum";
+  });
+  document.addEventListener("click", (e) => { if (!form.contains(e.target)) box.hidden = true; });
 }
 
 function initFilters() {
@@ -242,7 +268,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTracks();
   initNotify();
   initVideos();
-  initLoop();
+  initGuideSearch();
   initFilters();
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 });

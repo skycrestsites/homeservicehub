@@ -130,7 +130,7 @@
       return `<div class="premium-strip">
         <span class="ps-icon"><span data-i="play"></span></span>
         <div><b>Watch this as a video lesson</b><span>The video version of ${l.title} is part of Premium.</span></div>
-        <button class="pill pill-white pill-sm" type="button" data-to="detailed">See Premium${arrow("lock")}</button>
+        <button class="pill pill-blue pill-sm" type="button" data-to="detailed">See Premium${arrow("lock")}</button>
       </div>`;
     }
 
@@ -139,13 +139,13 @@
         return `<div class="nudge">
           <span class="nudge-icon"><img src="../assets/img/crewty-logo.png" alt=""></span>
           <div class="nudge-text"><b>Set it up while you read</b><span>Open Crewty in another tab and follow along. Every plan starts with a 7 day free trial.</span></div>
-          <a class="pill pill-white pill-sm" href="${window.HSH.LINKS.crewty}" target="_blank" rel="noopener">Open Crewty${arrow()}</a>
+          <a class="pill pill-blue pill-sm" href="${window.HSH.LINKS.crewty}" target="_blank" rel="noopener">Open Crewty${arrow()}</a>
         </div>`;
       }
       return `<div class="nudge">
         <span class="nudge-icon discord"><span data-i="discord"></span></span>
         <div class="nudge-text"><b>Questions on this guide?</b><span>Ask in #ask-questions on the Discord. Working owners answer for free.</span></div>
-        <a class="pill pill-white pill-sm" href="${window.HSH.LINKS.discord}" target="_blank" rel="noopener">Open the Discord${arrow()}</a>
+        <a class="pill pill-discord pill-sm" href="${window.HSH.LINKS.discord}" target="_blank" rel="noopener">Open the Discord${arrow()}</a>
       </div>`;
     }
 

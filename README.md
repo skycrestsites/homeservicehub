@@ -33,6 +33,10 @@ Any element with `data-link="..."` picks these up.
 
 Videos use embed URLs (for example `https://www.youtube.com/embed/VIDEO_ID` or `https://player.vimeo.com/video/VIDEO_ID`). While a URL is empty, the video box shows a "coming soon" message when clicked.
 
+## Homepage search
+
+The search bar in the hero searches guide titles and subtitles from `assets/js/course-cleaning.js` (loaded on the homepage) and links straight to the guide. Submitting with no match goes to the course curriculum.
+
 ## How the course is structured
 
 - Every course opens with a free intro video (`introVideo` in the course data). It plays on the course page and on guide 01.
