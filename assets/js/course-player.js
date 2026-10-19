@@ -6,7 +6,7 @@
   const flat = [];
   course.categories.forEach((c, ci) => c.lessons.forEach((l, li) => flat.push({ ...l, ci, li })));
   const total = flat.length;
-  const playerUrl = `${course.id}-guides.html`;
+  const playerUrl = "guides/"; // the player lives one folder below the course overview
 
   const storeKey = `hsh-progress-${course.id}`;
   let done = new Set();
@@ -121,7 +121,7 @@
     function introBox() {
       return `<div class="lesson-video" data-video="${course.introVideo || ""}">
         <button class="vsl-play" type="button" aria-label="Play the course intro"><span data-i="play"></span></button>
-        <div class="lv-caption"><b>Course intro, free for everyone</b><span>What you will learn and how the course works</span></div>
+        <div class="lv-caption"><b>Must watch before you begin</b><span>For new cleaning business owners</span></div>
         <div class="vsl-soon">The intro video is coming soon. Read the guide below.</div>
       </div>`;
     }
@@ -137,7 +137,7 @@
     function nudgeHtml(type) {
       if (type === "crewty") {
         return `<div class="nudge">
-          <span class="nudge-icon"><img src="../assets/img/crewty-logo.png" alt=""></span>
+          <span class="nudge-icon"><img src="../../../assets/img/crewty-logo.png" alt=""></span>
           <div class="nudge-text"><b>Set it up while you read</b><span>Open Crewty in another tab and follow along. Every plan starts with a 7 day free trial.</span></div>
           <a class="btn btn-primary btn-sm" href="${window.HSH.LINKS.crewty}" target="_blank" rel="noopener">Open Crewty${arrow()}</a>
         </div>`;
@@ -191,7 +191,7 @@
 
       $("#lesson").innerHTML = `
         <div class="lesson-top">
-          <div class="lesson-crumb"><a href="${course.id}.html">${course.title}</a><span data-i="chevron-right"></span>${cat.title}</div>
+          <div class="lesson-crumb"><a href="../">${course.title}</a><span data-i="chevron-right"></span>${cat.title}</div>
           <button class="btn btn-outline btn-sm side-toggle" type="button" id="side-open">All guides${arrow("list")}</button>
         </div>
         <h1 class="lesson-title">${l.title}</h1>

@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /tools/
+
+Sitemap: https://skycrestsites.github.io/homeservicehub/sitemap.xml

@@ -6,14 +6,21 @@ Static marketing site and course player for Home Service Hub. Plain HTML, CSS an
 
 | Page | File |
 | --- | --- |
-| Home | `index.html` |
-| Manage your service business (Crewty) | `management.html` |
-| Tools used in the course | section `#tools` on `courses/cleaning.html` (`tools.html` redirects there) |
-| Course catalog | `courses/index.html` |
-| Cleaning course overview | `courses/cleaning.html` |
-| Cleaning guide player | `courses/cleaning-guides.html` |
-| Junk Removal (coming soon) | `courses/junk-removal.html` |
-| Landscaping (coming soon) | `courses/landscaping.html` |
+| Home | `/` (`index.html`) |
+| Manage your business (Crewty) | `/management/` |
+| Tools used in the course | section `#tools` on `/courses/cleaning/` (`/tools/` redirects there) |
+| Course catalog | `/courses/` |
+| Cleaning course overview | `/courses/cleaning/` |
+| Cleaning guide player | `/courses/cleaning/guides/` |
+| Junk Removal (coming soon) | `/courses/junk-removal/` |
+| Landscaping (coming soon) | `/courses/landscaping/` |
+| Not found | `404.html` (GitHub Pages serves it automatically) |
+
+Every page is a folder with an `index.html`, so URLs are clean (no `.html`) on any static host. All links are relative, so the site also works when opened from disk or under a subpath.
+
+## SEO
+
+Each page has a canonical URL, Open Graph and Twitter tags, and JSON-LD (Organization, WebSite and FAQ on the home page, Course and breadcrumbs on the course pages). `sitemap.xml` and `robots.txt` live at the root. The absolute URLs assume the site is hosted at `https://skycrestsites.github.io/homeservicehub`. When a custom domain goes live, search and replace that base URL in the HTML files, `sitemap.xml`, `robots.txt` and the `/homeservicehub/` links in `404.html`.
 
 ## Updating links and videos
 
@@ -56,7 +63,7 @@ All guide content lives in `assets/js/course-cleaning.js`, grouped into four cat
 - `detail`: what the Premium lesson includes
 - `nudge` (optional): `"crewty"` or `"discord"`
 
-The player in `assets/js/course-player.js` renders both pages and saves progress in the browser. Link to a guide with `courses/cleaning-guides.html#slug`, or `#slug/premium` for the Premium tab.
+The player in `assets/js/course-player.js` renders both pages and saves progress in the browser. Link to a guide with `courses/cleaning/guides/#slug`, or `#slug/premium` for the Premium tab.
 
 ## Placeholders to replace
 
