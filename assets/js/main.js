@@ -199,6 +199,25 @@ function initVideos() {
   });
 }
 
+function initLoop() {
+  document.querySelectorAll("[data-loop]").forEach((loop) => {
+    const tabs = [...loop.querySelectorAll('[role="tab"]')];
+    const slides = [...loop.querySelectorAll(".hs-slide")];
+    const show = (n) => {
+      tabs.forEach((t, i) => t.setAttribute("aria-selected", String(i === n)));
+      slides.forEach((s, i) => {
+        s.classList.toggle("is-on", i === n);
+        s.tabIndex = i === n ? 0 : -1;
+      });
+    };
+    tabs.forEach((t, i) => {
+      t.addEventListener("click", () => show(i));
+      t.querySelector("i")?.addEventListener("animationend", () => show((i + 1) % tabs.length));
+    });
+    show(0);
+  });
+}
+
 function initFilters() {
   document.querySelectorAll("[data-filter-group]").forEach((group) => {
     const target = document.getElementById(group.dataset.filterGroup);
@@ -223,6 +242,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initTracks();
   initNotify();
   initVideos();
+  initLoop();
   initFilters();
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 });

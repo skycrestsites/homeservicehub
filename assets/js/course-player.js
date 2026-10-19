@@ -34,7 +34,7 @@
                   <a href="${playerUrl}#${l.slug}" class="${done.has(l.slug) ? "is-done" : ""}">
                     <span class="g-num">${l.num}</span>
                     <span class="g-title">${l.title}</span>
-                    <span class="g-tags"><span class="g-free"><span data-i="video"></span>Free</span><span class="g-lock"><span data-i="lock"></span>Detailed</span></span>
+                    <span class="g-tags"><span class="g-free"><span data-i="file-text"></span>Free</span><span class="g-lock"><span data-i="play"></span>Premium video</span></span>
                   </a>
                 </li>`)
               .join("")}
@@ -45,8 +45,12 @@
     const start = flat.find((l) => !done.has(l.slug)) || flat[0];
     document.querySelectorAll("[data-continue]").forEach((a) => {
       a.href = `${playerUrl}#${start.slug}`;
-      if (done.size) a.firstChild.textContent = "Continue the quick guides";
+      if (done.size) a.firstChild.textContent = "Continue the free guides";
     });
+  }
+
+  function setIntroVideo() {
+    document.querySelectorAll("[data-course-intro]").forEach((box) => (box.dataset.video = course.introVideo || ""));
   }
 
   /* Player */
@@ -110,15 +114,23 @@
     function renderProgress() {
       const pct = Math.round((done.size / total) * 100);
       $("#progress-bar").style.width = pct + "%";
-      $("#progress-text").textContent = `${done.size} of ${total} quick guides`;
+      $("#progress-text").textContent = `${done.size} of ${total} guides`;
       $("#progress-pct").textContent = pct + "%";
     }
 
-    function videoBox(l) {
-      return `<div class="lesson-video" data-video="${l.video || ""}">
-        <button class="vsl-play" type="button" aria-label="Play video"><span data-i="play"></span></button>
-        <div class="lv-caption"><b>Quick guide ${l.num}</b><span>${l.title}</span></div>
-        <div class="vsl-soon">The video for this guide is being recorded. Read the written guide below.</div>
+    function introBox() {
+      return `<div class="lesson-video" data-video="${course.introVideo || ""}">
+        <button class="vsl-play" type="button" aria-label="Play the course intro"><span data-i="play"></span></button>
+        <div class="lv-caption"><b>Course intro, free for everyone</b><span>What you will learn and how the course works</span></div>
+        <div class="vsl-soon">The intro video is coming soon. Read the guide below.</div>
+      </div>`;
+    }
+
+    function premiumStrip(l) {
+      return `<div class="premium-strip">
+        <span class="ps-icon"><span data-i="play"></span></span>
+        <div><b>Watch this as a video lesson</b><span>The video version of ${l.title} is part of Premium.</span></div>
+        <button class="pill pill-white pill-sm" type="button" data-to="detailed">See Premium${arrow("lock")}</button>
       </div>`;
     }
 
@@ -138,19 +150,20 @@
     }
 
     function lockedHtml(l) {
-      const items = ["Full length video lesson", ...l.detail, "Templates and downloads"];
+      const items = ["The full video lesson", ...l.detail, "Templates and downloads"];
       return `<div class="locked">
         <div class="locked-video">
-          <span class="locked-badge"><span data-i="lock"></span>Members only</span>
+          <span class="locked-play"><span data-i="play"></span></span>
+          <span class="locked-badge"><span data-i="lock"></span>Premium video lesson</span>
         </div>
         <div class="locked-body">
-          <span class="tag">Detailed guide ${l.num}</span>
-          <h2>${l.title}, the full guide</h2>
-          <p>The quick guide gives you the essentials. The detailed guide is the complete version, filmed and written in depth, for members.</p>
+          <span class="tag">Premium lesson ${l.num}</span>
+          <h2>${l.title}, the video lesson</h2>
+          <p>The free guide gives you the essentials in writing. Premium members watch every topic as a filmed lesson, with the in-depth version and templates.</p>
           <ul class="locked-list">${items.map((i) => `<li><span data-i="check-circle"></span>${i}</li>`).join("")}</ul>
           <div class="pill-row">
-            <a class="pill pill-blue" href="${membersHref()}" target="_blank" rel="noopener">Become a member${arrow("lock")}</a>
-            <button class="pill pill-ghost" type="button" data-to="quick">Read the free quick guide${arrow()}</button>
+            <a class="pill pill-blue" href="${membersHref()}" target="_blank" rel="noopener">Get Premium${arrow("lock")}</a>
+            <button class="pill pill-ghost" type="button" data-to="quick">Read the free guide${arrow()}</button>
           </div>
         </div>
       </div>`;
@@ -163,7 +176,7 @@
       document.title = `${l.title} | ${course.title} Course | Home Service Hub`;
 
       const quick = `
-        ${videoBox(l)}
+        ${current === 0 ? introBox() : premiumStrip(l)}
         <div class="prose">${l.body}</div>
         ${nudgeHtml(l.nudge || "discord")}
         <div class="lesson-actions">
@@ -189,8 +202,8 @@
           ${isDone ? '<span class="ok"><span data-i="check-circle"></span>Completed</span>' : ""}
         </div>
         <div class="track-switch" role="tablist" aria-label="Guide version">
-          <button type="button" role="tab" data-to="quick" aria-selected="${track === "quick"}"><span data-i="video"></span>Quick guide<em>Free</em></button>
-          <button type="button" role="tab" data-to="detailed" aria-selected="${track === "detailed"}"><span data-i="lock"></span>Detailed guide<em class="m">Members</em></button>
+          <button type="button" role="tab" data-to="quick" aria-selected="${track === "quick"}"><span data-i="file-text"></span>Written guide<em>Free</em></button>
+          <button type="button" role="tab" data-to="detailed" aria-selected="${track === "detailed"}"><span data-i="play"></span>Video lesson<em class="m">Premium</em></button>
         </div>
         ${track === "quick" ? quick : lockedHtml(l)}
       `;
@@ -207,8 +220,8 @@
 
       const vid = $("#lesson .lesson-video");
       vid?.querySelector(".vsl-play").addEventListener("click", () => {
-        if (!l.video) return vid.classList.add("is-soon");
-        vid.innerHTML = `<iframe src="${l.video}" title="${l.title}" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
+        if (!course.introVideo) return vid.classList.add("is-soon");
+        vid.innerHTML = `<iframe src="${course.introVideo}" title="Course intro" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`;
       });
 
       if (track !== "quick") return;
@@ -249,13 +262,14 @@
       const firstOpen = flat.findIndex((l) => !done.has(l.slug));
       current = firstOpen >= 0 ? firstOpen : 0;
     }
-    if (/\/detailed$/.test(location.hash)) track = "detailed";
+    if (/\/(detailed|premium)$/.test(location.hash)) track = "detailed";
     go(current);
   }
 
   document.addEventListener("DOMContentLoaded", () => {
     const catalog = $("#course-catalog");
     if (catalog) renderCatalog(catalog);
+    setIntroVideo();
     if ($("#course-modules")) initPlayer();
   });
 })();

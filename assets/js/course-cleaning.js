@@ -1,5 +1,5 @@
-/* Cleaning Business course. Quick guides are free; detailed guides are for members.
-   Add a video by setting `video` to an embed URL (YouTube, Vimeo, Loom). */
+/* Cleaning Business course. The intro video and written guides are free; lesson videos are Premium.
+   Videos are embed URLs (YouTube, Vimeo, Loom): `introVideo` for the free intro, `video` per lesson for Premium. */
 (function () {
   const T = (head, rows) =>
     `<div class="table"><table><thead><tr>${head.map((h) => `<th>${h}</th>`).join("")}</tr></thead><tbody>${rows
@@ -14,6 +14,7 @@
   window.COURSE = {
     id: "cleaning",
     title: "Cleaning Business",
+    introVideo: "",
     categories: [
       {
         title: "Foundations",
