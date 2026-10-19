@@ -20,7 +20,7 @@ Every page is a folder with an `index.html`, so URLs are clean (no `.html`) on a
 
 ## SEO
 
-Each page has a canonical URL, Open Graph and Twitter tags, and JSON-LD (Organization, WebSite and FAQ on the home page, Course and breadcrumbs on the course pages). `sitemap.xml` and `robots.txt` live at the root. The absolute URLs assume the site is hosted at `https://skycrestsites.github.io/homeservicehub`. When a custom domain goes live, search and replace that base URL in the HTML files, `sitemap.xml`, `robots.txt` and the `/homeservicehub/` links in `404.html`.
+Each page has a canonical URL, Open Graph and Twitter tags, and JSON-LD (Organization, WebSite and FAQ on the home page, Course and breadcrumbs on the course pages). `sitemap.xml` and `robots.txt` live at the root. The link preview image for every page is `assets/img/og-share.jpg` (1200x630); bump the `?v=` number in the `og:image` tags after replacing it so Facebook and iMessage fetch the new one. The absolute URLs assume the site is hosted at `https://skycrestsites.github.io/homeservicehub`. When a custom domain goes live, search and replace that base URL in the HTML files, `sitemap.xml`, `robots.txt` and the `/homeservicehub/` links in `404.html`.
 
 ## Updating links and videos
 
@@ -72,3 +72,7 @@ The player in `assets/js/course-player.js` renders both pages and saves progress
 - Testimonials on the management page
 - Social links
 - Waitlist forms on the coming soon pages (not connected to an email tool yet)
+
+## Mobile
+
+On phones, rows marked with `data-swipe` turn into side swipes with dots (`initSwipe` in `main.js`), elements with `desk-only` are hidden and `mob-only` ones appear. The homepage also shows a bottom bar with the course and Discord buttons once the hero scrolls away (`.m-dock`).

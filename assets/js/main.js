@@ -5,6 +5,9 @@ const LINKS = {
   discord: "https://discord.com/invite/learnhomeservices",
   facebook: "https://www.facebook.com/share/g/19tB2APsvj/",
   crewty: "https://crewty.com",
+  crewtyPricing: "https://crewty.com/pricing",
+  ios: "https://apps.apple.com/app/id6760047827",
+  android: "https://play.google.com/store/apps/details?id=com.crewty.app",
   members: "",
   // Embed URL for the homepage video, e.g. "https://www.youtube.com/embed/VIDEO_ID"
   vsl: "",
@@ -68,6 +71,9 @@ const ICONS = {
   verified: '<path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/>',
   folder: '<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>',
   "graduation": '<path d="M21.42 10.92a1 1 0 0 0 0-1.84l-8.58-3.9a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>',
+  monitor: '<rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8M12 17v4"/>',
+  apple: { fill: true, d: '<path d="M16.37 12.73c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.09-2.01-3.76-2.04-1.6-.16-3.12.94-3.93.94-.81 0-2.06-.92-3.39-.89-1.74.03-3.35 1.01-4.25 2.57-1.81 3.14-.46 7.79 1.3 10.34.86 1.25 1.89 2.65 3.23 2.6 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.38.81 1.4-.02 2.28-1.27 3.13-2.53.99-1.45 1.39-2.85 1.42-2.92-.03-.01-2.72-1.04-2.71-4.13ZM13.79 5.1c.71-.87 1.2-2.07 1.06-3.27-1.03.04-2.28.69-3.02 1.55-.66.77-1.24 2-1.09 3.18 1.15.09 2.33-.58 3.05-1.46Z"/>' },
+  "google-play": { fill: true, d: '<path d="M3.6 1.8c-.2.2-.3.6-.3 1v18.4c0 .4.1.8.3 1L13.9 12 3.6 1.8Zm11 11 2.9 2.9-11.6 6.6c-.4.2-.8.3-1.1.2l9.8-9.7Zm0-1.6L4.8 1.5c.3-.1.7 0 1.1.2l11.6 6.6-2.9 2.9Zm3.8-2.2 3 1.7c.9.5.9 1.3 0 1.8l-3 1.7-3.1-3.1 3.1-3.1Z"/>' },
   discord: { fill: true, d: '<path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.61 1.25a18.27 18.27 0 0 0-5.49 0 12.64 12.64 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.74 19.74 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.23-1.99a.08.08 0 0 0-.04-.11 13.1 13.1 0 0 1-1.87-.89.08.08 0 0 1-.01-.13c.13-.09.25-.19.37-.29a.07.07 0 0 1 .08-.01c3.93 1.79 8.18 1.79 12.06 0a.07.07 0 0 1 .08.01c.12.1.25.2.37.29a.08.08 0 0 1-.01.13 12.3 12.3 0 0 1-1.87.89.08.08 0 0 0-.04.11c.36.7.77 1.36 1.23 1.99a.08.08 0 0 0 .08.03 19.84 19.84 0 0 0 6-3.03.08.08 0 0 0 .03-.06c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42Z"/>' },
   facebook: { fill: true, d: '<path d="M9.1 23.69v-7.98H6.63v-3.67H9.1v-1.58c0-4.09 1.85-5.98 5.86-5.98.4 0 .96.04 1.47.1.39.04.77.11 1.14.2v3.32a8.6 8.6 0 0 0-.65-.03 26.8 26.8 0 0 0-.73-.01c-.71 0-1.26.1-1.68.31-.28.14-.52.36-.68.62-.26.42-.37 1-.37 1.75v1.3h3.92l-.39 2.1-.29 1.57h-3.25v8.24C19.4 23.24 24 18.18 24 12.04c0-6.63-5.37-12-12-12S0 5.42 0 12.04c0 5.63 3.87 10.35 9.1 11.65Z"/>' },
 };
@@ -312,6 +318,42 @@ function initVideoModal() {
     });
   });
 }
+// Side swipe rows on phones: adds dots that follow the scroll position.
+function initSwipe() {
+  document.querySelectorAll("[data-swipe]").forEach((row) => {
+    const items = [...row.children];
+    if (items.length < 2) return;
+    const dots = document.createElement("div");
+    dots.className = "swipe-dots";
+    dots.innerHTML = items.map((_, i) => `<button type="button" aria-label="Go to item ${i + 1}"${i ? "" : " class=\"on\""}></button>`).join("");
+    row.after(dots);
+    const btns = [...dots.children];
+    const update = () => {
+      const left = row.scrollLeft;
+      let idx = 0, best = Infinity;
+      items.forEach((it, i) => { const d = Math.abs(it.offsetLeft - row.offsetLeft - left - parseFloat(getComputedStyle(row).paddingLeft)); if (d < best) { best = d; idx = i; } });
+      if (row.scrollLeft + row.clientWidth >= row.scrollWidth - 4) idx = items.length - 1;
+      btns.forEach((b, i) => b.classList.toggle("on", i === idx));
+    };
+    row.addEventListener("scroll", () => requestAnimationFrame(update), { passive: true });
+    btns.forEach((b, i) => b.addEventListener("click", () => row.scrollTo({ left: items[i].offsetLeft - items[0].offsetLeft, behavior: "smooth" })));
+  });
+}
+
+// Bottom action bar on phones, shown once the hero is out of view.
+function initDock() {
+  const dock = document.querySelector(".m-dock");
+  if (!dock) return;
+  const footer = document.querySelector(".footer");
+  const onScroll = () => {
+    const past = window.scrollY > window.innerHeight * 0.7;
+    const atFooter = footer && footer.getBoundingClientRect().top < window.innerHeight;
+    dock.classList.toggle("show", past && !atFooter);
+  };
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+}
+
 function initFilters() {
   document.querySelectorAll("[data-filter-group]").forEach((group) => {
     const target = document.getElementById(group.dataset.filterGroup);
@@ -340,6 +382,8 @@ document.addEventListener("DOMContentLoaded", () => {
   initCounters();
   initVideoModal();
   initFilters();
+  initSwipe();
+  initDock();
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 });
 
