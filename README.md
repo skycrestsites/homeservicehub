@@ -1,41 +1,54 @@
 # Home Service Hub
 
-Static marketing site and free course player for Home Service Hub. Plain HTML, CSS and vanilla JS. No build step, so it can be hosted on GitHub Pages, Netlify, Vercel or any static host.
+Static marketing site and course player for Home Service Hub. Plain HTML, CSS and vanilla JS. No build step, so it can be hosted on GitHub Pages, Netlify, Vercel or any static host.
 
 ## Pages
 
 | Page | File |
 | --- | --- |
 | Home | `index.html` |
+| Tools and Software | `tools.html` |
 | Management (Crewty) | `management.html` |
 | Course catalog | `courses/index.html` |
-| Cleaning course player | `courses/cleaning.html` |
+| Cleaning course overview | `courses/cleaning.html` |
+| Cleaning guide player | `courses/cleaning-guides.html` |
 | Junk Removal (coming soon) | `courses/junk-removal.html` |
 | Landscaping (coming soon) | `courses/landscaping.html` |
 
-## Updating links
+## Updating links and videos
 
-Discord, Facebook and Crewty links are set in one place at the top of `assets/js/main.js`:
+Links are set in one place at the top of `assets/js/main.js`:
 
 ```js
 const LINKS = {
-  discord: "#",
-  facebook: "#",
+  discord: "https://discord.com/invite/learnhomeservices",
+  facebook: "https://www.facebook.com/share/g/19tB2APsvj/",
   crewty: "https://crewty.com",
+  members: "", // paid membership checkout, falls back to Discord while empty
+  vsl: "",     // embed URL for the homepage video
 };
 ```
 
-Any element with `data-link="discord"`, `data-link="facebook"` or `data-link="crewty"` picks these up.
+Any element with `data-link="..."` picks these up.
+
+Videos use embed URLs (for example `https://www.youtube.com/embed/VIDEO_ID` or `https://player.vimeo.com/video/VIDEO_ID`). While a URL is empty, the video box shows a "coming soon" message when clicked. The course intro video is the `data-video` attribute on `courses/cleaning.html`.
 
 ## Editing the Cleaning course
 
-All lesson content lives in `assets/js/course-cleaning.js`. Each module has a list of lessons with a `title`, `duration`, `body` (HTML), `takeaways` and an optional `nudge` (`"crewty"` or `"discord"`). The player in `assets/js/course-player.js` renders it and saves progress in the browser.
+All guide content lives in `assets/js/course-cleaning.js`, grouped into four categories. Each guide has:
 
-To add a new course, copy `course-cleaning.js` with new content and create a page like `courses/cleaning.html` that loads it.
+- `slug`, `num`, `title`, `sub` and `mins`
+- `video`: embed URL for the quick guide video
+- `body`: the free quick guide (HTML)
+- `detail`: what the members-only detailed guide includes
+- `nudge` (optional): `"crewty"` or `"discord"`
+
+The player in `assets/js/course-player.js` renders both pages and saves progress in the browser. Link to a guide with `courses/cleaning-guides.html#slug`, or `#slug/detailed` for the detailed tab.
 
 ## Placeholders to replace
 
-- Testimonials and the metrics in the testimonial section
-- Course lesson content (template text)
-- Discord and Facebook links
+- Members checkout link (`LINKS.members`) and the detailed guide content
+- Homepage VSL and guide videos
+- Testimonials on the management page
+- Social links
 - Waitlist forms on the coming soon pages (not connected to an email tool yet)
