@@ -55,19 +55,28 @@
       <a class="btn btn-discord btn-sm" href="#" data-link="discord"><span data-i="discord"></span>Join Discord</a>
     </nav>
     <div class="nav-right">
-      <button class="menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false"><span data-i="menu"></span></button>
+      <button class="menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu"><span data-i="menu"></span></button>
     </div>
   </div>
-  <div class="mobile-menu">
-    <a href="../">Home</a>
-    <span class="label">Courses</span>
-    <a href="../courses/cleaning/">Cleaning Business <small>Live</small></a>
-    <a href="../courses/junk-removal/">Junk Removal <small>Soon</small></a>
-    <a href="../courses/landscaping/">Landscaping <small>Soon</small></a>
-    <span class="label">More</span>
-    <a href="../management/">Manage your business</a>
-    <a href="../#community">Community</a>
-    <a class="btn btn-discord" href="#" data-link="discord"><span data-i="discord"></span>Join Discord</a>
+  <div class="mobile-menu" id="mobile-menu">
+    <nav class="mm-inner" aria-label="Mobile">
+      <a class="mm-link" href="../">Home<span data-i="chevron-right"></span></a>
+      <div class="mm-group">
+        <button class="mm-link mm-toggle" type="button" aria-expanded="false">Courses<span data-i="chevron-down"></span></button>
+        <div class="mm-sub"><div>
+          <a href="../courses/cleaning/">Cleaning Business <small class="live">Live</small></a>
+          <a href="../courses/junk-removal/">Junk Removal <small>Soon</small></a>
+          <a href="../courses/landscaping/">Landscaping <small>Soon</small></a>
+          <a href="../courses/">All courses</a>
+        </div></div>
+      </div>
+      <a class="mm-link" href="../management/" aria-current="page">Manage your business<span data-i="chevron-right"></span></a>
+      <a class="mm-link" href="../#community">Community<span data-i="chevron-right"></span></a>
+      <div class="mm-foot">
+        <a class="btn btn-discord" href="#" data-link="discord"><span data-i="discord"></span>Join Discord</a>
+        <a class="btn btn-outline" href="#" data-link="facebook"><span class="dot"><span data-i="facebook"></span></span>Facebook group</a>
+      </div>
+    </nav>
   </div>
 </header>
 

@@ -115,14 +115,25 @@ function initHeader() {
   const toggle = document.querySelector(".menu-btn");
   const menu = document.querySelector(".mobile-menu");
   if (toggle && menu) {
-    toggle.addEventListener("click", () => {
-      const open = menu.classList.toggle("open");
+    const setMenu = (open) => {
+      menu.classList.toggle("open", open);
+      document.documentElement.classList.toggle("menu-open", open);
       toggle.setAttribute("aria-expanded", String(open));
       toggle.querySelector("[data-i]").outerHTML = `<span data-i="${open ? "x" : "menu"}"></span>`;
       renderIcons(toggle);
       head?.classList.toggle("is-scrolled", open || window.scrollY > 40);
-    });
-    menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => menu.classList.remove("open")));
+      head?.classList.remove("is-hidden");
+    };
+    toggle.addEventListener("click", () => setMenu(!menu.classList.contains("open")));
+    menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => setMenu(false)));
+    menu.querySelectorAll(".mm-toggle").forEach((btn) =>
+      btn.addEventListener("click", () => {
+        const open = btn.parentElement.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", String(open));
+      })
+    );
+    window.addEventListener("resize", () => { if (window.innerWidth > 1024 && menu.classList.contains("open")) setMenu(false); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && menu.classList.contains("open")) setMenu(false); });
   }
 
   // Transparent over the hero, solid once you scroll, hidden while scrolling down.

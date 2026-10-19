@@ -56,20 +56,28 @@
       <a class="btn btn-discord btn-sm" href="#" data-link="discord"><span data-i="discord"></span>Join Discord</a>
     </nav>
     <div class="nav-right">
-      <button class="menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false"><span data-i="menu"></span></button>
+      <button class="menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu"><span data-i="menu"></span></button>
     </div>
   </div>
-  <div class="mobile-menu">
-    <a href="./">Home</a>
-    <span class="label">Courses</span>
-    <a href="courses/cleaning/">Cleaning Business <small>Live</small></a>
-    <a href="courses/junk-removal/">Junk Removal <small>Soon</small></a>
-    <a href="courses/landscaping/">Landscaping <small>Soon</small></a>
-    <span class="label">More</span>
-    <a href="management/">Manage your business</a>
-    <a href="#community">Community</a>
-    <a href="#faq">FAQ</a>
-    <a class="btn btn-discord" href="#" data-link="discord"><span data-i="discord"></span>Join Discord</a>
+  <div class="mobile-menu" id="mobile-menu">
+    <nav class="mm-inner" aria-label="Mobile">
+      <a class="mm-link" href="./" aria-current="page">Home<span data-i="chevron-right"></span></a>
+      <div class="mm-group">
+        <button class="mm-link mm-toggle" type="button" aria-expanded="false">Courses<span data-i="chevron-down"></span></button>
+        <div class="mm-sub"><div>
+          <a href="./courses/cleaning/">Cleaning Business <small class="live">Live</small></a>
+          <a href="./courses/junk-removal/">Junk Removal <small>Soon</small></a>
+          <a href="./courses/landscaping/">Landscaping <small>Soon</small></a>
+          <a href="./courses/">All courses</a>
+        </div></div>
+      </div>
+      <a class="mm-link" href="./management/">Manage your business<span data-i="chevron-right"></span></a>
+      <a class="mm-link" href="#community">Community<span data-i="chevron-right"></span></a>
+      <div class="mm-foot">
+        <a class="btn btn-discord" href="#" data-link="discord"><span data-i="discord"></span>Join Discord</a>
+        <a class="btn btn-outline" href="#" data-link="facebook"><span class="dot"><span data-i="facebook"></span></span>Facebook group</a>
+      </div>
+    </nav>
   </div>
 </header>
 
@@ -79,7 +87,7 @@
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-copy">
-        <span class="pulse"><i></i>Free course. No signup.</span>
+        <a class="hero-pill" href="courses/cleaning/"><span class="hp-tag">Free</span><span class="hp-text">The Cleaning course is live</span><span data-i="arrow-right"></span></a>
 
         <div class="slides" data-slides data-interval="7000">
           <div class="slide is-on">
@@ -115,14 +123,13 @@
         </div>
 
         <div class="hero-trust">
-          <div class="proof">
-            <div class="avatars"><img src="assets/img/photos/cleaner-portrait.jpg" alt=""><span>M</span><span>D</span><span>+300</span></div>
-            <div>
-              <div class="stars"><span data-i="star"></span><span data-i="star"></span><span data-i="star"></span><span data-i="star"></span><span data-i="star"></span></div>
-              <small>300+ owners learning together</small>
-            </div>
+          <span class="tl-label">300+ owners learning together, from businesses like</span>
+          <div class="tl-row" aria-hidden="true">
+            <span class="tl tl-a"><span data-i="sparkles"></span>Brightside</span>
+            <span class="tl tl-b"><span data-i="home"></span>fresh<b>nest</b></span>
+            <span class="tl tl-c"><span data-i="truck"></span>PROHAUL</span>
+            <span class="tl tl-d"><span data-i="sprout"></span>GreenEdge</span>
           </div>
-          <span class="tr"><span data-i="check-circle"></span>No card, no account</span>
         </div>
       </div>
 
