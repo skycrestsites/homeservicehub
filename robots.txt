@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /tools/
 
-Sitemap: https://skycrestsites.github.io/homeservicehub/sitemap.xml
+Sitemap: https://www.learnhomeservices.com/sitemap.xml

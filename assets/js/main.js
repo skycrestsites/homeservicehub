@@ -351,6 +351,36 @@ function initSwipe() {
   });
 }
 
+// Logo banner: one measured copy is appended so the loop restarts on an identical frame.
+function initMarquee() {
+  document.querySelectorAll(".tl-track").forEach((track) => {
+    const row = track.parentElement;
+    const originals = [...track.children];
+    const build = () => {
+      track.classList.remove("is-running");
+      track.querySelectorAll(".tl-clone").forEach((n) => n.remove());
+      const setW = track.getBoundingClientRect().width;
+      if (!setW) return;
+      const copies = Math.max(1, Math.ceil(row.clientWidth / setW));
+      for (let i = 0; i < copies; i++) {
+        originals.forEach((el) => {
+          const c = el.cloneNode(true);
+          c.classList.add("tl-clone");
+          track.appendChild(c);
+        });
+      }
+      track.style.setProperty("--tl-shift", `${setW}px`);
+      track.style.setProperty("--tl-dur", `${Math.round(setW / 32)}s`);
+      void track.offsetWidth;
+      track.classList.add("is-running");
+    };
+    build();
+    document.fonts?.ready.then(build);
+    let t;
+    window.addEventListener("resize", () => { clearTimeout(t); t = setTimeout(build, 200); });
+  });
+}
+
 // Bottom action bar on phones, shown once the hero is out of view.
 function initDock() {
   const dock = document.querySelector(".m-dock");
@@ -395,6 +425,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFilters();
   initSwipe();
   initDock();
+  initMarquee();
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 });
 
