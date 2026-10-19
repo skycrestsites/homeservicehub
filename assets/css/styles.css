@@ -183,7 +183,10 @@ html.menu-open, html.menu-open body { overflow: hidden; }
 .hp-text { font-size: 13.5px; font-weight: 700; color: var(--ink); }
 .hero-pill .i { width: 15px; height: 15px; color: var(--primary); }
 .tl-label { display: block; width: 100%; font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
-.tl-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 30px; color: var(--g400); }
+.tl-row { color: var(--g400); }
+.tl-track { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 30px; }
+.tl-dup { display: none !important; }
+@keyframes tl-scroll { to { transform: translateX(-50%); } }
 .tl { display: inline-flex; align-items: center; gap: 7px; font-size: 16px; line-height: 1; white-space: nowrap; filter: grayscale(1); opacity: .85; }
 .tl .i { width: 20px; height: 20px; }
 .tl-a { font-weight: 800; letter-spacing: -0.03em; }
@@ -922,7 +925,10 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   .brand img { width: 36px; height: 36px; }
   .hero .hero-inner { padding-top: 92px; padding-bottom: 48px; gap: 44px; }
   .hero-pill { margin-bottom: 20px; }
-  .tl-row { gap: 12px 22px; }
+  .tl-row { overflow: hidden; margin: 0 -20px; padding: 4px 0; -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); }
+  .tl-track { flex-wrap: nowrap; gap: 0; width: max-content; animation: tl-scroll 22s linear infinite; }
+  .tl-track .tl { margin-right: 36px; }
+  .tl-dup { display: inline-flex !important; }
   .tl { font-size: 14.5px; }
   .tl-c { font-size: 12px; }
   .tl .i { width: 17px; height: 17px; }
@@ -1053,4 +1059,8 @@ html.menu-open, html.menu-open body { overflow: hidden; }
   .m-dock .btn { height: 50px; }
   .m-dock .btn-primary { flex: 1; justify-content: space-between; padding: 0 8px 0 20px; }
   .m-dock .btn-discord { flex: none; width: 56px; padding: 0; justify-content: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tl-track { animation: none; }
 }
