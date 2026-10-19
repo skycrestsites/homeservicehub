@@ -126,6 +126,19 @@
       </div>`;
     }
 
+    function curriculumBox() {
+      const rows = course.categories
+        .map((c, ci) => {
+          const first = flat.findIndex((f) => f.ci === ci);
+          return `<button type="button" class="fc-row" data-go="${first}"><span class="fc-num">${String(ci + 1).padStart(2, "0")}</span><span class="fc-title"><b>${c.title}</b><small>${c.lessons.length} guides</small></span><span data-i="arrow-right"></span></button>`;
+        })
+        .join("");
+      return `<div class="free-curr">
+        <div class="fc-head"><span class="tag tag-soft">Free curriculum</span><b>${total} written guides in ${course.categories.length} modules</b><span>Work through them in order. Your progress saves in this browser.</span></div>
+        <div class="fc-list">${rows}</div>
+      </div>`;
+    }
+
     function premiumStrip(l) {
       return `<div class="premium-strip">
         <span class="ps-icon"><span data-i="play"></span></span>
@@ -176,7 +189,7 @@
       document.title = `${l.title} | ${course.title} Course | Home Service Hub`;
 
       const quick = `
-        ${current === 0 ? introBox() : premiumStrip(l)}
+        ${current === 0 ? introBox() + curriculumBox() : premiumStrip(l)}
         <div class="prose">${l.body}</div>
         ${nudgeHtml(l.nudge || "discord")}
         <div class="lesson-actions">
@@ -209,6 +222,9 @@
       `;
       window.HSH.renderIcons($("#lesson"));
 
+      $("#lesson").querySelectorAll("[data-go]").forEach((b) =>
+        b.addEventListener("click", () => { track = "quick"; go(Number(b.dataset.go)); })
+      );
       $("#lesson").querySelectorAll("[data-to]").forEach((b) =>
         b.addEventListener("click", () => {
           track = b.dataset.to;
