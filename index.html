@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Home Service Hub | Free Courses, Software and Community for Home Service Owners</title>
 <meta name="description" content="Home Service Hub teaches home service owners how to start, run and grow their business. Free courses, the software top operators use, and a Discord full of owners who help.">
-<meta name="theme-color" content="#ffffff">
+<meta name="theme-color" content="#101622">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Home Service Hub">
 <meta property="og:description" content="Free courses, Crewty for management and a Discord full of owners who help.">
@@ -15,331 +15,364 @@
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Rubik:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="preload" as="image" href="assets/img/photos/vsl-team.jpg">
 <link rel="stylesheet" href="assets/css/styles.css">
 <script src="assets/js/main.js" defer></script>
-<script src="assets/js/course-cleaning.js" defer></script>
 </head>
 <body>
 
 <header class="site-head">
   <div class="container nav">
-    <a class="brand" href="index.html"><img src="assets/img/logo.jpg" alt="" width="36" height="36">Home Service <span>Hub</span></a>
+    <a class="brand" href="index.html"><img src="assets/img/logo.jpg" alt="" width="40" height="40">Home Service Hub</a>
     <nav class="nav-links" aria-label="Primary">
+      <a class="nav-link" href="index.html" aria-current="page">Home</a>
       <div class="dropdown">
         <button class="nav-link" type="button" aria-expanded="false" aria-haspopup="true">Courses <span data-i="chevron-down"></span></button>
         <div class="dropdown-menu">
-          <a class="dd-item" href="courses/cleaning.html"><span class="dd-icon"><span data-i="sparkles"></span></span><span><span class="dd-title">Cleaning Business <span class="mini-tag live">Live</span></span><span class="dd-desc">Free. 19 guides across 4 categories.</span></span></a>
-          <a class="dd-item" href="courses/junk-removal.html"><span class="dd-icon"><span data-i="truck"></span></span><span><span class="dd-title">Junk Removal <span class="mini-tag">Soon</span></span><span class="dd-desc">Trucks, pricing by volume and landing jobs.</span></span></a>
-          <a class="dd-item" href="courses/landscaping.html"><span class="dd-icon"><span data-i="sprout"></span></span><span><span class="dd-title">Landscaping <span class="mini-tag">Soon</span></span><span class="dd-desc">Routes, recurring contracts and crews.</span></span></a>
+          <a class="dd-item" href="courses/cleaning.html">Cleaning Business <small class="live">Live</small></a>
+          <a class="dd-item" href="courses/junk-removal.html">Junk Removal <small>Soon</small></a>
+          <a class="dd-item" href="courses/landscaping.html">Landscaping <small>Soon</small></a>
+          <a class="dd-item" href="courses/index.html">All courses</a>
         </div>
       </div>
       <a class="nav-link" href="tools.html">Tools</a>
       <a class="nav-link" href="management.html">Management</a>
       <a class="nav-link" href="#community">Community</a>
-      <a class="nav-link" href="#faq">FAQ</a>
+      <a class="btn btn-white btn-sm" href="#" data-link="discord">Join Discord</a>
     </nav>
     <div class="nav-right">
-      <a class="pill pill-blue pill-sm" href="#" data-link="discord"><span class="dot"><span data-i="discord"></span></span>Join Discord</a>
       <button class="menu-btn" type="button" aria-label="Toggle menu" aria-expanded="false"><span data-i="menu"></span></button>
     </div>
   </div>
   <div class="mobile-menu">
+    <a href="index.html">Home</a>
     <span class="label">Courses</span>
-    <a href="courses/cleaning.html">Cleaning Business <span class="mini-tag live">Live</span></a>
-    <a href="courses/junk-removal.html">Junk Removal <span class="mini-tag">Soon</span></a>
-    <a href="courses/landscaping.html">Landscaping <span class="mini-tag">Soon</span></a>
+    <a href="courses/cleaning.html">Cleaning Business <small>Live</small></a>
+    <a href="courses/junk-removal.html">Junk Removal <small>Soon</small></a>
+    <a href="courses/landscaping.html">Landscaping <small>Soon</small></a>
     <span class="label">More</span>
-    <a href="tools.html">Tools and Software</a>
+    <a href="tools.html">Tools</a>
     <a href="management.html">Management</a>
     <a href="#community">Community</a>
     <a href="#faq">FAQ</a>
-    <a class="pill pill-blue" href="courses/cleaning.html">Start the free course</a>
+    <a class="btn btn-white" href="#" data-link="discord">Join Discord</a>
   </div>
 </header>
 
 <main>
 
   <!-- Hero -->
-  <section class="hero-ed">
-    <div class="hero-ed-copy">
-      <div class="hero-ed-inner">
-        <span class="kicker"><span data-i="check-circle"></span>Free courses, no signup</span>
-        <h1>Start, run and grow your home service business</h1>
-        <p class="lead">Practical courses from owners who have done it, the software they run their day on, and a community that answers your questions.</p>
-        <form class="search" role="search" data-guide-search autocomplete="off">
-          <label class="sr-only" for="q">Search the guides</label>
-          <input id="q" type="search" placeholder="What do you want to learn today?">
-          <button type="submit" aria-label="Search"><span data-i="search"></span></button>
-          <div class="search-results" hidden></div>
-        </form>
-        <div class="hero-ed-links">
-          <span>Popular:</span>
-          <a href="courses/cleaning-guides.html#pricing-your-cleans">Pricing</a>
-          <a href="courses/cleaning-guides.html#hiring-cleaners">Hiring cleaners</a>
-          <a href="courses/cleaning-guides.html#google-business-and-lsa">Google Business</a>
-          <a href="courses/cleaning-guides.html#setting-up-crewty">Crewty setup</a>
+  <section class="hero">
+    <div class="hero-bg"><img src="assets/img/photos/vsl-team.jpg" alt="" width="1800" height="1200"></div>
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <span class="pulse"><i></i>Free courses, no signup</span>
+
+        <div class="slides" data-slides data-interval="6500">
+          <div class="slide is-on">
+            <h1>Start, run and grow<br>your home service <span>business.</span></h1>
+            <p>Free courses written from what working owners actually do. Cleaning is live now, with Junk Removal and Landscaping on the way.</p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="courses/cleaning.html">Start the free course<span class="dot"><span data-i="arrow-right"></span></span></a>
+              <button class="btn btn-glass" type="button" data-video-open data-video-key="vsl"><span class="dot"><span data-i="play"></span></span>Watch the intro</button>
+            </div>
+          </div>
+          <div class="slide">
+            <h1>150+ owners.<br>One Discord.<br><span>Real answers.</span></h1>
+            <p>Post a question in #ask-questions and owners who are doing it right now answer for free. Every guide has its own thread.</p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="#" data-link="discord">Join the Discord<span class="dot"><span data-i="arrow-right"></span></span></a>
+              <a class="btn btn-glass" href="#community">See the community</a>
+            </div>
+          </div>
+          <div class="slide">
+            <h1>A Facebook group<br>that actually<br><span>helps.</span></h1>
+            <p>Share wins, before and afters, hiring tips and pricing questions with owners at every stage. Free to join.</p>
+            <div class="btn-row">
+              <a class="btn btn-primary" href="#" data-link="facebook">Join the group<span class="dot"><span data-i="arrow-right"></span></span></a>
+              <a class="btn btn-glass" href="courses/cleaning.html">Start the free course</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="slide-nav" role="tablist" aria-label="What the Hub offers">
+          <button type="button" role="tab" class="is-on" aria-selected="true"><span class="sn-top"><span data-i="book-open"></span>Free courses</span><i class="sn-bar"><b></b></i></button>
+          <button type="button" role="tab" aria-selected="false"><span class="sn-top"><span data-i="discord"></span>Discord</span><i class="sn-bar"><b></b></i></button>
+          <button type="button" role="tab" aria-selected="false"><span class="sn-top"><span data-i="facebook"></span>Facebook group</span><i class="sn-bar"><b></b></i></button>
+        </div>
+
+        <div class="hero-trust">
+          <div class="proof">
+            <div class="avatars"><img src="assets/img/photos/cleaner-portrait.jpg" alt=""><span>M</span><span>D</span><span>+150</span></div>
+            <div>
+              <div class="stars"><span data-i="star"></span><span data-i="star"></span><span data-i="star"></span><span data-i="star"></span><span data-i="star"></span></div>
+              <small>Trusted by 150+ owners</small>
+            </div>
+          </div>
+          <span class="tr"><span data-i="verified"></span>19 free written guides</span>
+          <span class="tr"><span data-i="check-circle"></span>No card, no account</span>
         </div>
       </div>
     </div>
-    <div class="hero-ed-media">
-      <div class="vsl" data-video data-video-key="vsl">
-        <img class="poster" src="assets/img/photos/vsl-team.jpg" alt="A cleaning team working in a bright modern kitchen" width="1800" height="1200">
-        <button class="vsl-play" type="button" aria-label="Play the intro video"><span data-i="play"></span></button>
-        <div class="vsl-meta">
-          <div><b>How Home Service Hub works</b><span>The courses, Crewty and the community in three minutes.</span></div>
-          <span class="len">3 min</span>
-        </div>
-        <div class="vsl-soon">The intro video is coming soon</div>
-      </div>
-      <span class="dots dots-a"></span>
-      <span class="dots dots-b"></span>
-    </div>
+
+    <button class="hero-card" type="button" data-video-open data-video-key="vsl" aria-label="Watch how Home Service Hub works">
+      <span class="hc-media"><img src="assets/img/photos/cleaners-living.jpg" alt=""><span class="hc-play"><span data-i="play"></span></span></span>
+      <span class="hc-body"><span><b>How the Hub works</b><small>The courses, Crewty and the community</small></span><span class="len">3 min</span></span>
+      <span class="vsl-soon">The intro video is coming soon</span>
+    </button>
   </section>
 
-  <!-- Stats band -->
-  <section class="band" aria-label="Highlights">
-    <div class="container band-grid">
-      <div><b>19</b><span>Free written guides</span></div>
-      <div><b>4</b><span>Categories, in order</span></div>
-      <div><b>150+</b><span>Owners in the Discord</span></div>
+  <!-- Stats -->
+  <section class="stats" aria-label="Highlights">
+    <div class="container stats-grid">
+      <div><b data-count="19">0</b><span>Free written guides</span></div>
+      <div><b data-count="4">0</b><span>Categories, in order</span></div>
+      <div><b data-count="150" data-suffix="+">0</b><span>Owners in the Discord</span></div>
       <div><b>$0</b><span>No card, no account</span></div>
     </div>
   </section>
 
-  <!-- What you get -->
+  <!-- What is inside -->
   <section class="section">
     <div class="container">
-      <div class="head center">
-        <span class="kicker">What is inside</span>
-        <h2 class="h2">Everything you need in one place</h2>
+      <div class="sec-row">
+        <div class="sec-head">
+          <span class="eyebrow">What is inside</span>
+          <h2>Everything you need in one place</h2>
+        </div>
+        <a class="more" href="courses/index.html">All courses <span data-i="arrow-right"></span></a>
       </div>
-      <div class="feat4">
-        <a class="feat" href="courses/cleaning.html">
-          <span class="feat-ic"><span data-i="book-open"></span></span>
+      <div class="svc-grid">
+        <a class="svc" href="courses/cleaning.html">
+          <span class="ic"><span data-i="book-open"></span></span>
           <h3>Free courses</h3>
-          <p>Step by step guides written from what working owners actually do. Cleaning is live now.</p>
-          <span class="link-arrow more">Start learning <span data-i="arrow-right"></span></span>
+          <p>Step by step guides written from what working owners actually do. Start with the intro video, then read the 19 Cleaning guides in order. No account needed.</p>
+          <span class="more">Start learning <span data-i="arrow-right"></span></span>
         </a>
-        <a class="feat" href="tools.html">
-          <span class="feat-ic"><span data-i="wrench"></span></span>
+        <a class="svc" href="tools.html">
+          <span class="ic"><span data-i="wrench"></span></span>
           <h3>Tools and software</h3>
-          <p>Every tool from the course, sorted by the job it does, with the guide that covers it.</p>
-          <span class="link-arrow more">See the tools <span data-i="arrow-right"></span></span>
+          <p>Every tool from the course in one place, sorted by the job it does: registration, banking, bookkeeping, marketing and hiring, with the guide that covers each one.</p>
+          <span class="more">See the tools <span data-i="arrow-right"></span></span>
         </a>
-        <a class="feat" href="#management">
-          <span class="feat-ic green"><img src="assets/img/crewty-logo.png" alt=""></span>
+        <a class="svc" href="#management">
+          <span class="ic"><img src="assets/img/crewty-logo.png" alt=""></span>
           <h3>Management in Crewty</h3>
-          <p>Bookings, recurring jobs, crew schedules, invoices and payments in one app.</p>
-          <span class="link-arrow more">How it works <span data-i="arrow-right"></span></span>
+          <p>Bookings, recurring jobs, crew schedules, invoices and payments in one app. It is what the owners in our community run their day on.</p>
+          <span class="more">How it works <span data-i="arrow-right"></span></span>
         </a>
-        <a class="feat" href="#community">
-          <span class="feat-ic discord"><span data-i="discord"></span></span>
+        <a class="svc" href="#community">
+          <span class="ic"><span data-i="discord"></span></span>
           <h3>Community</h3>
-          <p>A Discord server and a Facebook group where owners answer your questions for free.</p>
-          <span class="link-arrow more">Join us <span data-i="arrow-right"></span></span>
+          <p>A Discord server and a Facebook group where owners answer your questions for free. Ask about pricing, hiring, ads or anything else.</p>
+          <span class="more">Join us <span data-i="arrow-right"></span></span>
         </a>
       </div>
     </div>
   </section>
 
   <!-- Courses -->
-  <section class="section pt0" id="courses">
+  <section class="section section-grid" id="courses">
     <div class="container">
-      <div class="head-row">
-        <div class="head">
-          <span class="kicker">Courses</span>
-          <h2 class="h2">Pick your niche</h2>
-          <p class="lead">Every course starts with a free intro video and free written guides. Cleaning is live, the next two are in production.</p>
-        </div>
-        <a class="link-arrow" href="courses/index.html">View all courses <span data-i="arrow-right"></span></a>
+      <div class="sec-head center">
+        <span class="eyebrow">Courses</span>
+        <h2>Pick your niche</h2>
+        <p>Every course opens with a free intro video and free written guides. Cleaning is live. The next two are in production.</p>
       </div>
-      <div class="cc-grid">
-        <a class="cc" href="courses/cleaning.html">
-          <div class="cc-media"><img src="assets/img/photos/cleaners-living.jpg" alt="Two cleaners vacuuming a modern living room" loading="lazy"><span class="cc-badge live">Free</span></div>
-          <div class="cc-body">
-            <span class="cc-cat">Cleaning</span>
+      <div class="course-cards">
+        <a class="ccard" href="courses/cleaning.html">
+          <div class="ccard-media"><img src="assets/img/photos/cleaners-living.jpg" alt="Two cleaners vacuuming a modern living room" loading="lazy"><span class="tag">Live now</span></div>
+          <div class="ccard-body">
             <h3>Cleaning Business</h3>
-            <p>From your first paying client to a team that runs without you.</p>
-            <ul class="cc-meta">
-              <li><span data-i="file-text"></span>19 guides</li>
-              <li><span data-i="layers"></span>4 categories</li>
-              <li><span data-i="clock"></span>About 75 min</li>
-            </ul>
+            <p class="meta">19 guides, 4 categories, about 75 min</p>
+            <p class="price">Free</p>
+            <p class="desc">From your first paying client to a team that runs without you. Setup, pricing, systems, marketing and hiring.</p>
+            <span class="go"><span data-i="arrow-right"></span>Start the course</span>
           </div>
-          <div class="cc-foot"><b>Free</b><span>Start the course <span data-i="arrow-right"></span></span></div>
         </a>
-        <a class="cc soon" href="courses/junk-removal.html">
-          <div class="cc-media"><img src="assets/img/photos/junk-truck.jpg" alt="Crew loading debris into a truck" loading="lazy"><span class="cc-badge">Coming soon</span></div>
-          <div class="cc-body">
-            <span class="cc-cat">Junk Removal</span>
-            <h3>Junk Removal Business</h3>
-            <p>Trucks, pricing by volume, dump fees and the local marketing that keeps the schedule full.</p>
-            <ul class="cc-meta">
-              <li><span data-i="bell"></span>Waitlist open</li>
-            </ul>
+        <a class="ccard" href="courses/junk-removal.html">
+          <div class="ccard-media"><img src="assets/img/photos/junk-truck.jpg" alt="Crew loading debris into a truck" loading="lazy"><span class="tag tag-orange">Coming soon</span></div>
+          <div class="ccard-body">
+            <h3>Junk Removal</h3>
+            <p class="meta">In production</p>
+            <p class="price">Free</p>
+            <p class="desc">Trucks, pricing by volume, dump fees and the local marketing that keeps the schedule full.</p>
+            <span class="go"><span data-i="bell"></span>Join the waitlist</span>
           </div>
-          <div class="cc-foot"><b>In production</b><span>Join the waitlist <span data-i="arrow-right"></span></span></div>
         </a>
-        <a class="cc soon" href="courses/landscaping.html">
-          <div class="cc-media"><img src="assets/img/photos/lawn-mowing.jpg" alt="Landscaper mowing a lawn" loading="lazy"><span class="cc-badge">Coming soon</span></div>
-          <div class="cc-body">
-            <span class="cc-cat">Landscaping</span>
-            <h3>Landscaping Business</h3>
-            <p>Residential routes, seasonal contracts, equipment and building a crew.</p>
-            <ul class="cc-meta">
-              <li><span data-i="bell"></span>Waitlist open</li>
-            </ul>
+        <a class="ccard" href="courses/landscaping.html">
+          <div class="ccard-media"><img src="assets/img/photos/lawn-mowing.jpg" alt="Landscaper mowing a lawn" loading="lazy"><span class="tag tag-orange">Coming soon</span></div>
+          <div class="ccard-body">
+            <h3>Landscaping</h3>
+            <p class="meta">In production</p>
+            <p class="price">Free</p>
+            <p class="desc">Residential routes, seasonal contracts, equipment and building a crew that shows up.</p>
+            <span class="go"><span data-i="bell"></span>Join the waitlist</span>
           </div>
-          <div class="cc-foot"><b>In production</b><span>Join the waitlist <span data-i="arrow-right"></span></span></div>
         </a>
+      </div>
+      <div class="center">
+        <a class="btn btn-primary" href="courses/index.html">View all courses</a>
       </div>
     </div>
   </section>
 
   <!-- Crewty -->
-  <section class="section pt0" id="management">
-    <div class="container crew">
-      <div class="crew-media">
-        <img class="crew-desk" src="assets/img/crewty-dashboard.jpg" alt="Crewty dashboard with a monthly job calendar" loading="lazy">
-        <img class="crew-phone" src="assets/img/crewty-app-home.png" alt="Crewty app home screen" loading="lazy">
-        <span class="dots"></span>
-      </div>
-      <div class="crew-copy">
-        <span class="kicker"><img src="assets/img/crewty-logo.png" alt="">Management software</span>
-        <h2 class="h2">Run the whole business in Crewty</h2>
-        <p class="lead">Crewty is the app owners in our community use to take bookings, run recurring work, pay their crew and get paid. One place, instead of texts, spreadsheets and paper invoices.</p>
-        <ul class="checks2">
-          <li><span data-i="check-circle"></span>Online booking page and a form for your website</li>
-          <li><span data-i="check-circle"></span>Recurring jobs that book and charge themselves</li>
-          <li><span data-i="check-circle"></span>Crew app with schedules, pay and time tracking</li>
-          <li><span data-i="check-circle"></span>Invoices and card payments through your own Stripe</li>
-        </ul>
-        <div class="pill-row">
-          <a class="pill pill-blue" href="https://crewty.com" data-link="crewty">Visit crewty.com<span class="dot"><span data-i="external"></span></span></a>
-          <a class="pill pill-ghost" href="management.html">How owners use it</a>
+  <section class="section" id="management">
+    <div class="container split">
+      <div>
+        <div class="sec-head">
+          <span class="eyebrow">Management software</span>
+          <h2>Run the whole business in Crewty</h2>
+          <p>Crewty is the app owners in our community use to take bookings, run recurring work, pay their crew and get paid. One place, instead of texts, spreadsheets and paper invoices.</p>
+        </div>
+        <div class="mini-grid">
+          <div class="mini"><span data-i="calendar"></span><h4>Scheduling</h4><p>Recurring jobs that book themselves weekly, biweekly or monthly.</p></div>
+          <div class="mini"><span data-i="map-pin"></span><h4>Dispatch</h4><p>Crews see addresses, notes and checklists on their phone.</p></div>
+          <div class="mini"><span data-i="file"></span><h4>Quotes</h4><p>Send a quote in minutes and turn it into a booked job.</p></div>
+          <div class="mini"><span data-i="receipt"></span><h4>Invoices and payments</h4><p>Invoice when the job is done and get paid by card.</p></div>
+          <div class="mini"><span data-i="users"></span><h4>Crew app</h4><p>Schedules, pay and time tracking for your team.</p></div>
+          <div class="mini"><span data-i="globe"></span><h4>Online booking</h4><p>A booking page where clients book themselves.</p></div>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="https://crewty.com" data-link="crewty">Visit crewty.com<span class="dot"><span data-i="arrow-right"></span></span></a>
+          <a class="btn btn-outline" href="management.html">How owners use it</a>
         </div>
         <p class="fine">7 day free trial. Plans from $29.99 a month. Web, iPhone and Android.</p>
+      </div>
+      <div class="photo-stack">
+        <div class="ps-main"><img src="assets/img/crewty-dashboard.jpg" alt="Crewty dashboard with a monthly job calendar" loading="lazy"></div>
+        <div class="ps-float tr"><img src="assets/img/crewty-app-home.png" alt="Crewty app home screen" loading="lazy"></div>
+        <div class="ps-float bl"><img src="assets/img/photos/crew-van.jpg" alt="A cleaning crew by their van" loading="lazy"></div>
+        <span class="ps-badge">Recommended by the Hub</span>
       </div>
     </div>
   </section>
 
   <!-- Community -->
-  <section class="section pt0" id="community">
+  <section class="section section-dark" id="community">
     <div class="container">
-      <div class="head center">
-        <span class="kicker">Community</span>
-        <h2 class="h2">Join 150+ home service owners on Discord</h2>
-        <p class="lead">Ask a question and get real answers from owners who are doing it right now. The course, the tools and the people, all in one server.</p>
+      <div class="sec-head center">
+        <span class="eyebrow">Community</span>
+        <h2>150+ owners who answer your questions</h2>
+        <p>Ask a question and get real answers from owners who are doing it right now. The course, the tools and the people, all in one server.</p>
       </div>
 
-      <div class="dc" aria-label="Preview of the Home Service Hub Discord">
-        <div class="dc-side">
-          <div class="dc-server"><img src="assets/img/logo.jpg" alt="">Home Service Hub</div>
-          <div class="dc-chans">
-            <div class="dc-ch"><span data-i="hash"></span>welcome</div>
-            <div class="dc-ch"><span data-i="hash"></span>announcements</div>
-            <div class="dc-ch"><span data-i="hash"></span>partners</div>
-            <span class="dc-cat">Learn</span>
-            <div class="dc-ch unread"><span data-i="hash"></span>course-education</div>
-            <div class="dc-ch"><span data-i="hash"></span>tools-and-software</div>
-            <div class="dc-ch"><span data-i="hash"></span>news</div>
-            <span class="dc-cat">Community</span>
-            <div class="dc-ch"><span data-i="hash"></span>introductions</div>
-            <div class="dc-ch on"><span data-i="hash"></span>general-chat</div>
-            <div class="dc-ch unread"><span data-i="hash"></span>ask-questions</div>
-            <div class="dc-ch"><span data-i="hash"></span>wins</div>
-            <div class="dc-ch"><span data-i="hash"></span>before-and-after</div>
+      <div class="comm-grid">
+        <div class="dc" aria-label="Preview of the Home Service Hub Discord">
+          <div class="dc-side">
+            <div class="dc-server"><img src="assets/img/logo.jpg" alt="">Home Service Hub</div>
+            <div class="dc-chans">
+              <div class="dc-ch"><span data-i="hash"></span>welcome</div>
+              <div class="dc-ch"><span data-i="hash"></span>announcements</div>
+              <div class="dc-ch"><span data-i="hash"></span>partners</div>
+              <span class="dc-cat">Learn</span>
+              <div class="dc-ch unread"><span data-i="hash"></span>course-education</div>
+              <div class="dc-ch"><span data-i="hash"></span>tools-and-software</div>
+              <div class="dc-ch"><span data-i="hash"></span>news</div>
+              <span class="dc-cat">Community</span>
+              <div class="dc-ch"><span data-i="hash"></span>introductions</div>
+              <div class="dc-ch on"><span data-i="hash"></span>general-chat</div>
+              <div class="dc-ch unread"><span data-i="hash"></span>ask-questions</div>
+              <div class="dc-ch"><span data-i="hash"></span>wins</div>
+              <div class="dc-ch"><span data-i="hash"></span>before-and-after</div>
+            </div>
+          </div>
+          <div class="dc-main">
+            <div class="dc-top"><span data-i="hash"></span>general-chat<small>Talk shop with other owners</small></div>
+            <div class="dc-msgs">
+              <div class="dc-reply">Replying to <b>@Sharkman</b> I am really struggling to hire a good team of 2 cleaners. Any tips?</div>
+              <div class="dc-msg"><span class="av dc-c3">W</span><div><div class="nm">wtfengme<small>Oct 16</small></div><p>If you're out of options, look through TaskRabbit for solo cleaners.</p></div></div>
+              <div class="dc-msg"><span class="av dc-c5">L</span><div><div class="nm">Luis<small>Oct 17</small></div><p>Care.com works too. They're already background checked.</p></div></div>
+              <div class="dc-msg"><span class="av dc-c6">S</span><div><div class="nm">swolk<small>Oct 17</small></div><p>How do y'all get reliable cleaners?</p></div></div>
+              <div class="dc-msg"><span class="av dc-c1">H</span><div><div class="nm">Huzaifa<span class="rl">HOME SERVICE HUB</span><small>Oct 17</small></div><p>Facebook is pretty good, just make sure you interview them well.</p><p>Most of the time reliability comes from practical work. You don't know until you've done a few jobs with them.</p></div></div>
+              <div class="dc-msg"><span class="av dc-c4">C</span><div><div class="nm">Cristian Lawless<small>Today</small></div><p>One big thing: don't spam your cleaners with updates. If they sound interested, don't overcommunicate.</p></div></div>
+            </div>
+            <div class="dc-input">Message #general-chat</div>
+          </div>
+          <div class="dc-members">
+            <span class="dc-cat">Home Service Hub (2)</span>
+            <div class="dc-mem lead"><span class="av dc-c1">HB</span>Hub Bot<span class="tagx">APP</span></div>
+            <div class="dc-mem lead"><span class="av dc-c1">H</span>Huzaifa</div>
+            <span class="dc-cat">$0 to $5k a month</span>
+            <div class="dc-mem"><span class="av dc-c2">A</span>Alex</div>
+            <div class="dc-mem"><span class="av dc-c7">A</span>amaan</div>
+            <span class="dc-cat">Online</span>
+            <div class="dc-mem"><span class="av dc-c3">B</span>bobbysboot</div>
+            <div class="dc-mem"><span class="av dc-c5">L</span>Luis</div>
+            <div class="dc-mem"><span class="av dc-c6">S</span>silverpie</div>
+            <div class="dc-mem"><span class="av dc-c4">W</span>Will</div>
           </div>
         </div>
-        <div class="dc-main">
-          <div class="dc-top"><span data-i="hash"></span>general-chat<small>Talk shop with other owners</small></div>
-          <div class="dc-msgs">
-            <div class="dc-reply">Replying to <b>@Sharkman</b> I am really struggling to hire a good team of 2 cleaners. Any tips?</div>
-            <div class="dc-msg"><span class="av dc-c3">W</span><div><div class="nm">wtfengme<small>Oct 16</small></div><p>If you're out of options, look through TaskRabbit for solo cleaners.</p></div></div>
-            <div class="dc-msg"><span class="av dc-c5">L</span><div><div class="nm">Luis<small>Oct 17</small></div><p>Care.com works too. They're already background checked.</p></div></div>
-            <div class="dc-msg"><span class="av dc-c6">S</span><div><div class="nm">swolk<small>Oct 17</small></div><p>How do y'all get reliable cleaners?</p></div></div>
-            <div class="dc-msg"><span class="av dc-c1">H</span><div><div class="nm">Huzaifa<span class="rl">HOME SERVICE HUB</span><small>Oct 17</small></div><p>Facebook is pretty good, just make sure you interview them well.</p><p>Most of the time reliability comes from practical work. You don't know until you've done a few jobs with them.</p></div></div>
-            <div class="dc-msg"><span class="av dc-c4">C</span><div><div class="nm">Cristian Lawless<small>Today</small></div><p>One big thing: don't spam your cleaners with updates. If they sound interested, don't overcommunicate.</p></div></div>
+        <div class="tile-stack">
+          <a class="tile" href="#" data-link="facebook">
+            <img src="assets/img/photos/team-kitchen.jpg" alt="" loading="lazy">
+            <span class="tile-label"><span data-i="facebook"></span>Facebook group</span>
+          </a>
+          <div class="tile">
+            <img src="assets/img/photos/owner-laptop.jpg" alt="" loading="lazy">
+            <div class="tile-stat"><b>150+</b><span>Owners inside</span></div>
           </div>
-          <div class="dc-input">Message #general-chat</div>
-        </div>
-        <div class="dc-members">
-          <span class="dc-cat">Home Service Hub (2)</span>
-          <div class="dc-mem lead"><span class="av dc-c1">HB</span>Hub Bot<span class="tagx">APP</span></div>
-          <div class="dc-mem lead"><span class="av dc-c1">H</span>Huzaifa</div>
-          <span class="dc-cat">$0 to $5k a month</span>
-          <div class="dc-mem"><span class="av dc-c2">A</span>Alex</div>
-          <div class="dc-mem"><span class="av dc-c7">A</span>amaan</div>
-          <span class="dc-cat">Online</span>
-          <div class="dc-mem"><span class="av dc-c3">B</span>bobbysboot</div>
-          <div class="dc-mem"><span class="av dc-c5">L</span>Luis</div>
-          <div class="dc-mem"><span class="av dc-c6">S</span>silverpie</div>
-          <div class="dc-mem"><span class="av dc-c4">W</span>Will</div>
         </div>
       </div>
 
-      <div class="community-points">
-        <div class="cp"><span data-i="check-circle"></span><div><b>Direct help in #ask-questions</b><span>Post your question and working owners answer it, for free.</span></div></div>
-        <div class="cp"><span data-i="check-circle"></span><div><b>Every guide has a thread</b><span>Discuss each guide in #course-education as you work through it.</span></div></div>
-        <div class="cp"><span data-i="check-circle"></span><div><b>Wins and before and afters</b><span>Real results from real jobs, shared every week.</span></div></div>
+      <div class="dark-cards">
+        <div class="dcard"><span data-i="message"></span><h4>Direct help in #ask-questions</h4><p>Post your question and working owners answer it, for free. Pricing, hiring, ads, insurance, anything.</p></div>
+        <div class="dcard"><span data-i="book-open"></span><h4>A thread for every guide</h4><p>Discuss each of the 19 guides in #course-education as you work through the course.</p></div>
+        <div class="dcard"><span data-i="trending-up"></span><h4>Wins and before and afters</h4><p>Real results from real jobs, shared every week, so you can see what is working right now.</p></div>
       </div>
 
-      <div class="pill-row dc-cta">
-        <a class="pill pill-discord" href="#" data-link="discord"><span class="dot"><span data-i="discord"></span></span>Join the Discord</a>
-        <a class="pill pill-ghost" href="#" data-link="facebook"><span class="dot"><span data-i="facebook"></span></span>Facebook group</a>
+      <div class="btn-row center" style="margin-top:48px">
+        <a class="btn btn-primary" href="#" data-link="discord"><span class="dot"><span data-i="discord"></span></span>Join the Discord</a>
+        <a class="btn btn-glass" href="#" data-link="facebook"><span class="dot"><span data-i="facebook"></span></span>Facebook group</a>
       </div>
     </div>
   </section>
 
   <!-- How it works -->
-  <section class="section pt0">
+  <section class="section">
     <div class="container">
-      <div class="head center">
-        <span class="kicker">How it works</span>
-        <h2 class="h2">Three steps to get started</h2>
+      <div class="sec-head">
+        <span class="eyebrow">How it works</span>
+        <h2>Three steps to get started</h2>
       </div>
-      <div class="steps3">
-        <div class="s3">
-          <div class="s3-media"><span class="s3-num">1</span><img src="assets/img/photos/owner-laptop.jpg" alt="Business owner working on a laptop" loading="lazy"></div>
-          <div class="s3-body">
-            <h3>Take the free course</h3>
-            <p>Watch the intro video, then work through the 19 guides in order. Each one takes a few minutes.</p>
-            <a class="link-arrow" href="courses/cleaning.html">Start the course <span data-i="arrow-right"></span></a>
-          </div>
+      <div class="steps-row">
+        <div class="stepc">
+          <span class="n">01</span>
+          <h3>Take the free course</h3>
+          <p>Watch the intro video, then work through the 19 guides in order. Each one takes a few minutes and your progress saves in your browser.</p>
+          <a class="more" href="courses/cleaning.html">Start the course <span data-i="arrow-right"></span></a>
         </div>
-        <div class="s3">
-          <div class="s3-media app"><span class="s3-num">2</span><img src="assets/img/crewty-app-home.png" alt="Crewty app home screen" loading="lazy"></div>
-          <div class="s3-body">
-            <h3>Set up Crewty</h3>
-            <p>Bookings, recurring jobs, your crew and payments in one app. Setup takes about 20 minutes.</p>
-            <a class="link-arrow" href="https://crewty.com" data-link="crewty">Visit crewty.com <span data-i="arrow-right"></span></a>
-          </div>
+        <div class="stepc">
+          <span class="n">02</span>
+          <h3>Set up Crewty</h3>
+          <p>Bookings, recurring jobs, your crew and payments in one app. Guide 10 walks you through the setup. It takes about 20 minutes.</p>
+          <a class="more" href="https://crewty.com" data-link="crewty">Visit crewty.com <span data-i="arrow-right"></span></a>
         </div>
-        <div class="s3">
-          <div class="s3-media"><span class="s3-num">3</span><img src="assets/img/photos/team-kitchen.jpg" alt="A cleaning team ready for a job" loading="lazy"></div>
-          <div class="s3-body">
-            <h3>Grow with the community</h3>
-            <p>Bring your questions to the Discord, share your wins and learn from owners a few steps ahead.</p>
-            <a class="link-arrow" href="#" data-link="discord">Join the Discord <span data-i="arrow-right"></span></a>
-          </div>
+        <div class="stepc">
+          <span class="n">03</span>
+          <h3>Grow with the community</h3>
+          <p>Bring your questions to the Discord, share your wins and learn from owners who are a few steps ahead of you.</p>
+          <a class="more" href="#" data-link="discord">Join the Discord <span data-i="arrow-right"></span></a>
         </div>
       </div>
     </div>
   </section>
 
   <!-- FAQ -->
-  <section class="section pt0" id="faq">
-    <div class="container faq2">
+  <section class="section section-light" id="faq">
+    <div class="container faq-wrap">
       <div>
-        <span class="kicker">FAQ</span>
-        <h2 class="h2">Questions, answered</h2>
-        <p class="lead">Still unsure? Ask in the Discord and a real owner will answer.</p>
-        <a class="pill pill-discord" href="#" data-link="discord"><span class="dot"><span data-i="discord"></span></span>Ask in Discord</a>
+        <div class="sec-head">
+          <span class="eyebrow">FAQ</span>
+          <h2>Questions, answered</h2>
+          <p>Still unsure? Ask in the Discord and a real owner will answer.</p>
+        </div>
+        <a class="btn btn-primary" href="#" data-link="discord">Ask in Discord<span class="dot"><span data-i="arrow-right"></span></span></a>
       </div>
       <div class="faq">
-        <details open><summary>Is the Cleaning course really free?<span class="pm"><span data-i="plus"></span></span></summary><p>Yes. The intro video and all 19 Cleaning guides are free to read right here in your browser. No card, no account and no signup.</p></details>
+        <details open><summary>Is the Cleaning course really free?<span class="pm"><span data-i="plus"></span></span></summary><p>Yes. The intro video and all 19 Cleaning guides are free to read right here in your browser. No card, no account and no signup. Premium adds a video lesson for every topic.</p></details>
         <details><summary>Do I need Crewty to take the course?<span class="pm"><span data-i="plus"></span></span></summary><p>No. The guides work with any tools. We recommend Crewty because it is what most owners in our community use, and guide 10 shows exactly how to set it up.</p></details>
         <details><summary>Who is in the Discord?<span class="pm"><span data-i="plus"></span></span></summary><p>Owners at every stage, from people booking their first clean to operators running multiple crews. The help channels are open to everyone and answers are free.</p></details>
         <details><summary>When are Junk Removal and Landscaping coming?<span class="pm"><span data-i="plus"></span></span></summary><p>They are in production now. Join the waitlist on each course page or follow the Discord to hear the moment they launch.</p></details>
@@ -347,12 +380,14 @@
     </div>
   </section>
 
+  <!-- CTA -->
   <section class="cta">
-    <h2 class="h2">Your first guide takes four minutes</h2>
-    <p>Start with the free Cleaning course, set up Crewty and join a community that has your back.</p>
-    <div class="pill-row">
-      <a class="pill pill-white" href="courses/cleaning.html">Start the free course<span class="dot"><span data-i="arrow-right"></span></span></a>
-      <a class="pill pill-ghost-dark" href="#" data-link="discord"><span class="dot"><span data-i="discord"></span></span>Join the Discord</a>
+    <div class="container">
+      <h2>Your first guide takes four minutes</h2>
+      <p>Start with the free Cleaning course, set up Crewty and join a community that has your back.</p>
+      <div class="btn-row">
+        <a class="btn btn-white btn-lg" href="courses/cleaning.html">Start the free course</a>
+      </div>
     </div>
   </section>
 </main>
@@ -361,16 +396,17 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        <a class="brand" href="index.html"><img src="assets/img/logo.jpg" alt="" width="36" height="36">Home Service <span>Hub</span></a>
-        <p>Courses, software and a community for home service business owners.</p>
+        <a class="brand" href="index.html"><img src="assets/img/logo.jpg" alt="" width="40" height="40">Home Service Hub</a>
+        <p>Free courses, the software top operators use and a community of owners who help. Built for cleaning, junk removal and landscaping businesses.</p>
+        <div class="socials"><a href="#" data-link="discord" aria-label="Discord"><span data-i="discord"></span></a><a href="#" data-link="facebook" aria-label="Facebook"><span data-i="facebook"></span></a></div>
       </div>
       <div><h5>Courses</h5><ul><li><a href="courses/cleaning.html">Cleaning Business</a></li><li><a href="courses/junk-removal.html">Junk Removal</a></li><li><a href="courses/landscaping.html">Landscaping</a></li><li><a href="courses/index.html">All courses</a></li></ul></div>
       <div><h5>Run your business</h5><ul><li><a href="tools.html">Tools and Software</a></li><li><a href="management.html">Management</a></li><li><a href="https://crewty.com" data-link="crewty">Crewty</a></li></ul></div>
-      <div><h5>Community</h5><ul><li><a href="#" data-link="discord">Discord</a></li><li><a href="#" data-link="facebook">Facebook group</a></li><li><a href="index.html#faq">FAQ</a></li></ul></div>
+      <div><h5>Community</h5><ul><li><a href="#" data-link="discord">Discord</a></li><li><a href="#" data-link="facebook">Facebook group</a></li><li><a href="#faq">FAQ</a></li></ul></div>
     </div>
     <div class="footer-bottom">
       <span>&copy; <span data-year>2026</span> Home Service Hub. All rights reserved.</span>
-      <div class="socials"><a href="#" data-link="discord" aria-label="Discord"><span data-i="discord"></span></a><a href="#" data-link="facebook" aria-label="Facebook"><span data-i="facebook"></span></a></div>
+      <span>Made for home service owners</span>
     </div>
   </div>
 </footer>

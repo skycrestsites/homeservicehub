@@ -65,6 +65,9 @@ const ICONS = {
   "file-text": '<path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4M10 9H8M16 13H8M16 17H8"/>',
   hash: '<path d="M4 9h16M4 15h16M10 3 8 21M16 3l-2 18"/>',
   search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  verified: '<path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/>',
+  folder: '<path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/>',
+  "graduation": '<path d="M21.42 10.92a1 1 0 0 0 0-1.84l-8.58-3.9a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/>',
   discord: { fill: true, d: '<path d="M20.32 4.37a19.8 19.8 0 0 0-4.89-1.52.07.07 0 0 0-.08.04c-.21.38-.44.87-.61 1.25a18.27 18.27 0 0 0-5.49 0 12.64 12.64 0 0 0-.62-1.25.08.08 0 0 0-.08-.04 19.74 19.74 0 0 0-4.88 1.52.07.07 0 0 0-.03.03C.53 9.05-.32 13.58.1 18.06a.08.08 0 0 0 .03.06 19.9 19.9 0 0 0 5.99 3.03.08.08 0 0 0 .08-.03c.46-.63.87-1.3 1.23-1.99a.08.08 0 0 0-.04-.11 13.1 13.1 0 0 1-1.87-.89.08.08 0 0 1-.01-.13c.13-.09.25-.19.37-.29a.07.07 0 0 1 .08-.01c3.93 1.79 8.18 1.79 12.06 0a.07.07 0 0 1 .08.01c.12.1.25.2.37.29a.08.08 0 0 1-.01.13 12.3 12.3 0 0 1-1.87.89.08.08 0 0 0-.04.11c.36.7.77 1.36 1.23 1.99a.08.08 0 0 0 .08.03 19.84 19.84 0 0 0 6-3.03.08.08 0 0 0 .03-.06c.5-5.18-.84-9.67-3.55-13.66a.06.06 0 0 0-.03-.03ZM8.02 15.33c-1.18 0-2.16-1.09-2.16-2.42s.96-2.42 2.16-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.96 2.42-2.16 2.42Zm7.97 0c-1.18 0-2.15-1.09-2.15-2.42s.95-2.42 2.15-2.42c1.21 0 2.18 1.1 2.16 2.42 0 1.33-.95 2.42-2.16 2.42Z"/>' },
   facebook: { fill: true, d: '<path d="M9.1 23.69v-7.98H6.63v-3.67H9.1v-1.58c0-4.09 1.85-5.98 5.86-5.98.4 0 .96.04 1.47.1.39.04.77.11 1.14.2v3.32a8.6 8.6 0 0 0-.65-.03 26.8 26.8 0 0 0-.73-.01c-.71 0-1.26.1-1.68.31-.28.14-.52.36-.68.62-.26.42-.37 1-.37 1.75v1.3h3.92l-.39 2.1-.29 1.57h-3.25v8.24C19.4 23.24 24 18.18 24 12.04c0-6.63-5.37-12-12-12S0 5.42 0 12.04c0 5.63 3.87 10.35 9.1 11.65Z"/>' },
 };
@@ -102,6 +105,7 @@ function applyLinks() {
 }
 
 function initHeader() {
+  const head = document.querySelector(".site-head");
   const toggle = document.querySelector(".menu-btn");
   const menu = document.querySelector(".mobile-menu");
   if (toggle && menu) {
@@ -110,8 +114,26 @@ function initHeader() {
       toggle.setAttribute("aria-expanded", String(open));
       toggle.querySelector("[data-i]").outerHTML = `<span data-i="${open ? "x" : "menu"}"></span>`;
       renderIcons(toggle);
+      head?.classList.toggle("is-scrolled", open || window.scrollY > 40);
     });
     menu.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => menu.classList.remove("open")));
+  }
+
+  // Transparent over the hero, solid once you scroll, hidden while scrolling down.
+  if (head && !head.classList.contains("solid")) {
+    let last = 0;
+    let timer;
+    const update = () => {
+      const y = window.scrollY || 0;
+      head.classList.toggle("is-scrolled", y > 40 || menu?.classList.contains("open"));
+      clearTimeout(timer);
+      if (y > last && y > 160 && !menu?.classList.contains("open")) head.classList.add("is-hidden");
+      else head.classList.remove("is-hidden");
+      timer = setTimeout(() => head.classList.remove("is-hidden"), 1000);
+      last = y;
+    };
+    window.addEventListener("scroll", update, { passive: true });
+    update();
   }
 
   document.querySelectorAll(".dropdown").forEach((dd) => {
@@ -200,50 +222,96 @@ function initVideos() {
   });
 }
 
-// Homepage search: matches guide titles and subtitles from window.COURSE.
-function initGuideSearch() {
-  const form = document.querySelector("[data-guide-search]");
-  if (!form) return;
-  const input = form.querySelector("input");
-  const box = form.querySelector(".search-results");
-  const course = window.COURSE;
-  const base = "courses/cleaning-guides.html#";
-  const guides = course
-    ? course.categories.flatMap((c) => c.lessons.map((l) => ({ ...l, cat: c.title })))
-    : [];
-  let hl = -1;
+// Hero slides: rotating headline with a progress bar under the active tab.
+function initSlides() {
+  const wrap = document.querySelector("[data-slides]");
+  if (!wrap) return;
+  const slides = [...wrap.querySelectorAll(".slide")];
+  const nav = document.querySelector(".slide-nav");
+  const tabs = nav ? [...nav.querySelectorAll("button")] : [];
+  const ms = Number(wrap.dataset.interval) || 6000;
+  if (nav) nav.style.setProperty("--slide-ms", ms + "ms");
+  let i = 0;
+  let timer;
 
-  const render = (q) => {
-    const term = q.trim().toLowerCase();
-    if (!term) { box.hidden = true; box.innerHTML = ""; hl = -1; return; }
-    const hits = guides.filter((g) => `${g.title} ${g.sub} ${g.cat}`.toLowerCase().includes(term)).slice(0, 6);
-    box.innerHTML = hits.length
-      ? hits.map((g) => `<a href="${base}${g.slug}"><span class="sr-num">${g.num}</span><span><b>${g.title}</b><small>${g.cat}</small></span></a>`).join("")
-      : `<div class="sr-empty">No guide matches that yet. Try "pricing", "hiring" or "ads".</div>`;
-    box.hidden = false;
-    hl = -1;
+  const show = (n) => {
+    i = (n + slides.length) % slides.length;
+    slides.forEach((s, k) => s.classList.toggle("is-on", k === i));
+    tabs.forEach((t, k) => {
+      const on = k === i;
+      t.classList.toggle("is-on", on);
+      t.setAttribute("aria-selected", String(on));
+      const bar = t.querySelector(".sn-bar b");
+      if (bar && on) {
+        bar.style.animation = "none";
+        void bar.offsetWidth;
+        bar.style.animation = "";
+      }
+    });
   };
+  const start = () => { clearInterval(timer); timer = setInterval(() => show(i + 1), ms); };
+  const pause = () => { clearInterval(timer); nav?.classList.add("paused"); };
+  const resume = () => { nav?.classList.remove("paused"); show(i); start(); };
 
-  input.addEventListener("input", () => render(input.value));
-  input.addEventListener("focus", () => input.value && render(input.value));
-  input.addEventListener("keydown", (e) => {
-    const items = [...box.querySelectorAll("a")];
-    if (!items.length) return;
-    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
-      e.preventDefault();
-      hl = (hl + (e.key === "ArrowDown" ? 1 : items.length - 1)) % items.length;
-      items.forEach((a, i) => a.classList.toggle("is-hl", i === hl));
-    }
-  });
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const items = [...box.querySelectorAll("a")];
-    const pick = items[hl] || items[0];
-    location.href = pick ? pick.href : "courses/cleaning.html#curriculum";
-  });
-  document.addEventListener("click", (e) => { if (!form.contains(e.target)) box.hidden = true; });
+  tabs.forEach((t, k) => t.addEventListener("click", () => { show(k); start(); }));
+  const hero = wrap.closest(".hero") || wrap;
+  hero.addEventListener("mouseenter", pause);
+  hero.addEventListener("mouseleave", resume);
+  document.addEventListener("visibilitychange", () => (document.hidden ? pause() : resume()));
+
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) { show(0); return; }
+  show(0);
+  start();
 }
 
+// Counts up numbers in the stats strip once it scrolls into view.
+function initCounters() {
+  const els = document.querySelectorAll("[data-count]");
+  if (!els.length || !("IntersectionObserver" in window)) return;
+  const run = (el) => {
+    const target = Number(el.dataset.count);
+    const prefix = el.dataset.prefix || "";
+    const suffix = el.dataset.suffix || "";
+    const t0 = performance.now();
+    const dur = 1400;
+    const tick = (now) => {
+      const p = Math.min(1, (now - t0) / dur);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = prefix + Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  };
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => { if (e.isIntersecting) { run(e.target); io.unobserve(e.target); } });
+  }, { threshold: 0.4 });
+  els.forEach((el) => io.observe(el));
+}
+
+// Lightbox for the homepage video card.
+function initVideoModal() {
+  const openers = document.querySelectorAll("[data-video-open]");
+  if (!openers.length) return;
+  const modal = document.createElement("div");
+  modal.className = "vmodal";
+  modal.innerHTML = `<div class="vmodal-box"><button class="vmodal-close" type="button">Close <span data-i="x"></span></button></div>`;
+  document.body.appendChild(modal);
+  renderIcons(modal);
+  const box = modal.querySelector(".vmodal-box");
+  const close = () => { modal.classList.remove("open"); box.querySelector("iframe")?.remove(); document.body.style.overflow = ""; };
+  modal.addEventListener("click", (e) => { if (e.target === modal || e.target.closest(".vmodal-close")) close(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  openers.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const src = btn.dataset.video || LINKS[btn.dataset.videoKey || "vsl"] || "";
+      if (!src) { btn.classList.add("is-soon"); setTimeout(() => btn.classList.remove("is-soon"), 2500); return; }
+      const sep = src.includes("?") ? "&" : "?";
+      box.insertAdjacentHTML("beforeend", `<iframe src="${src}${sep}autoplay=1&rel=0" title="Video" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>`);
+      modal.classList.add("open");
+      document.body.style.overflow = "hidden";
+    });
+  });
+}
 function initFilters() {
   document.querySelectorAll("[data-filter-group]").forEach((group) => {
     const target = document.getElementById(group.dataset.filterGroup);
@@ -268,7 +336,9 @@ document.addEventListener("DOMContentLoaded", () => {
   initTracks();
   initNotify();
   initVideos();
-  initGuideSearch();
+  initSlides();
+  initCounters();
+  initVideoModal();
   initFilters();
   document.querySelectorAll("[data-year]").forEach((el) => (el.textContent = new Date().getFullYear()));
 });

@@ -130,7 +130,7 @@
       return `<div class="premium-strip">
         <span class="ps-icon"><span data-i="play"></span></span>
         <div><b>Watch this as a video lesson</b><span>The video version of ${l.title} is part of Premium.</span></div>
-        <button class="pill pill-blue pill-sm" type="button" data-to="detailed">See Premium${arrow("lock")}</button>
+        <button class="btn btn-primary btn-sm" type="button" data-to="detailed">See Premium${arrow("lock")}</button>
       </div>`;
     }
 
@@ -139,13 +139,13 @@
         return `<div class="nudge">
           <span class="nudge-icon"><img src="../assets/img/crewty-logo.png" alt=""></span>
           <div class="nudge-text"><b>Set it up while you read</b><span>Open Crewty in another tab and follow along. Every plan starts with a 7 day free trial.</span></div>
-          <a class="pill pill-blue pill-sm" href="${window.HSH.LINKS.crewty}" target="_blank" rel="noopener">Open Crewty${arrow()}</a>
+          <a class="btn btn-primary btn-sm" href="${window.HSH.LINKS.crewty}" target="_blank" rel="noopener">Open Crewty${arrow()}</a>
         </div>`;
       }
       return `<div class="nudge">
         <span class="nudge-icon discord"><span data-i="discord"></span></span>
         <div class="nudge-text"><b>Questions on this guide?</b><span>Ask in #ask-questions on the Discord. Working owners answer for free.</span></div>
-        <a class="pill pill-discord pill-sm" href="${window.HSH.LINKS.discord}" target="_blank" rel="noopener">Open the Discord${arrow()}</a>
+        <a class="btn btn-primary btn-sm" href="${window.HSH.LINKS.discord}" target="_blank" rel="noopener">Open the Discord${arrow()}</a>
       </div>`;
     }
 
@@ -161,9 +161,9 @@
           <h2>${l.title}, the video lesson</h2>
           <p>The free guide gives you the essentials in writing. Premium members watch every topic as a filmed lesson, with the in-depth version and templates.</p>
           <ul class="locked-list">${items.map((i) => `<li><span data-i="check-circle"></span>${i}</li>`).join("")}</ul>
-          <div class="pill-row">
-            <a class="pill pill-blue" href="${membersHref()}" target="_blank" rel="noopener">Get Premium${arrow("lock")}</a>
-            <button class="pill pill-ghost" type="button" data-to="quick">Read the free guide${arrow()}</button>
+          <div class="btn-row">
+            <a class="btn btn-white" href="${membersHref()}" target="_blank" rel="noopener">Get Premium${arrow("lock")}</a>
+            <button class="btn btn-glass" type="button" data-to="quick">Read the free guide${arrow()}</button>
           </div>
         </div>
       </div>`;
@@ -180,19 +180,19 @@
         <div class="prose">${l.body}</div>
         ${nudgeHtml(l.nudge || "discord")}
         <div class="lesson-actions">
-          <button class="pill pill-ghost" type="button" id="prev" ${current === 0 ? "disabled" : ""}>Previous${arrow("arrow-left")}</button>
-          <div class="pill-row">
-            <button class="pill pill-ghost complete-btn${isDone ? " is-done" : ""}" type="button" id="complete">${isDone ? "Completed" : "Mark complete"}${arrow("check")}</button>
+          <button class="btn btn-outline" type="button" id="prev" ${current === 0 ? "disabled" : ""}>${arrow("arrow-left")}Previous</button>
+          <div class="btn-row">
+            <button class="btn btn-outline complete-btn${isDone ? " is-done" : ""}" type="button" id="complete">${isDone ? "Completed" : "Mark complete"}${arrow("check")}</button>
             ${current < total - 1
-              ? `<button class="pill pill-blue" type="button" id="next">Next guide${arrow()}</button>`
-              : `<a class="pill pill-blue" href="${window.HSH.LINKS.discord}" target="_blank" rel="noopener">Join the community${arrow()}</a>`}
+              ? `<button class="btn btn-primary" type="button" id="next">Next guide${arrow()}</button>`
+              : `<a class="btn btn-primary" href="${window.HSH.LINKS.discord}" target="_blank" rel="noopener">Join the community${arrow()}</a>`}
           </div>
         </div>`;
 
       $("#lesson").innerHTML = `
         <div class="lesson-top">
           <div class="lesson-crumb"><a href="${course.id}.html">${course.title}</a><span data-i="chevron-right"></span>${cat.title}</div>
-          <button class="pill pill-ghost pill-sm side-toggle" type="button" id="side-open">All guides${arrow("list")}</button>
+          <button class="btn btn-outline btn-sm side-toggle" type="button" id="side-open">All guides${arrow("list")}</button>
         </div>
         <h1 class="lesson-title">${l.title}</h1>
         <p class="lesson-sub">${l.sub}</p>

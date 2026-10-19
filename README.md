@@ -33,9 +33,11 @@ Any element with `data-link="..."` picks these up.
 
 Videos use embed URLs (for example `https://www.youtube.com/embed/VIDEO_ID` or `https://player.vimeo.com/video/VIDEO_ID`). While a URL is empty, the video box shows a "coming soon" message when clicked.
 
-## Homepage search
+## Design system
 
-The search bar in the hero searches guide titles and subtitles from `assets/js/course-cleaning.js` (loaded on the homepage) and links straight to the guide. Submitting with no match goes to the course curriculum.
+One stylesheet, `assets/css/styles.css`. Manrope from Google Fonts, primary blue `#1152d4`, yellow accent `#ffd500`, dark `#101622`, 2px radii. Icons are inline SVGs from the `ICONS` map in `assets/js/main.js`, rendered into any element with `data-i="name"`, drawn in the current text colour with no background boxes.
+
+The homepage hero rotates three messages (courses, Discord, Facebook group). Slides live in `index.html` inside `[data-slides]`; `data-interval` sets the time per slide in ms and the tabs under the text show a progress bar for the active slide. Edit the text in the `.slide` blocks and the tabs in `.slide-nav`.
 
 ## How the course is structured
 
