@@ -26,7 +26,23 @@ function initContinue() {
   document.querySelectorAll("[data-continue] .label").forEach((el) => (el.textContent = "Continue the free course"));
 }
 
+// "Log in" becomes "Account" once signed in. Set by modules/auth.js, so no Auth SDK loads here.
+function initAccountLink() {
+  let signedIn = false;
+  try {
+    signedIn = localStorage.getItem("hsh-signed-in") === "1";
+  } catch {
+    return;
+  }
+  if (!signedIn) return;
+  document.querySelectorAll("[data-account-link]").forEach((a) => {
+    a.href = "/account/";
+    (a.querySelector(".label") || a).textContent = "Account";
+  });
+}
+
 const config = readConfig();
+initAccountLink();
 initHeader();
 initVideos();
 initMarquee();

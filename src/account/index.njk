@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+title: "Your account | Home Service Hub"
+description: "Your Home Service Hub account."
+pageScript: account
+noindex: true
+---
+<section class="auth-page">
+  <div class="container">
+    <p class="auth-loading" data-account-loading>Loading your account...</p>
+
+    <div class="auth-card account" data-account hidden>
+      <div class="account-head">
+        <span class="avatar" data-initial></span>
+        <div>
+          <h1 class="h3" data-name>Your account</h1>
+          <p data-email></p>
+        </div>
+      </div>
+
+      <div class="account-verify" data-verify hidden>
+        <p>Please verify your email. We sent you a link when you signed up.</p>
+        <button class="btn btn-outline btn-sm" type="button">Send it again</button>
+      </div>
+
+      <div class="account-plan">
+        <div>
+          <span class="tag tag-soft">Free plan</span>
+          <p>You have the free course and the community. Premium is in production, and your account will unlock it when it opens.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="/courses/cleaning/guides/" data-continue><span class="label">Start the free course</span>{% icon "arrow-right" %}</a>
+          <a class="btn btn-outline" href="/courses/cleaning/premium/">See Premium</a>
+        </div>
+      </div>
+
+      <div class="account-links">
+        <a href="{{ links.discord }}" target="_blank" rel="noopener">{% icon "discord" %}Join the Discord</a>
+        <button class="link-btn" type="button" data-signout>Log out</button>
+      </div>
+    </div>
+  </div>
+</section>

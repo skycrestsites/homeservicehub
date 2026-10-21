@@ -36,6 +36,7 @@
       {% for item in nav.right %}
         <a class="nav-link" href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
       {% endfor %}
+      {% if site.authEnabled %}<a class="nav-link" href="/login/" data-account-link>Log in</a>{% endif %}
       <a class="btn btn-primary btn-sm" href="{{ nav.cta.url }}">{{ nav.cta.label }}</a>
     </nav>
 
@@ -66,6 +67,7 @@
       <a class="mm-link" href="{{ item.url }}">{{ item.label }}{% icon "chevron-right" %}</a>
     {% endfor %}
     <a class="mm-link" href="/tools/">Tools{% icon "chevron-right" %}</a>
+    {% if site.authEnabled %}<a class="mm-link" href="/login/" data-account-link><span class="label">Log in</span>{% icon "chevron-right" %}</a>{% endif %}
     <div class="mm-foot">
       <a class="btn btn-primary btn-lg" href="{{ nav.cta.url }}">{{ nav.cta.label }}{% icon "play" %}</a>
       <a class="btn btn-discord btn-lg" href="{{ links.discord }}" target="_blank" rel="noopener">{% icon "discord" %}Join the Discord</a>

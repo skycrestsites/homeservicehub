@@ -29,6 +29,11 @@ video {
   max-width: 100%;
 }
 
+img,
+video {
+  height: auto;
+}
+
 [hidden] {
   display: none !important;
 }

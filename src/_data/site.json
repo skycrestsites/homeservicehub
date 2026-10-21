@@ -19,5 +19,6 @@
   "premium": {
     "stripePriceId": "price_1UT549GNlJtLfmqJO2CHMK6U",
     "url": "/courses/cleaning/premium/"
-  }
+  },
+  "authEnabled": false
 }
