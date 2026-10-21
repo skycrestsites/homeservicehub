@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+title: "Premium Cleaning Course | Home Service Hub"
+description: "The Premium Cleaning Business course."
+pageScript: premium
+bodyClass: is-player
+hideFooter: true
+noindex: true
+---
+<p class="auth-loading" id="premium-loading">Opening your course...</p>
+
+<section class="auth-page" id="premium-gate" hidden>
+  <div class="container">
+    <div class="auth-card">
+      <h1 class="h3">This course is locked</h1>
+      <p class="auth-sub" data-msg></p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="/courses/cleaning/premium/">Back to Premium</a>
+        <button class="btn btn-outline" type="button" data-signout>Log out</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="premium-app" hidden>
+  <div class="course-layout">
+    <aside class="course-side" aria-label="Premium lessons">
+      <div class="cs-head">
+        <div class="cs-head-top">
+          <span class="tag tag-yellow">Premium</span>
+          <button class="side-close" type="button" id="side-close" aria-label="Close the lesson list">{% icon "x" %}</button>
+        </div>
+        <h2>Cleaning Business</h2>
+      </div>
+      <nav class="cs-modules" id="premium-lessons" aria-label="Lessons"></nav>
+    </aside>
+    <button class="side-tab" type="button" id="side-tab" aria-expanded="true" aria-label="Hide the lessons">{% icon "chevron-left" %}</button>
+    <div class="course-backdrop"></div>
+    <div class="course-main">
+      <article class="lesson-wrap" id="lesson"></article>
+    </div>
+  </div>
+</div>

@@ -198,6 +198,35 @@
   font-weight: 700;
 }
 
+#premium-lessons .cs-lesson {
+  border-radius: var(--r-sm);
+}
+
+#premium-lessons .num {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary-50);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+#premium-lessons .cs-lesson.active .num {
+  background: var(--primary);
+  color: #fff;
+}
+
+#premium-lessons .ttl {
+  color: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
 .cs-lesson .dur {
   margin-left: auto;
   color: #a2a9b8;
@@ -532,10 +561,25 @@
   margin-top: 18px;
 }
 
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--ink);
+}
+
+.prose h2 {
+  margin-top: 48px;
+  font-size: 28px;
+}
+
 .prose h3 {
   margin-top: 44px;
-  color: var(--ink);
   font-size: 23px;
+}
+
+.prose h4 {
+  margin-top: 32px;
+  font-size: 18px;
 }
 
 .prose ul li,

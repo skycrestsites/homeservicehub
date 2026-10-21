@@ -10,6 +10,14 @@ service cloud.firestore {
       allow read, update, delete: if false;
     }
 
+    // Premium lessons. Only this account can read them, and nobody can change them from the browser.
+    match /premiumLessons/{id} {
+      allow read: if request.auth != null
+        && request.auth.token.email == "netspirestudios@gmail.com"
+        && request.auth.token.email_verified == true;
+      allow write: if false;
+    }
+
     match /{document=**} {
       allow read, write: if false;
     }

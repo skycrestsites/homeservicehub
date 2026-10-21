@@ -5,6 +5,7 @@ HomeServiceBannerLOGO.jpg
 Thumbs.db
 .vscode/
 *.zip
+premium-src/
 
 # Raw media originals (compressed copies live in assets/)
 DiscordVideo.mp4

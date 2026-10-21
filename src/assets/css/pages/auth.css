@@ -157,6 +157,10 @@
   text-align: center;
 }
 
+.auth-card .btn-row {
+  margin-top: 24px;
+}
+
 .auth-loading {
   color: var(--muted);
   text-align: center;
