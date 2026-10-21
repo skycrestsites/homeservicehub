@@ -29,12 +29,18 @@
   font-size: 12.5px;
 }
 
+/* Screenshot in a black frame, like a monitor bezel */
 .shot {
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 12px solid var(--ink);
   border-radius: var(--r-lg);
-  background: #fff;
+  background: var(--ink);
   box-shadow: var(--shadow-lg);
+}
+
+.shot img {
+  width: 100%;
+  border-radius: 6px;
 }
 
 .page-hero .shot {
@@ -268,6 +274,15 @@
 }
 
 @media (width <= 640px) {
+  .shot {
+    border-width: 6px;
+    border-radius: var(--r);
+  }
+
+  .shot img {
+    border-radius: 4px;
+  }
+
   .app-shots {
     gap: 14px;
     padding: 28px 16px;
