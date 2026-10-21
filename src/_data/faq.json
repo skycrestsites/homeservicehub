@@ -1,0 +1,19 @@
+{
+  "home": [
+    { "q": "Is this easy? Will it definitely work?", "a": "No, and no. Running a home service business takes real work and a few uncomfortable months at the start. What we give you is the order to do things in, written guides for every step and owners who answer your questions. None of that guarantees your result." },
+    { "q": "Is the course really free?", "a": "Yes. The intro video and every written guide are free in your browser. No card, no account and no signup. Your progress saves in the browser you use." },
+    { "q": "What will Premium include?", "a": "Premium is in production. It adds a filmed video lesson for every topic, the in-depth guides and templates, the Premium channels in the Discord, live group calls and a free month of Crewty. Join the waitlist on the Premium page to hear first." },
+    { "q": "I do junk removal or landscaping. Is this for me?", "a": "Yes. Pricing, getting clients, hiring and running on a system work the same way in every home service business. The Cleaning course is live now, and the Junk Removal and Landscaping courses are in production." },
+    { "q": "Do I need experience?", "a": "No. The guides start at choosing your niche and registering the business. Owners in the Discord range from people booking their first job to operators running several crews." },
+    { "q": "Can I take the course on my phone?", "a": "Yes. Watch the intro on your phone. For reading the guides and setting up your tools, a laptop or desktop is easier." },
+    { "q": "Do I have to use Crewty?", "a": "No. The guides work with any tools. We recommend Crewty because it is what most owners in our community use, and one guide shows exactly how to set it up." },
+    { "q": "Who is in the Discord?", "a": "300+ owners of cleaning, junk removal, landscaping and other home service businesses. The help channels are open to everyone and answers are free." }
+  ],
+  "cleaning": [
+    { "q": "Is the Cleaning course really free?", "a": "Yes. The intro video and all 19 written guides are free. No card, no account and no signup." },
+    { "q": "How long does it take?", "a": "Each guide takes a few minutes to read. The work you do between guides, like registering and setting up your tools, is what takes time. Most owners work through it over a few weeks." },
+    { "q": "I am in Canada. Does it still apply?", "a": "Yes. There are separate legal setup guides for the USA and Canada, and the tools list covers both." },
+    { "q": "What will Premium add?", "a": "A filmed video lesson for every topic, the in-depth guides and templates, the Premium Discord channels, live group calls and a free month of Crewty. It is in production now." },
+    { "q": "Where do I ask questions?", "a": "Every guide has its own thread in #course-education on the Discord, and #ask-questions is open to everyone." }
+  ]
+}

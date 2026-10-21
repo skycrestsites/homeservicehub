@@ -1,0 +1,56 @@
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("/assets/fonts/manrope-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: Manrope;
+  font-style: normal;
+  font-weight: 300 800;
+  font-display: swap;
+  src: url("/assets/fonts/manrope-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+:root {
+  --primary: #1152d4;
+  --primary-600: #0d45b5;
+  --primary-100: #dbe6fb;
+  --primary-50: #eef3fd;
+  --yellow: #ffd500;
+  --green: #16a34a;
+  --red: #e11d48;
+  --ink: #0b1220;
+  --text: #4a5468;
+  --muted: #6b7385;
+  --line: #e6e8ee;
+  --line-soft: #f0f2f5;
+  --soft: #f5f6f8;
+  --dark: #0b0f19;
+  --dark-2: #161c29;
+  --dark-line: #262d3d;
+  --white: #fff;
+  --font: manrope, ui-sans-serif, system-ui, -apple-system, "Segoe UI", roboto, arial, sans-serif;
+  --r-sm: 8px;
+  --r: 14px;
+  --r-lg: 20px;
+  --r-pill: 999px;
+  --shadow-sm: 0 1px 2px rgb(16 24 40 / 6%), 0 1px 3px rgb(16 24 40 / 8%);
+  --shadow: 0 4px 8px -2px rgb(16 24 40 / 6%), 0 14px 28px -8px rgb(16 24 40 / 12%);
+  --shadow-lg: 0 28px 56px -16px rgb(16 24 40 / 24%);
+  --container: 1200px;
+  --narrow: 860px;
+  --header-h: 72px;
+  --gutter: 24px;
+}
+
+@media (width <= 640px) {
+  :root {
+    --header-h: 64px;
+    --gutter: 20px;
+  }
+}

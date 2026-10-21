@@ -1,0 +1,903 @@
+/* Free course player: sidebar of modules, lesson column */
+.course-layout {
+  display: grid;
+  grid-template-columns: 320px minmax(0, 1fr);
+  min-height: calc(100vh - var(--header-h));
+}
+
+.course-side {
+  position: sticky;
+  top: var(--header-h);
+  height: calc(100vh - var(--header-h));
+  overflow-y: auto;
+  border-right: 1px solid var(--line);
+  background: var(--soft);
+}
+
+.cs-head {
+  padding: 24px 20px 20px;
+  border-bottom: 1px solid var(--line);
+  background: #fff;
+}
+
+.cs-head-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cs-head h2 {
+  margin-top: 14px;
+  font-size: 20px;
+}
+
+.cs-progress {
+  margin-top: 16px;
+}
+
+.cs-progress-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.cs-progress-top b {
+  color: var(--primary);
+}
+
+.bar {
+  height: 6px;
+  overflow: hidden;
+  border-radius: var(--r-pill);
+  background: var(--line);
+}
+
+.bar i {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--primary);
+  transition: width 0.3s ease;
+}
+
+.cs-modules {
+  display: grid;
+  gap: 10px;
+  padding: 14px;
+}
+
+.cs-module {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: #fff;
+}
+
+.cs-module.open {
+  border-color: var(--primary-100);
+}
+
+.cs-module-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  text-align: left;
+}
+
+.cs-module-btn .num {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--primary-50);
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.cs-module.done-all .cs-module-btn .num {
+  background: var(--primary);
+  color: #fff;
+}
+
+.cs-module-btn .ttl {
+  flex: 1;
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 800;
+  line-height: 1.3;
+}
+
+.cs-module-btn .ttl small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cs-module-btn > .i {
+  width: 16px;
+  height: 16px;
+  color: var(--muted);
+  transition: transform 0.2s ease;
+}
+
+.cs-module.open .cs-module-btn > .i {
+  transform: rotate(180deg);
+}
+
+.cs-lessons {
+  display: none;
+  padding: 4px 0 8px;
+  border-top: 1px solid var(--line-soft);
+}
+
+.cs-module.open .cs-lessons {
+  display: block;
+}
+
+.cs-lesson {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 9px 16px;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.cs-lesson:hover {
+  background: var(--soft);
+}
+
+.cs-lesson .chk {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #cfd4de;
+  border-radius: 50%;
+  color: #fff;
+}
+
+.cs-lesson .chk .i {
+  display: none;
+  width: 10px;
+  height: 10px;
+}
+
+.cs-lesson .chk .i svg {
+  stroke-width: 3.4;
+}
+
+.cs-lesson.done .chk {
+  border-color: var(--primary);
+  background: var(--primary);
+}
+
+.cs-lesson.done .chk .i {
+  display: inline-flex;
+}
+
+.cs-lesson.active {
+  background: var(--primary-50);
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.cs-lesson .dur {
+  margin-left: auto;
+  color: #a2a9b8;
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.course-main {
+  min-width: 0;
+}
+
+.lesson-wrap {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 44px 40px 112px;
+}
+
+.lesson-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.lesson-crumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lesson-crumb a:hover {
+  color: var(--primary);
+}
+
+.lesson-crumb .i {
+  width: 13px;
+  height: 13px;
+}
+
+.side-toggle {
+  display: none;
+}
+
+.lesson-title {
+  margin-top: 18px;
+  font-size: clamp(30px, 3.6vw, 44px);
+  letter-spacing: -0.035em;
+}
+
+.lesson-sub {
+  margin-top: 10px;
+  color: var(--text);
+  font-size: 18px;
+}
+
+.lesson-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 16px;
+}
+
+.lesson-meta > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.lesson-meta .i {
+  width: 15px;
+  height: 15px;
+  color: var(--primary);
+}
+
+.lesson-meta .ok {
+  color: var(--green);
+}
+
+.lesson-video {
+  position: relative;
+  margin-top: 28px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-lg);
+  background: var(--dark) url("/assets/img/photos/cleaners-living.jpg") center / cover;
+  box-shadow: var(--shadow-lg);
+}
+
+.lesson-video::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(11 15 25 / 15%), rgb(11 15 25 / 80%));
+}
+
+.lesson-video .vsl-play {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  margin: auto;
+}
+
+.lv-caption {
+  position: absolute;
+  left: 22px;
+  bottom: 18px;
+  z-index: 2;
+  color: #fff;
+}
+
+.lv-caption b {
+  display: block;
+  color: var(--yellow);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.lv-caption span {
+  display: block;
+  margin-top: 2px;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.lesson-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.lesson-video .vsl-soon {
+  bottom: 30%;
+}
+
+.lesson-video.is-soon .vsl-soon {
+  display: block;
+}
+
+.track-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-top: 28px;
+  padding: 4px;
+  border-radius: var(--r-pill);
+  background: var(--soft);
+}
+
+.track-switch button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 46px;
+  border-radius: var(--r-pill);
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.track-switch button .i {
+  width: 16px;
+  height: 16px;
+}
+
+.track-switch button em {
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  background: var(--primary-50);
+  color: var(--primary);
+  font-size: 11px;
+  font-style: normal;
+}
+
+.track-switch button em.m {
+  background: var(--yellow);
+  color: var(--ink);
+}
+
+.track-switch button[aria-selected="true"] {
+  background: #fff;
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+
+.premium-strip {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: #fff;
+}
+
+.ps-icon {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--primary-50);
+  color: var(--primary);
+}
+
+.ps-icon .i {
+  width: 16px;
+  height: 16px;
+  margin-left: 2px;
+}
+
+.premium-strip > div {
+  flex: 1;
+  min-width: 0;
+}
+
+.premium-strip b {
+  display: block;
+  font-size: 15px;
+}
+
+.premium-strip > div > span {
+  color: var(--text);
+  font-size: 13.5px;
+}
+
+.prose {
+  margin-top: 36px;
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.prose > * + * {
+  margin-top: 18px;
+}
+
+.prose h3 {
+  margin-top: 44px;
+  color: var(--ink);
+  font-size: 23px;
+}
+
+.prose ul li,
+.prose ol li {
+  position: relative;
+  padding-left: 30px;
+}
+
+.prose li + li {
+  margin-top: 10px;
+}
+
+.prose ul li::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 10px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.prose ol {
+  counter-reset: n;
+}
+
+.prose ol li {
+  counter-increment: n;
+}
+
+.prose ol li::before {
+  content: counter(n, decimal-leading-zero);
+  position: absolute;
+  top: 4px;
+  left: 0;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.prose strong {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.callout {
+  display: flex;
+  gap: 14px;
+  padding: 18px 20px;
+  border-radius: var(--r);
+  background: var(--primary-50);
+  font-size: 15.5px;
+  line-height: 1.65;
+}
+
+.callout .i {
+  margin-top: 3px;
+  color: var(--primary);
+}
+
+.callout b {
+  color: var(--ink);
+}
+
+.callout.warn {
+  background: #fff7e6;
+}
+
+.callout.warn .i {
+  color: #d97706;
+}
+
+.table {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.prose th {
+  padding: 12px 16px;
+  background: var(--soft);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 800;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.prose td {
+  padding: 12px 16px;
+  border-top: 1px solid var(--line);
+  vertical-align: top;
+}
+
+.prose td:first-child {
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.nudge {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-top: 40px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+}
+
+.nudge-icon {
+  flex: none;
+  width: 36px;
+  height: 36px;
+  color: #5865f2;
+}
+
+.nudge-icon img,
+.nudge-icon .i {
+  width: 36px;
+  height: 36px;
+}
+
+.nudge-icon img {
+  border-radius: 9px;
+}
+
+.nudge-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.nudge-text b {
+  display: block;
+  font-size: 15.5px;
+}
+
+.nudge-text span {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.lesson-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 48px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line);
+}
+
+.complete-btn.is-done {
+  border-color: var(--primary-50);
+  background: var(--primary-50);
+  color: var(--primary);
+}
+
+.course-backdrop {
+  display: none;
+}
+
+.locked {
+  margin-top: 28px;
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  background: var(--dark);
+  color: #fff;
+}
+
+.locked-video {
+  position: relative;
+  aspect-ratio: 16 / 7;
+  background: url("/assets/img/photos/cleaner-window.jpg") center / cover;
+}
+
+.locked-video::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgb(11 15 25 / 60%);
+  backdrop-filter: blur(6px);
+}
+
+.locked-play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 72px;
+  height: 72px;
+  margin: auto;
+  border: 1px solid rgb(255 255 255 / 25%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 14%);
+}
+
+.locked-play .i {
+  width: 24px;
+  height: 24px;
+  margin-left: 3px;
+}
+
+.locked-badge {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: max-content;
+  margin: 0 auto;
+  padding: 7px 14px;
+  border-radius: var(--r-pill);
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.locked-badge .i {
+  width: 14px;
+  height: 14px;
+}
+
+.locked-body {
+  padding: 36px;
+}
+
+.locked-body h2 {
+  margin-top: 14px;
+  font-size: 26px;
+}
+
+.locked-body > p {
+  max-width: 600px;
+  margin-top: 12px;
+  color: #b7bfcf;
+  line-height: 1.7;
+}
+
+.locked-list {
+  display: grid;
+  gap: 12px;
+  margin: 24px 0 28px;
+}
+
+.locked-list li {
+  display: flex;
+  gap: 12px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.locked-list .i {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  color: var(--yellow);
+}
+
+.free-curr {
+  margin-top: 28px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: #fff;
+}
+
+.fc-head {
+  display: grid;
+  gap: 6px;
+  padding: 20px 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+.fc-head .tag {
+  justify-self: start;
+  margin-bottom: 4px;
+}
+
+.fc-head b {
+  font-size: 17px;
+}
+
+.fc-head > span:last-child {
+  color: var(--text);
+  font-size: 14px;
+}
+
+.fc-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 15px 22px;
+  border-top: 1px solid var(--line-soft);
+  text-align: left;
+}
+
+.fc-row:first-child {
+  border-top: 0;
+}
+
+.fc-row:hover {
+  background: var(--soft);
+}
+
+.fc-num {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.fc-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.fc-title b {
+  display: block;
+  font-size: 15px;
+}
+
+.fc-title small {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.fc-row .i {
+  width: 18px;
+  height: 18px;
+  color: var(--primary);
+}
+
+@media (width <= 900px) {
+  .course-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .course-side {
+    position: fixed;
+    top: var(--header-h);
+    left: 0;
+    bottom: 0;
+    z-index: 45;
+    width: min(360px, 90vw);
+    height: auto;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+  }
+
+  .course-side.open {
+    transform: none;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .course-backdrop.open {
+    position: fixed;
+    inset: var(--header-h) 0 0;
+    z-index: 44;
+    display: block;
+    background: rgb(11 15 25 / 50%);
+  }
+
+  .side-toggle {
+    display: inline-flex;
+  }
+}
+
+@media (width <= 640px) {
+  .lesson-wrap {
+    padding: 28px 20px 80px;
+  }
+
+  .track-switch button .i {
+    display: none;
+  }
+
+  .track-switch button {
+    font-size: 13px;
+  }
+
+  .premium-strip {
+    flex-wrap: wrap;
+  }
+
+  .premium-strip .btn {
+    flex: 1 1 100%;
+  }
+
+  .locked-body {
+    padding: 26px 22px;
+  }
+
+  .nudge {
+    display: grid;
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 14px 16px;
+    align-items: start;
+    padding: 18px;
+  }
+
+  .nudge .btn {
+    grid-column: 1 / -1;
+    width: 100%;
+  }
+
+  .lesson-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .lesson-actions > .btn-row {
+    display: contents;
+  }
+
+  .lesson-actions .btn {
+    width: 100%;
+    height: 48px;
+    padding: 0 14px;
+    font-size: 14px;
+  }
+
+  .lesson-actions #next,
+  .lesson-actions .btn-row > a {
+    grid-column: 1 / -1;
+  }
+
+  .fc-head,
+  .fc-row {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+}

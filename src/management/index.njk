@@ -1,0 +1,148 @@
+---
+layout: layouts/base.njk
+title: "Run Your Home Service Business From One Place | Home Service Hub"
+description: "Why we recommend Crewty to home service owners: booking, scheduling, invoicing, payments and crew pay in one app, for one flat price."
+---
+{% import "components/ui.njk" as ui with context %}
+{% set features = [
+  { "icon": "globe", "title": "Online booking", "text": "A booking page or a form on your site. Clients pick a service and a time, and can leave a card on file." },
+  { "icon": "calendar", "title": "Recurring jobs", "text": "Weekly, biweekly or monthly. Set it once and every visit is created, assigned and billed." },
+  { "icon": "map-pin", "title": "Scheduling and dispatch", "text": "Calendar, job assignment and each crew member's route, with gate codes and notes." },
+  { "icon": "receipt", "title": "Invoices and card payments", "text": "Marked done means billed. Cards are charged through your own Stripe account." },
+  { "icon": "clock", "title": "Crew pay and GPS clock-in", "text": "Hours stamped with the address. Pay hourly, per job or flat, from one table." },
+  { "icon": "message", "title": "Clients and chat", "text": "Client portal and history on every file, plus team chat and push notifications." }
+] %}
+{% set setup = [
+  { "n": "01", "title": "Add your services", "text": "Each service with a price and duration, so booking and scheduling are instant.", "image": "/assets/img/crewty-app-booking.png", "alt": "Crewty services and booking screen" },
+  { "n": "02", "title": "Bring in your clients", "text": "Addresses, notes and recurring schedules. Recurring jobs fill the calendar for you.", "image": "/assets/img/crewty-app-clients.png", "alt": "Crewty clients list" },
+  { "n": "03", "title": "Invite your crew", "text": "Your team gets their route and hours on their phone, and you get your evenings back.", "image": "/assets/img/crewty-app-home.png", "alt": "Crewty app home screen with the day's jobs" }
+] %}
+
+<section class="page-hero center">
+  <div class="container">
+    <span class="eyebrow">Our recommendation</span>
+    <h1 class="h1">Run the business <em>from one place.</em></h1>
+    <p class="lead">Every home service business needs one system for bookings, schedule, crew and money. The one we recommend to our community is Crewty. Here is what it does, what it costs and why.</p>
+    <div class="rec-badge">
+      <img src="/assets/img/crewty-logo.png" alt="" width="40" height="40">
+      <div><b>Crewty</b><small>Recommended by Home Service Hub and covered in the course.</small></div>
+    </div>
+    <div class="shot"><img src="/assets/img/crewty-dashboard.jpg" alt="Crewty dashboard with a monthly job calendar" width="1600" height="1000" fetchpriority="high"></div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="container">
+    {{ ui.head("Why it matters", "Texts and spreadsheets <em>stop working at ten clients.</em>", "Then jobs get double booked, invoices get forgotten and Sundays go to the schedule. A system fixes that once.") }}
+    <div class="grid-3" data-swipe>
+      <div class="card cmp">
+        <h3>Group chat and a spreadsheet</h3>
+        <p class="cost">"Free", plus your evenings</p>
+        <dl>
+          <div><dt>Scheduling</dt><dd>You, by text</dd></div>
+          <div><dt>Staff pay</dt><dd>A Sunday spreadsheet</dd></div>
+          <div><dt>Client self-booking</dt><dd>None</dd></div>
+          <div><dt>When you hire</dt><dd>More chaos</dd></div>
+        </dl>
+      </div>
+      <div class="card cmp win">
+        <h3>Crewty</h3>
+        <p class="cost">From $29.99 a month, flat</p>
+        <dl>
+          <div><dt>Scheduling</dt><dd>Recurring jobs, auto-assigned</dd></div>
+          <div><dt>Staff pay</dt><dd>Worked out from tracked hours</dd></div>
+          <div><dt>Client self-booking</dt><dd>Included on every plan</dd></div>
+          <div><dt>When you hire</dt><dd>Price does not move</dd></div>
+        </dl>
+      </div>
+      <div class="card cmp">
+        <h3>Per-user software</h3>
+        <p class="cost">Often $300+ a month</p>
+        <dl>
+          <div><dt>Scheduling</dt><dd>Included</dd></div>
+          <div><dt>Staff pay</dt><dd>A separate product</dd></div>
+          <div><dt>Client self-booking</dt><dd>Higher tier</dd></div>
+          <div><dt>When you hire</dt><dd>Price goes up</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft" id="features">
+  <div class="container">
+    {{ ui.head("What you manage", "Everything between the booking <em>and the payment.</em>") }}
+    <div class="grid-3" data-swipe>
+      {% for f in features %}
+        <div class="card feature"><span class="ic">{% icon f.icon %}</span><h3>{{ f.title }}</h3><p>{{ f.text }}</p></div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="app">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">Mobile app</span>
+      <h2 class="h2">The whole business, <em>in your pocket.</em></h2>
+      <p class="lead">Run the schedule, check a client, clock the crew in and see the money from your phone.</p>
+      <div class="app-list">
+        <div>{% icon "list" %}<div><h3>The whole day, in order</h3><p>Every job, address and arrival time before anyone leaves.</p></div></div>
+        <div>{% icon "map-pin" %}<div><h3>GPS clock in and out</h3><p>Hours recorded as they happen, stamped with the address.</p></div></div>
+        <div>{% icon "wallet" %}<div><h3>Money in and money out</h3><p>Invoices, card payments and crew payouts from the same phone.</p></div></div>
+      </div>
+      <div class="store-row">
+        <a class="store-btn" href="{{ links.ios }}" target="_blank" rel="noopener">{% icon "apple" %}<span><small>Download on the</small><b>App Store</b></span></a>
+        <a class="store-btn" href="{{ links.android }}" target="_blank" rel="noopener">{% icon "google-play" %}<span><small>Get it on</small><b>Google Play</b></span></a>
+      </div>
+    </div>
+    <div class="app-shots">
+      <img src="/assets/img/crewty-app-home.png" alt="Crewty app home screen with today's jobs" loading="lazy" width="460" height="996">
+      <img src="/assets/img/crewty-app-finance.png" alt="Crewty app finance screen" loading="lazy" width="460" height="996">
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft" id="pricing">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">What it costs</span>
+      <h2 class="h2">Affordable from <em>the first client.</em></h2>
+      <p class="lead">Most software charges per user, so the bill climbs every time you hire. Crewty is one flat price, and every plan includes the app, online booking, invoicing and card payments.</p>
+      <p class="fine">Every plan has a 7 day free trial. Card payments carry a 1.9% processing fee. Current details are on <a href="{{ links.crewtyPricing }}" target="_blank" rel="noopener">crewty.com</a>.</p>
+    </div>
+    <div class="cost-list">
+      <div><div><b>Starter</b><span>Up to 5 staff and 50 jobs a month. Enough for a solo owner or a first hire.</span></div><strong>$29.99<small>/mo</small></strong></div>
+      <div><div><b>Pro</b><span>15 staff, unlimited jobs, text reminders, email campaigns and reports.</span></div><strong>$59.99<small>/mo</small></strong></div>
+      <div><div><b>Premium</b><span>50 staff, more texts and emails, priority support and help moving your data in.</span></div><strong>$149.99<small>/mo</small></strong></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {{ ui.head("How owners set it up", "Up and running <em>in an afternoon.</em>", "Guide 10 of the free Cleaning course walks through the exact setup.") }}
+    <div class="grid-3" data-swipe>
+      {% for s in setup %}
+        <div class="card setup-card">
+          <div class="setup-media"><img src="{{ s.image }}" alt="{{ s.alt }}" loading="lazy" width="300" height="650"></div>
+          <div class="setup-body"><small>Step {{ s.n }}</small><h3>{{ s.title }}</h3><p>{{ s.text }}</p></div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="sec-foot"><a class="btn btn-outline" href="/courses/cleaning/guides/#setting-up-crewty">Read the setup guide{% icon "arrow-right" %}</a></div>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="container">
+    <div class="cta-panel on-dark">
+      <h2 class="h2">Try it free <em>for 7 days.</em></h2>
+      <p>Set it up while you read the guide. If it is not a fit, you have lost nothing.</p>
+      <div class="btn-row">
+        <a class="btn btn-light btn-lg" href="{{ links.crewty }}" target="_blank" rel="noopener">Visit Crewty{% icon "external" %}</a>
+        <a class="btn btn-ghost-light btn-lg" href="/courses/cleaning/guides/#setting-up-crewty">Read the setup guide</a>
+      </div>
+    </div>
+  </div>
+</section>

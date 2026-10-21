@@ -1,0 +1,239 @@
+---
+layout: layouts/base.njk
+permalink: /
+title: "Home Service Hub | Free Course for Cleaning, Junk Removal and Landscaping Owners"
+---
+{% import "components/ui.njk" as ui with context %}
+{% set homeStories = stories | published(env.production) %}
+{% set coaches = team.coaches | published(env.production) %}
+{% set showFounder = not (env.production and team.founder.sample) %}
+{% set endScreen = {
+  "title": "Ready for the next step?",
+  "text": "Keep going with the free course, or get the full course with Premium.",
+  "primary": { "label": "Continue the free course", "url": "/courses/cleaning/guides/", "continue": true },
+  "secondary": { "label": "Get the full course (Premium)", "url": "/courses/cleaning/premium/" }
+} %}
+
+<section class="hero">
+  <div class="container">
+    <span class="eyebrow">Free course for home service owners</span>
+    <h1 class="h1">Build a home service business that <em>runs without you.</em></h1>
+    {{ ui.vsl("watch", links.videos.home, "Start here. Watch this first.", endScreen) }}
+    <p class="hero-sub">Cleaning, junk removal or landscaping. Step by step guides from owners who built it, and a community of {{ site.members }} owners to ask.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary btn-lg" href="#watch" data-play="watch"><span class="play-dot">{% icon "play" %}</span>Watch the intro</a>
+      <a class="btn btn-outline btn-lg" href="/courses/cleaning/guides/" data-continue><span class="label">Start the free course</span>{% icon "arrow-right" %}</a>
+    </div>
+    <div class="trust">
+      <span>{% icon "check-circle" %}<b>Free</b>and no signup</span>
+      <span>{% icon "users" %}<b>{{ site.members }}</b> owners on Discord</span>
+      <span>{% icon "award" %}Written by working owners</span>
+    </div>
+
+    <div class="hero-logos">
+      <p>Owners we have worked with</p>
+      <div class="marquee">
+        <div class="marquee-track">
+          {% for l in logos %}
+            <span class="logo logo-{{ l.style | replace('tl-', '') }}">{% icon l.icon %}{{ l.text }}{% if l.bold %}<b>{{ l.bold }}</b>{% endif %}{{ l.after }}</span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="band-label">At a glance<small>What you get for free</small></div>
+  <div class="marquee">
+    <div class="marquee-track">
+      <span class="band-item"><b>{{ site.members }}</b> owners in the Discord</span>
+      <span class="band-item"><b>19</b> free written guides</span>
+      <span class="band-item"><b>3</b> trades, one system</span>
+      <span class="band-item"><b>$0</b> to start, no signup</span>
+      <span class="band-item">Built by <b>working owners</b></span>
+      <span class="band-item"><b>Premium</b> video course in production</span>
+    </div>
+  </div>
+</div>
+
+{% if homeStories.length %}
+<section class="section" id="stories">
+  <div class="container">
+    {{ ui.head("Owner stories", "Real owners. <em>Real numbers.</em>", "What changed when they followed the steps.") }}
+    <div class="grid-3" data-swipe>
+      {% for s in homeStories | batch(3) | first %}{{ ui.storyCard(s) }}{% endfor %}
+    </div>
+    <div class="sec-foot"><a class="btn btn-outline" href="/stories/">See all stories{% icon "arrow-right" %}</a></div>
+  </div>
+</section>
+{% endif %}
+
+<section class="section section-soft">
+  <div class="container">
+    {{ ui.head("Is this for you", "Honest about <em>who it helps.</em>") }}
+    <div class="pair">
+      <div class="panel">
+        <h3>This is for you if</h3>
+        <ul class="ticks">
+          <li>{% icon "check" %}You run, or want to start, a cleaning, junk removal or landscaping business.</li>
+          <li>{% icon "check" %}You want clients, prices and a schedule that make real money.</li>
+          <li>{% icon "check" %}You are ready to put in a few hard months to build it right.</li>
+          <li>{% icon "check" %}You want to hire and stop doing every job yourself.</li>
+        </ul>
+        <a class="btn btn-primary" href="/courses/cleaning/guides/" data-continue><span class="label">Start the free course</span>{% icon "arrow-right" %}</a>
+      </div>
+      <div class="panel dark on-dark">
+        <h3>It is not for you if</h3>
+        <ul class="ticks no">
+          <li>{% icon "x" %}You want a get rich quick scheme or passive income.</li>
+          <li>{% icon "x" %}You are not willing to talk to clients or show up on jobs early on.</li>
+          <li>{% icon "x" %}You want someone to promise you a result. Nobody honest can.</li>
+        </ul>
+        <a class="link-arrow" href="#faq">Read the honest FAQ{% icon "arrow-right" %}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container split">
+    <div>
+      <span class="eyebrow">The problem</span>
+      <h2 class="h2">Owners do not fail at the work. <em>They fail at the business.</em></h2>
+      <ol class="numbered">
+        <li><span>01</span><p><b>Prices that leave nothing.</b> Busy every day and still short at the end of the month.</p></li>
+        <li><span>02</span><p><b>Leads that come and go.</b> No system to get found, booked and paid.</p></li>
+        <li><span>03</span><p><b>Doing every job alone.</b> No time to hire, so the business can never grow past you.</p></li>
+      </ol>
+    </div>
+    <div class="panel dark on-dark center-v">
+      <span class="eyebrow">The truth</span>
+      <h2 class="h2">It is the same <em>few steps</em> in every trade.</h2>
+      <p>Set up properly, price for profit, get found locally, run on one system and hire. We teach them in order, with the tools we use.</p>
+      <a class="link-arrow" href="#path">See the path{% icon "arrow-right" %}</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft" id="path">
+  <div class="container">
+    {{ ui.head("The path", "Three phases to a business <em>that runs without you.</em>", "Every step links to a free written guide.") }}
+    <div class="phases" data-swipe>
+      {% for p in path %}
+        <div class="phase">
+          <div class="phase-top"><small>{{ p.phase }}</small><h3>{{ p.title }}</h3><p>{{ p.intro }}</p></div>
+          <ol>
+            {% for s in p.steps %}
+              <li><span>{{ s.n }}</span><div><b><a href="/courses/cleaning/guides/#{{ s.guide }}">{{ s.title }}</a></b><p>{{ s.text }}</p></div></li>
+            {% endfor %}
+          </ol>
+          <div class="phase-out"><small>Outcome</small>{{ p.outcome }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section" id="courses">
+  <div class="container">
+    {{ ui.head("Courses", "One system. <em>Every home service.</em>", "Cleaning is live and free. The next courses are in production.") }}
+    <div class="grid-4" data-swipe>
+      {% for c in courses %}{{ ui.courseCard(c) }}{% endfor %}
+    </div>
+  </div>
+</section>
+
+{% if showFounder or coaches.length %}
+<section class="section section-soft" id="team">
+  <div class="container">
+    {% if showFounder %}
+      {% set f = team.founder %}
+      <div class="founder">
+        <figure class="founder-photo">
+          <img src="{{ f.image }}" alt="" loading="lazy" width="640" height="800">
+          {{ ui.sampleFlag(f) }}
+          <figcaption><b>{{ f.name }}</b><span>{{ f.role }}</span></figcaption>
+        </figure>
+        <div>
+          <span class="eyebrow">Who is behind it</span>
+          <h2 class="h2">Built by an owner <em>who did it the hard way.</em></h2>
+          <ol class="timeline">
+            {% for t in f.timeline %}<li><small>{{ t.label }}</small><p>{{ t.text }}</p></li>{% endfor %}
+          </ol>
+        </div>
+      </div>
+    {% endif %}
+    {% if coaches.length %}
+      <div class="coaches">
+        <div>
+          <span class="eyebrow">The coaches</span>
+          <h2 class="h2">Owners who <em>run it today.</em></h2>
+          <p class="lead">They answer questions in the Discord and help shape every guide.</p>
+        </div>
+        <div class="grid-3" data-swipe>
+          {% for c in coaches %}
+            <div class="card">
+              <div class="coach-media"><img src="{{ c.image }}" alt="" loading="lazy" width="400" height="400">{{ ui.sampleFlag(c) }}</div>
+              <div class="coach-body"><b>{{ c.name }}</b><small>{{ c.role }}, {{ c.business }}</small><p>{{ c.bio }}</p></div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>
+{% endif %}
+
+<section class="section community" id="community">
+  <div class="container">
+    <div class="split">
+      <div>
+        <span class="eyebrow">Community</span>
+        <h2 class="h2">{{ site.members }} owners. <em>One Discord.</em></h2>
+        <ul class="ticks">
+          <li>{% icon "check" %}Ask questions and get answers from working owners.</li>
+          <li>{% icon "check" %}Share prices, ads and hiring wins that worked.</li>
+          <li>{% icon "check" %}Free to join, for every home service trade.</li>
+        </ul>
+        <div class="btn-row">
+          <a class="btn btn-discord" href="{{ links.discord }}" target="_blank" rel="noopener">{% icon "discord" %}Join the Discord</a>
+          <a class="btn btn-outline" href="{{ links.facebook }}" target="_blank" rel="noopener">{% icon "facebook" %}Facebook group</a>
+        </div>
+      </div>
+      <div class="community-media">
+        <video src="/assets/video/discord-community.mp4" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+      </div>
+    </div>
+    {{ ui.rec() }}
+  </div>
+</section>
+
+<section class="section section-soft" id="faq">
+  <div class="container">
+    {{ ui.faq(faq.home) }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-panel on-dark">
+      <h2 class="h2">Start free today. <em>Go further with Premium.</em></h2>
+      <p>Watch the intro, read the free guides and join the Discord. When you want every lesson on video, Premium is coming.</p>
+      <div class="btn-row">
+        <a class="btn btn-light btn-lg" href="#watch" data-play="watch"><span class="play-dot">{% icon "play" %}</span>Watch the intro</a>
+        <a class="btn btn-ghost-light btn-lg" href="/courses/cleaning/premium/">See Premium{% icon "arrow-right" %}</a>
+      </div>
+      <div class="cta-steps">
+        <span><i>1</i>Watch the intro</span>
+        <span><i>2</i>Read the free guides</span>
+        <span><i>3</i>Join the Discord</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="m-dock">
+  <a class="btn btn-primary" href="#watch" data-play="watch">{% icon "play" %}Watch intro</a>
+  <a class="btn btn-discord" href="{{ links.discord }}" target="_blank" rel="noopener">{% icon "discord" %}Discord</a>
+</div>

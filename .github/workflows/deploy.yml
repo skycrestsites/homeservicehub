@@ -1,0 +1,54 @@
+name: Deploy to Firebase Hosting
+
+# Needs the repository secret FIREBASE_SERVICE_ACCOUNT_HOMESERVICEHUB_FD4BA.
+# Until it exists, the deploy steps are skipped and the site is deployed with `npm run deploy`.
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+  checks: write
+  pull-requests: write
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' || github.event.pull_request.head.repo.full_name == github.repository
+    env:
+      HAS_KEY: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_HOMESERVICEHUB_FD4BA != '' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        if: env.HAS_KEY == 'true'
+        with:
+          node-version: 22
+          cache: npm
+      - if: env.HAS_KEY == 'true'
+        run: npm ci
+
+      # Pull request previews keep sample content visible. Production hides it.
+      - if: env.HAS_KEY == 'true' && github.event_name == 'pull_request'
+        run: npm run build
+      - if: env.HAS_KEY == 'true' && github.event_name == 'pull_request'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_HOMESERVICEHUB_FD4BA }}
+          projectId: homeservicehub-fd4ba
+          expires: 7d
+
+      - if: env.HAS_KEY == 'true' && github.event_name == 'push'
+        run: npm run build:prod
+      - if: env.HAS_KEY == 'true' && github.event_name == 'push'
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_HOMESERVICEHUB_FD4BA }}
+          projectId: homeservicehub-fd4ba
+          channelId: live

@@ -1,0 +1,24 @@
+---
+layout: layouts/base.njk
+title: "Courses | Home Service Hub"
+description: "Free courses for home service owners. Cleaning is live now. Junk Removal, Landscaping and Scaling Beyond are in production."
+---
+{% import "components/ui.njk" as ui with context %}
+
+<section class="page-hero center">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{% icon "chevron-right" %}<span>Courses</span></nav>
+    <span class="eyebrow">Courses</span>
+    <h1 class="h1">One system. <em>Every home service.</em></h1>
+    <p class="lead">Pricing, clients, systems and hiring work the same way in every trade. Start with the free Cleaning course, the rest are on the way.</p>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="container">
+    <div class="grid-4" data-swipe>
+      {% for c in courses %}{{ ui.courseCard(c) }}{% endfor %}
+    </div>
+    <div class="rec-wrap">{{ ui.rec() }}</div>
+  </div>
+</section>

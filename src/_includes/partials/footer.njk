@@ -1,0 +1,39 @@
+<footer class="footer on-dark">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a class="brand" href="/">
+          <img src="/assets/img/logo.jpg" alt="" width="36" height="36" loading="lazy">
+          <span>{{ site.name }}</span>
+        </a>
+        <p class="footer-about">A free course and a community of {{ site.members }} owners for cleaning, junk removal and landscaping businesses.</p>
+        <div class="socials">
+          <a href="{{ links.discord }}" target="_blank" rel="noopener" aria-label="Discord">{% icon "discord" %}</a>
+          <a href="{{ links.facebook }}" target="_blank" rel="noopener" aria-label="Facebook group">{% icon "facebook" %}</a>
+        </div>
+      </div>
+      {% for col in nav.footer %}
+        <div>
+          <h2>{{ col.title }}</h2>
+          <ul>
+            {% for l in col.links %}
+              {% if l.link %}
+                <li><a href="{{ links[l.link] }}" target="_blank" rel="noopener">{{ l.label }}</a></li>
+              {% else %}
+                <li><a href="{{ l.url }}">{{ l.label }}</a></li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; {{ env.year }} {{ site.name }}</span>
+      <nav aria-label="Legal">
+        {% for l in nav.legal %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
+      </nav>
+    </div>
+    <p class="footer-disclaimer">Home Service Hub is education, not financial, legal or tax advice. Results depend on your market, your effort and many things outside our control. Revenue figures shown are examples from owners, not promises.</p>
+  </div>
+</footer>

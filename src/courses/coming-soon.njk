@@ -1,0 +1,57 @@
+---js
+{
+  layout: "layouts/base.njk",
+  pagination: {
+    data: "courses",
+    size: 1,
+    alias: "course",
+    before: (items) => items.filter((c) => c.status === "soon"),
+  },
+  permalink: (data) => data.course.url,
+  eleventyComputed: {
+    title: (data) => `${data.course.title} Course, Coming Soon | Home Service Hub`,
+    description: (data) => data.course.summary,
+    ogImage: (data) => data.course.image,
+  },
+}
+---
+{% import "components/ui.njk" as ui with context %}
+
+<section class="page-hero center">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{% icon "chevron-right" %}<a href="/courses/">Courses</a>{% icon "chevron-right" %}<span>{{ course.title }}</span></nav>
+    <span class="pill soon"><i></i>{{ course.audience or "Coming soon" }}</span>
+    <h1 class="h1">{{ course.headline }} <em>{{ course.accent }}</em></h1>
+    <p class="lead">{{ course.lead }}</p>
+    {{ ui.waitlist(course.slug) }}
+    <div class="hero-banner"><img src="{{ course.image }}" alt="{{ course.alt }}" width="1000" height="430"></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {{ ui.head("What it covers", course.coverTitle) }}
+    <div class="grid-4" data-swipe>
+      {% for f in course.cover %}
+        <div class="card feature">
+          <span class="ic">{% if f.icon == "crewty" %}<img src="/assets/img/crewty-logo.png" alt="" width="28" height="28" loading="lazy">{% else %}{% icon f.icon %}{% endif %}</span>
+          <h3>{{ f.title }}</h3>
+          <p>{{ f.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft tight">
+  <div class="container">
+    <div class="cta-panel on-dark">
+      <h2 class="h2">Do not wait for it. <em>Start with the basics now.</em></h2>
+      <p>Pricing, getting clients and hiring work the same in every trade. The free Cleaning course and the Discord cover them today.</p>
+      <div class="btn-row">
+        <a class="btn btn-light btn-lg" href="/courses/cleaning/">See the free course{% icon "arrow-right" %}</a>
+        <a class="btn btn-ghost-light btn-lg" href="{{ links.discord }}" target="_blank" rel="noopener">{% icon "discord" %}Join the Discord</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+---
+layout: layouts/base.njk
+title: "Owner Stories | Home Service Hub"
+description: "Home service owners on what changed when they followed the steps in the Home Service Hub course."
+---
+{% import "components/ui.njk" as ui with context %}
+{% set list = stories | published(env.production) %}
+
+<section class="page-hero center">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{% icon "chevron-right" %}<span>Stories</span></nav>
+    <span class="eyebrow">Owner stories</span>
+    <h1 class="h1">Real owners. <em>Real numbers.</em></h1>
+    <p class="lead">What changed for owners in the community when they followed the steps.</p>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="container">
+    {% if list.length %}
+      <div class="grid-3" data-swipe>
+        {% for s in list %}{{ ui.storyCard(s) }}{% endfor %}
+      </div>
+      <div class="note">
+        {% icon "alert" %}
+        <div><b>Results vary.</b>These are individual results, not typical or promised ones. Your market, effort and many other things change what you will see.</div>
+      </div>
+    {% else %}
+      <div class="empty">
+        <h3>Stories are on the way</h3>
+        <p>We are collecting stories from owners in the community. Share yours in the Discord.</p>
+        <div class="btn-row">
+          <a class="btn btn-discord" href="{{ links.discord }}" target="_blank" rel="noopener">{% icon "discord" %}Join the Discord</a>
+          <a class="btn btn-outline" href="/courses/cleaning/">See the free course</a>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+</section>

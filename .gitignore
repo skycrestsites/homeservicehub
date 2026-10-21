@@ -12,3 +12,12 @@ DiscordChannel.png
 DiscordCommunity.png
 
 homeservicehubshare.png
+
+# Build output and dependencies
+node_modules/
+_site/
+.firebase/
+firebase-debug.log
+firestore-debug.log
+.env*
+

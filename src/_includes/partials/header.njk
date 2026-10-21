@@ -1,0 +1,74 @@
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="topbar">
+  <div class="container">
+    <span>Free course and a community of {{ site.members }} owners.</span>
+    <a href="{{ links.discord }}" target="_blank" rel="noopener">Join the Discord</a>
+  </div>
+</div>
+
+<header class="site-head">
+  <div class="container nav">
+    <nav class="nav-side" aria-label="Courses and community">
+      {% for item in nav.left %}
+        {% if item.menu == "courses" %}
+          <div class="dropdown">
+            <button class="nav-link" type="button" aria-expanded="false">{{ item.label }}{% icon "chevron-down" %}</button>
+            <div class="dropdown-menu">
+              {% for c in courses %}
+                <a class="dd-item" href="{{ c.url }}">{{ c.title }}{% if c.status == "soon" %}<span class="tag tag-soon">Soon</span>{% else %}<span class="tag tag-soft">Free</span>{% endif %}</a>
+              {% endfor %}
+              <a class="dd-item all" href="{{ item.url }}">All courses{% icon "arrow-right" %}</a>
+            </div>
+          </div>
+        {% else %}
+          <a class="nav-link" href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+        {% endif %}
+      {% endfor %}
+    </nav>
+
+    <a class="brand" href="/" aria-label="{{ site.name }} home">
+      <img src="/assets/img/logo.jpg" alt="" width="36" height="36">
+      <span>{{ site.name }}</span>
+    </a>
+
+    <nav class="nav-side right" aria-label="Stories and tools">
+      {% for item in nav.right %}
+        <a class="nav-link" href="{{ item.url }}"{% if page.url == item.url %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {% endfor %}
+      <a class="btn btn-primary btn-sm" href="{{ nav.cta.url }}">{{ nav.cta.label }}</a>
+    </nav>
+
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu">
+      {% icon "menu", "ic-open" %}
+      <span class="ic-close" hidden>{% icon "x" %}</span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu">
+  <nav class="mm-inner" aria-label="Menu">
+    <div class="mm-group">
+      <button class="mm-link mm-toggle" type="button" aria-expanded="false">Courses{% icon "chevron-down" %}</button>
+      <div class="mm-sub">
+        <div>
+          {% for c in courses %}
+            <a href="{{ c.url }}">{{ c.title }}{% if c.status == "soon" %}<span class="tag tag-soon">Soon</span>{% endif %}</a>
+          {% endfor %}
+          <a href="/courses/">All courses</a>
+        </div>
+      </div>
+    </div>
+    {% for item in nav.left %}{% if not item.menu %}
+      <a class="mm-link" href="{{ item.url }}">{{ item.label }}{% icon "chevron-right" %}</a>
+    {% endif %}{% endfor %}
+    {% for item in nav.right %}
+      <a class="mm-link" href="{{ item.url }}">{{ item.label }}{% icon "chevron-right" %}</a>
+    {% endfor %}
+    <a class="mm-link" href="/tools/">Tools{% icon "chevron-right" %}</a>
+    <div class="mm-foot">
+      <a class="btn btn-primary btn-lg" href="{{ nav.cta.url }}">{{ nav.cta.label }}{% icon "play" %}</a>
+      <a class="btn btn-discord btn-lg" href="{{ links.discord }}" target="_blank" rel="noopener">{% icon "discord" %}Join the Discord</a>
+    </div>
+  </nav>
+</div>

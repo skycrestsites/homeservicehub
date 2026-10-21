@@ -1,0 +1,39 @@
+---
+layout: layouts/base.njk
+title: "Tools Used in the Course | Home Service Hub"
+description: "Every tool mentioned in the free Home Service Hub course, grouped by what it is for: setup, banking, bookkeeping, marketing and hiring."
+---
+{% import "components/ui.njk" as ui with context %}
+
+<section class="page-hero center">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{% icon "chevron-right" %}<span>Tools</span></nav>
+    <span class="eyebrow">Tools</span>
+    <h1 class="h1">Every tool <em>in the course.</em></h1>
+    <p class="lead">What we mention in the guides, grouped by what it is for, with the guide that covers each one.</p>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="container">
+    {% for g in tools %}
+      <div class="tool-group" id="{{ g.id }}">
+        <div class="tg-head"><h2>{{ g.title }}</h2><p>{{ g.text }}</p></div>
+        <div class="tool-grid" data-swipe>
+          {% for t in g.tools %}
+            <a class="tool" href="{{ t.url }}" target="_blank" rel="noopener">
+              <div class="tool-top">
+                <span class="tool-logo">{% if t.logo %}<img src="{{ t.logo }}" alt="" width="36" height="36" loading="lazy">{% else %}{% icon t.icon %}{% endif %}</span>
+                <div><b>{{ t.name }}</b><span>{{ t.tag }}</span></div>
+                <span class="ext">{% icon "external" %}</span>
+              </div>
+              <p>{{ t.text }}</p>
+              {% if t.guide %}<span class="in-guide">{{ t.guide }}</span>{% endif %}
+            </a>
+          {% endfor %}
+        </div>
+      </div>
+    {% endfor %}
+    <div class="rec-wrap">{{ ui.rec() }}</div>
+  </div>
+</section>

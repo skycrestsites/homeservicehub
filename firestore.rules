@@ -1,0 +1,28 @@
+rules_version = '2';
+
+// The only thing the public site can do is add an email to a waitlist.
+// Nobody can read, change or delete entries from the browser. Exports run with admin access.
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /waitlist/{id} {
+      allow create: if id.matches('^[a-f0-9]{64}$') && isValidSignup(request.resource.data);
+      allow read, update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isValidSignup(d) {
+      return d.keys().hasOnly(['email', 'list', 'createdAt'])
+        && d.keys().hasAll(['email', 'list', 'createdAt'])
+        && d.email is string
+        && d.email.size() <= 254
+        && d.email.matches('^[^\\s@]+@[^\\s@]+\\.[^\\s@]{2,}$')
+        && d.email == d.email.lower()
+        && d.list in ['cleaning-premium', 'junk-removal', 'landscaping', 'scaling-beyond']
+        && d.createdAt == request.time;
+    }
+  }
+}

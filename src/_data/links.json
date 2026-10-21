@@ -1,0 +1,12 @@
+{
+  "discord": "https://discord.com/invite/learnhomeservices",
+  "facebook": "https://www.facebook.com/share/g/19tB2APsvj/",
+  "crewty": "https://crewty.com",
+  "crewtyPricing": "https://crewty.com/pricing",
+  "ios": "https://apps.apple.com/app/id6760047827",
+  "android": "https://play.google.com/store/apps/details?id=com.crewty.app",
+  "videos": {
+    "home": { "src": "", "poster": "/assets/img/photos/vsl-team.jpg", "title": "Welcome to Home Service Hub", "length": "2 min" },
+    "cleaning": { "src": "", "poster": "/assets/img/photos/cleaners-living.jpg", "title": "Must watch before you begin", "length": "2 min" }
+  }
+}

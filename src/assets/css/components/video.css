@@ -1,0 +1,261 @@
+/* Video player with poster, "watch with sound" chip and an end screen with the two next steps */
+.vsl {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--r-lg);
+  background: var(--dark);
+  box-shadow: var(--shadow-lg);
+  text-align: left;
+}
+
+.vsl-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vsl::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgb(11 15 25 / 25%) 0%, rgb(11 15 25 / 0%) 35%, rgb(11 15 25 / 70%) 100%);
+  pointer-events: none;
+}
+
+.vsl.is-playing::after {
+  display: none;
+}
+
+.vsl video,
+.vsl iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #000;
+}
+
+.vsl-start {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 100%;
+}
+
+.vsl-play {
+  display: grid;
+  place-items: center;
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--primary);
+  box-shadow: 0 0 0 10px rgb(255 255 255 / 20%), var(--shadow-lg);
+  transition: transform 0.2s ease;
+}
+
+.vsl-start:hover .vsl-play {
+  transform: scale(1.06);
+}
+
+.vsl-play .i {
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
+}
+
+.vsl-chip {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  z-index: 3;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 14px 7px 8px;
+  border-radius: var(--r-pill);
+  background: rgb(11 15 25 / 70%);
+  backdrop-filter: blur(6px);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  pointer-events: none;
+}
+
+.vsl-chip .i {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  padding: 5px;
+  border-radius: 50%;
+  background: #fff;
+  color: var(--ink);
+}
+
+.vsl-caption {
+  position: absolute;
+  left: 24px;
+  right: 24px;
+  bottom: 20px;
+  z-index: 3;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  color: #fff;
+  pointer-events: none;
+}
+
+.vsl-caption b {
+  display: block;
+  font-size: 17px;
+  font-weight: 800;
+}
+
+.vsl-caption small {
+  display: block;
+  margin-top: 2px;
+  color: rgb(255 255 255 / 80%);
+  font-size: 13.5px;
+}
+
+.vsl-caption .len {
+  padding: 5px 10px;
+  border-radius: var(--r-pill);
+  background: rgb(255 255 255 / 16%);
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.vsl.is-playing .vsl-start,
+.vsl.is-playing .vsl-chip,
+.vsl.is-playing .vsl-caption,
+.vsl.is-playing .vsl-poster {
+  display: none;
+}
+
+.vsl-soon {
+  position: absolute;
+  left: 50%;
+  bottom: 22%;
+  z-index: 4;
+  display: none;
+  padding: 8px 14px;
+  border-radius: var(--r-pill);
+  background: var(--yellow);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}
+
+.vsl.is-soon .vsl-soon {
+  display: block;
+}
+
+/* End screen */
+.vsl-end {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  display: none;
+  place-content: center;
+  gap: 8px;
+  padding: 24px;
+  background: rgb(11 15 25 / 88%);
+  backdrop-filter: blur(4px);
+  color: #fff;
+  text-align: center;
+}
+
+.vsl.is-ended .vsl-end {
+  display: grid;
+}
+
+.vsl-end h3 {
+  font-size: clamp(22px, 3vw, 32px);
+}
+
+.vsl-end p {
+  color: rgb(255 255 255 / 75%);
+}
+
+.vsl-end .btn-row {
+  justify-content: center;
+  margin-top: 18px;
+}
+
+.vsl-replay {
+  display: inline-flex;
+  align-items: center;
+  justify-self: center;
+  gap: 6px;
+  margin-top: 14px;
+  color: rgb(255 255 255 / 70%);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.vsl-replay:hover {
+  color: #fff;
+}
+
+.vsl-replay .i {
+  width: 14px;
+  height: 14px;
+}
+
+@media (width <= 640px) {
+  .vsl {
+    border-radius: var(--r);
+  }
+
+  .vsl-play {
+    width: 68px;
+    height: 68px;
+  }
+
+  .vsl-play .i {
+    width: 24px;
+    height: 24px;
+  }
+
+  .vsl-chip {
+    top: 12px;
+    left: 12px;
+    font-size: 12px;
+  }
+
+  .vsl-caption {
+    left: 16px;
+    right: 16px;
+    bottom: 14px;
+  }
+
+  .vsl-caption b {
+    font-size: 15px;
+  }
+
+  .vsl-caption small {
+    display: none;
+  }
+
+  .vsl-end .btn {
+    height: 44px;
+    padding: 0 16px;
+    font-size: 14px;
+  }
+
+  .vsl-end p {
+    display: none;
+  }
+}

@@ -1,0 +1,120 @@
+---
+layout: layouts/base.njk
+title: "Free Cleaning Business Course | Home Service Hub"
+description: "Start and grow a cleaning business to $10k+ a month. A free intro video and 19 written guides on setup, pricing, marketing, systems and hiring."
+---
+{% import "components/ui.njk" as ui with context %}
+{% set endScreen = {
+  "title": "Ready for guide 01?",
+  "text": "Continue with the free written guides, or get the full course with Premium.",
+  "primary": { "label": "Continue the free course", "url": "/courses/cleaning/guides/", "continue": true },
+  "secondary": { "label": "Get the full course (Premium)", "url": "/courses/cleaning/premium/" }
+} %}
+
+<section class="page-hero center">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{% icon "chevron-right" %}<a href="/courses/">Courses</a>{% icon "chevron-right" %}<span>Cleaning</span></nav>
+    <span class="pill"><i></i>Free course, live now</span>
+    <h1 class="h1">The Cleaning Business <em>course.</em></h1>
+    <p class="lead">Everything to start and grow a cleaning business to $10k+ a month, in the order you need it.</p>
+    {{ ui.vsl("intro", links.videos.cleaning, "For new cleaning business owners", endScreen) }}
+    <div class="btn-row">
+      <a class="btn btn-primary btn-lg" href="#intro" data-play="intro"><span class="play-dot">{% icon "play" %}</span>Watch the intro</a>
+      <a class="btn btn-outline btn-lg" href="/courses/cleaning/guides/" data-continue><span class="label">Start the free course</span>{% icon "arrow-right" %}</a>
+    </div>
+    <div class="stat-row">
+      <div><b>19</b><span>Written guides</span></div>
+      <div><b>4</b><span>Modules</span></div>
+      <div><b>$0</b><span>No signup</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {{ ui.head("Free and Premium", "Start free. <em>Go deeper when you are ready.</em>") }}
+    <div class="pair">
+      <div class="panel">
+        <span class="tag tag-soft">Free</span>
+        <h3>The free course</h3>
+        <ul class="ticks">
+          <li>{% icon "check" %}The intro video</li>
+          <li>{% icon "check" %}19 written guides, from setup to hiring</li>
+          <li>{% icon "check" %}The {{ site.members }} owner Discord community</li>
+          <li>{% icon "check" %}Progress saves in your browser</li>
+        </ul>
+        <a class="btn btn-primary" href="/courses/cleaning/guides/" data-continue><span class="label">Start the free course</span>{% icon "arrow-right" %}</a>
+      </div>
+      <div class="panel dark on-dark">
+        <span class="tag tag-yellow">Premium, in production</span>
+        <h3>The full course</h3>
+        <ul class="ticks">
+          <li>{% icon "check" %}A video lesson for every topic</li>
+          <li>{% icon "check" %}In-depth guides and templates</li>
+          <li>{% icon "check" %}Premium channels in the Discord</li>
+          <li>{% icon "check" %}Live group calls</li>
+          <li>{% icon "check" %}A free month of Crewty</li>
+        </ul>
+        <a class="btn btn-light" href="/courses/cleaning/premium/">Join the Premium waitlist{% icon "arrow-right" %}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    {{ ui.head("The path", "Three phases, <em>nine steps.</em>", "Each step opens the free guide that covers it.") }}
+    <div class="phases" data-swipe>
+      {% for p in path %}
+        <div class="phase">
+          <div class="phase-top"><small>{{ p.phase }}</small><h3>{{ p.title }}</h3><p>{{ p.intro }}</p></div>
+          <ol>
+            {% for s in p.steps %}
+              <li><span>{{ s.n }}</span><div><b><a href="/courses/cleaning/guides/#{{ s.guide }}">{{ s.title }}</a></b><p>{{ s.text }}</p></div></li>
+            {% endfor %}
+          </ol>
+          <div class="phase-out"><small>Outcome</small>{{ p.outcome }}</div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="rec-wrap">{{ ui.rec("The course shows how to set up booking, scheduling, invoicing and payments in Crewty. Every tool we mention is on the tools page.") }}</div>
+    <div class="sec-foot"><a class="btn btn-outline" href="/tools/">See every tool in the course{% icon "arrow-right" %}</a></div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {{ ui.faq(faq.cleaning, "FAQ", "Before you <em>start.</em>") }}
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="container">
+    <div class="cta-panel on-dark">
+      <h2 class="h2">Guide 01 takes <em>ten minutes.</em></h2>
+      <p>Start now. Your progress saves in this browser, so you can pick up where you left off.</p>
+      <div class="btn-row">
+        <a class="btn btn-light btn-lg" href="/courses/cleaning/guides/" data-continue><span class="label">Start the free course</span>{% icon "arrow-right" %}</a>
+        <a class="btn btn-ghost-light btn-lg" href="{{ links.discord }}" target="_blank" rel="noopener">{% icon "discord" %}Join the Discord</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="m-dock">
+  <a class="btn btn-primary" href="/courses/cleaning/guides/">Free guides</a>
+  <a class="btn btn-outline" href="/courses/cleaning/premium/">Premium</a>
+</div>
+
+<script type="application/ld+json">{{ {
+  "@context": "https://schema.org",
+  "@type": "Course",
+  "name": "Cleaning Business Course",
+  "description": description,
+  "url": page.url | absoluteUrl(site.url),
+  "isAccessibleForFree": true,
+  "inLanguage": "en",
+  "provider": { "@type": "Organization", "name": site.name, "url": site.url },
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD", "category": "Free" },
+  "hasCourseInstance": { "@type": "CourseInstance", "courseMode": "online", "courseWorkload": "PT3H" }
+} | json | safe }}</script>

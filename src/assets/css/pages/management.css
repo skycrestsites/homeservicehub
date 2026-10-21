@@ -1,0 +1,292 @@
+.rec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 28px;
+  padding: 8px 18px 8px 8px;
+  border: 1px solid var(--line);
+  border-radius: var(--r-pill);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+.rec-badge img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.rec-badge b {
+  display: block;
+  font-size: 15px;
+  line-height: 1.2;
+}
+
+.rec-badge small {
+  display: block;
+  color: var(--muted);
+  font-size: 12.5px;
+}
+
+.shot {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: #fff;
+  box-shadow: var(--shadow-lg);
+}
+
+.page-hero .shot {
+  max-width: 1000px;
+  margin: 48px auto 0;
+}
+
+.cmp {
+  padding: 28px;
+}
+
+.cmp.win {
+  border: 2px solid var(--primary);
+  box-shadow: var(--shadow);
+}
+
+.cmp h3 {
+  font-size: 18px;
+}
+
+.cmp .cost {
+  margin-top: 4px;
+  color: var(--primary);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.cmp dl {
+  display: grid;
+  gap: 14px;
+  margin: 20px 0 0;
+}
+
+.cmp dt {
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.cmp dd {
+  margin: 2px 0 0;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.app-list {
+  display: grid;
+  gap: 20px;
+}
+
+.lead + .app-list {
+  margin-top: 32px;
+}
+
+.lead + .fine {
+  margin-top: 20px;
+}
+
+.app-list > div {
+  display: flex;
+  gap: 14px;
+}
+
+.app-list .i {
+  width: 24px;
+  height: 24px;
+  margin-top: 2px;
+  color: var(--primary);
+}
+
+.app-list h3 {
+  font-size: 16px;
+}
+
+.app-list p {
+  margin-top: 2px;
+  color: var(--text);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+.store-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  height: 56px;
+  padding: 0 20px 0 16px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: #fff;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.store-btn:hover {
+  background: #000;
+  transform: translateY(-2px);
+}
+
+.store-btn .i {
+  width: 26px;
+  height: 26px;
+}
+
+.store-btn small {
+  display: block;
+  font-size: 10.5px;
+  font-weight: 600;
+  line-height: 1.2;
+  opacity: 80%;
+}
+
+.store-btn b {
+  display: block;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.app-shots {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 48px 32px;
+  border-radius: var(--r-lg);
+  background: var(--soft);
+}
+
+.section-soft .app-shots {
+  background: #fff;
+}
+
+.app-shots img {
+  width: 44%;
+  max-width: 230px;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: var(--shadow-lg);
+}
+
+.app-shots img:nth-child(2) {
+  margin-top: 48px;
+}
+
+.cost-list {
+  display: grid;
+  gap: 12px;
+}
+
+.cost-list > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: #fff;
+}
+
+.cost-list b {
+  display: block;
+  font-size: 16px;
+}
+
+.cost-list span {
+  display: block;
+  margin-top: 2px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.cost-list strong {
+  flex: none;
+  color: var(--ink);
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.cost-list strong small {
+  color: var(--muted);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.setup-card .setup-media {
+  display: flex;
+  justify-content: center;
+  height: 220px;
+  padding-top: 28px;
+  overflow: hidden;
+  background: var(--soft);
+}
+
+.setup-card .setup-media img {
+  width: 150px;
+  align-self: flex-start;
+  border-radius: 14px;
+  box-shadow: var(--shadow-lg);
+}
+
+.setup-card .setup-body {
+  padding: 22px;
+}
+
+.setup-card small {
+  color: var(--primary);
+  font-size: 12.5px;
+  font-weight: 800;
+}
+
+.setup-card h3 {
+  margin-top: 4px;
+  font-size: 18px;
+}
+
+.setup-card p {
+  margin-top: 6px;
+  color: var(--text);
+  font-size: 14.5px;
+  line-height: 1.55;
+}
+
+@media (width <= 640px) {
+  .app-shots {
+    gap: 14px;
+    padding: 28px 16px;
+  }
+
+  .app-shots img {
+    border-radius: 16px;
+  }
+
+  .store-btn {
+    flex: 1 1 160px;
+  }
+
+  .cost-list > div {
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .cost-list strong {
+    font-size: 20px;
+  }
+}

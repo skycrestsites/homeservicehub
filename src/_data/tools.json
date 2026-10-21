@@ -1,0 +1,229 @@
+[
+  {
+    "id": "setup",
+    "title": "Business setup",
+    "text": "Register, get your numbers and get insured",
+    "tools": [
+      {
+        "name": "Northwest Registered Agent",
+        "url": "https://www.northwestregisteredagent.com",
+        "tag": "USA",
+        "logo": "/assets/img/tools/northwestregisteredagent.png",
+        "text": "Forms your LLC and acts as your registered agent, so your home address stays private.",
+        "guide": "Guide 03, Legal Setup: USA"
+      },
+      {
+        "name": "IRS EIN",
+        "url": "https://www.irs.gov/businesses/small-businesses-self-employed/get-an-employer-identification-number",
+        "tag": "USA, free",
+        "icon": "landmark",
+        "text": "Get your Employer Identification Number directly from the IRS. Free, and it takes ten minutes.",
+        "guide": "Guide 03, Legal Setup: USA"
+      },
+      {
+        "name": "Ownr",
+        "url": "https://www.ownr.co",
+        "tag": "Canada",
+        "logo": "/assets/img/tools/ownr.png",
+        "text": "The smoothest route to registering in Canada. Handles the name search and the filings.",
+        "guide": "Guide 04, Legal Setup: Canada"
+      },
+      {
+        "name": "Zensurance",
+        "url": "https://www.zensurance.com",
+        "tag": "Canada",
+        "logo": "/assets/img/tools/zensurance.png",
+        "text": "Straightforward general liability for cleaners. Expect $60 to $80 a month to start.",
+        "guide": "Guide 04, Legal Setup: Canada"
+      }
+    ]
+  },
+  {
+    "id": "banking",
+    "title": "Banking",
+    "text": "Never mix business and personal money",
+    "tools": [
+      {
+        "name": "Novo",
+        "url": "https://www.novo.co",
+        "tag": "USA, online",
+        "logo": "/assets/img/tools/novo.png",
+        "text": "Free business checking with a good mobile app.",
+        "guide": "Guide 05, Banking and Bookkeeping"
+      },
+      {
+        "name": "Mercury",
+        "url": "https://mercury.com",
+        "tag": "USA, online",
+        "logo": "/assets/img/tools/mercury.png",
+        "text": "Online business banking with the cleanest dashboard.",
+        "guide": "Guide 05, Banking and Bookkeeping"
+      },
+      {
+        "name": "Relay",
+        "url": "https://relayfi.com",
+        "tag": "USA, online",
+        "logo": "/assets/img/tools/relayfi.png",
+        "text": "Multi-user access and sub-accounts, useful for setting tax money aside.",
+        "guide": "Guide 05, Banking and Bookkeeping"
+      },
+      {
+        "name": "Chase Business Complete",
+        "url": "https://www.chase.com/business",
+        "tag": "USA, traditional",
+        "logo": "/assets/img/tools/chase.png",
+        "text": "The pick if you deposit cash often and want a branch nearby.",
+        "guide": "Guide 05, Banking and Bookkeeping"
+      },
+      {
+        "name": "RBC Digital Choice",
+        "url": "https://www.rbcroyalbank.com/business/",
+        "tag": "Canada, traditional",
+        "logo": "/assets/img/tools/rbcroyalbank.png",
+        "text": "Integrates with Ownr during registration, which can lower your setup cost.",
+        "guide": "Guide 05, Banking and Bookkeeping"
+      },
+      {
+        "name": "TD Business Unlimited",
+        "url": "https://www.td.com/ca/en/business-banking",
+        "tag": "Canada, traditional",
+        "logo": "/assets/img/tools/td.png",
+        "text": "A wide branch network across Canada.",
+        "guide": "Guide 05, Banking and Bookkeeping"
+      }
+    ]
+  },
+  {
+    "id": "books",
+    "title": "Bookkeeping and payments",
+    "text": "Pick by the stage you are at",
+    "tools": [
+      {
+        "name": "Stripe",
+        "url": "https://stripe.com",
+        "tag": "Card payments",
+        "logo": "/assets/img/tools/stripe.png",
+        "text": "Connects to Crewty so client payments go straight to your account.",
+        "guide": "Guide 10, Setting Up Crewty"
+      },
+      {
+        "name": "Google Sheets",
+        "url": "https://sheets.google.com",
+        "tag": "Under $3K a month",
+        "logo": "/assets/img/tools/business-google.png",
+        "text": "All the bookkeeping you need while you are small.",
+        "guide": "Guide 05, Banking and Bookkeeping"
+      },
+      {
+        "name": "QuickBooks",
+        "url": "https://quickbooks.intuit.com",
+        "tag": "$3K to $10K a month",
+        "logo": "/assets/img/tools/quickbooks-intuit.png",
+        "text": "The standard for small business accounting once revenue picks up.",
+        "guide": "Guide 05, Banking and Bookkeeping"
+      },
+      {
+        "name": "Wave",
+        "url": "https://www.waveapps.com",
+        "tag": "$3K to $10K a month",
+        "logo": "/assets/img/tools/waveapps.png",
+        "text": "A lower cost alternative for simple books.",
+        "guide": "Guide 05, Banking and Bookkeeping"
+      },
+      {
+        "name": "Xero",
+        "url": "https://www.xero.com",
+        "tag": "$3K to $10K a month",
+        "logo": "/assets/img/tools/xero.png",
+        "text": "Clean accounting software that your bookkeeper will know.",
+        "guide": "Guide 05, Banking and Bookkeeping"
+      }
+    ]
+  },
+  {
+    "id": "marketing",
+    "title": "Website and marketing",
+    "text": "Get found, then get booked",
+    "tools": [
+      {
+        "name": "Wix",
+        "url": "https://www.wix.com",
+        "tag": "Website builder",
+        "logo": "/assets/img/tools/wix.png",
+        "text": "The most beginner-friendly way to build your own site, $15 to $40 a month.",
+        "guide": "Guide 09, Your Website"
+      },
+      {
+        "name": "Google Business Profile",
+        "url": "https://business.google.com",
+        "tag": "Free listing",
+        "logo": "/assets/img/tools/business-google.png",
+        "text": "Your most important free marketing asset, and required for Local Service Ads.",
+        "guide": "Guide 11, Google Business and LSA"
+      },
+      {
+        "name": "Google Local Services Ads",
+        "url": "https://ads.google.com/local-services-ads/",
+        "tag": "Paid, high intent",
+        "logo": "/assets/img/tools/ads-google.png",
+        "text": "Show up at the top of Google for people searching for a cleaner right now.",
+        "guide": "Guide 11, Google Business and LSA"
+      },
+      {
+        "name": "Meta Ads",
+        "url": "https://www.facebook.com/business/ads",
+        "tag": "Facebook and Instagram",
+        "logo": "/assets/img/tools/facebook.png",
+        "text": "The best targeting and creative options for cleaning. Start here with paid ads.",
+        "guide": "Guide 14, Paid Ads"
+      },
+      {
+        "name": "CapCut",
+        "url": "https://www.capcut.com",
+        "tag": "Video editing",
+        "logo": "/assets/img/tools/capcut.png",
+        "text": "Edit before and afters and time-lapses for Facebook, Instagram and TikTok.",
+        "guide": "Guide 13, Organic Social"
+      }
+    ]
+  },
+  {
+    "id": "hiring",
+    "title": "Hiring",
+    "text": "Where owners in the Discord find cleaners",
+    "tools": [
+      {
+        "name": "Care.com",
+        "url": "https://www.care.com",
+        "tag": "Cleaner listings",
+        "logo": "/assets/img/tools/care.png",
+        "text": "Cleaners who are already background checked.",
+        "guide": "Guide 15, Hiring Cleaners"
+      },
+      {
+        "name": "TaskRabbit",
+        "url": "https://www.taskrabbit.com",
+        "tag": "Solo cleaners",
+        "logo": "/assets/img/tools/taskrabbit.png",
+        "text": "A good backup when you need solo cleaners fast.",
+        "guide": "Guide 15, Hiring Cleaners"
+      },
+      {
+        "name": "Indeed",
+        "url": "https://www.indeed.com",
+        "tag": "Job posts",
+        "logo": "/assets/img/tools/indeed.png",
+        "text": "Post a job and screen applicants with the ten minute phone screen.",
+        "guide": "Guide 15, Hiring Cleaners"
+      },
+      {
+        "name": "Facebook groups",
+        "url": "https://www.facebook.com/groups",
+        "tag": "Local hiring",
+        "logo": "/assets/img/tools/facebook.png",
+        "text": "Local cleaning and job groups. Interview well, then test with a paid trial clean.",
+        "guide": "Guide 15, Hiring Cleaners"
+      }
+    ]
+  }
+]

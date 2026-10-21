@@ -1,0 +1,68 @@
+[
+  {
+    "sample": true,
+    "name": "Maria S.",
+    "business": "Mexbia Cleaning Service",
+    "trade": "Cleaning",
+    "result": "$11,800",
+    "period": "in month 5",
+    "image": "/assets/img/photos/cleaner-portrait.jpg",
+    "story": "Went from cleaning every house herself to two crews. The pricing guide was the turning point.",
+    "quote": "I stopped guessing my prices and started booking recurring clients every week."
+  },
+  {
+    "sample": true,
+    "name": "Daniel R.",
+    "business": "B&B Premier Cleaning",
+    "trade": "Cleaning",
+    "result": "$9,400",
+    "period": "in 4 months",
+    "image": "/assets/img/photos/crew-van.jpg",
+    "story": "Set up Google Business and Local Services Ads in the first month, then hired his first cleaner.",
+    "quote": "The Google profile alone brought in more calls than a year of flyers."
+  },
+  {
+    "sample": true,
+    "name": "Aisha K.",
+    "business": "BrightWorks Cleaning",
+    "trade": "Cleaning",
+    "result": "$14,200",
+    "period": "in 7 months",
+    "image": "/assets/img/photos/team-kitchen.jpg",
+    "story": "Moved the whole business onto one system and hired a VA to answer leads.",
+    "quote": "Having bookings, crew and payments in one place gave me my evenings back."
+  },
+  {
+    "sample": true,
+    "name": "Luis T.",
+    "business": "Brazilian Touch Cleaning",
+    "trade": "Cleaning",
+    "result": "$8,600",
+    "period": "in 3 months",
+    "image": "/assets/img/photos/cleaner-window.jpg",
+    "story": "Started part time around a full time job and now runs three recurring routes.",
+    "quote": "Following the guides in order meant I always knew the next thing to do."
+  },
+  {
+    "sample": true,
+    "name": "Priya N.",
+    "business": "True Spotless Cleaning",
+    "trade": "Cleaning",
+    "result": "$12,300",
+    "period": "in 6 months",
+    "image": "/assets/img/photos/crew-house.jpg",
+    "story": "Switched from one off cleans to recurring clients and added move out cleaning.",
+    "quote": "The owners in the Discord answered every question I was too nervous to ask."
+  },
+  {
+    "sample": true,
+    "name": "Marcus J.",
+    "business": "Route 66 Cleaning",
+    "trade": "Cleaning",
+    "result": "$10,100",
+    "period": "in 5 months",
+    "image": "/assets/img/photos/owner-laptop.jpg",
+    "story": "Used the hiring guide and cleaner agreement to build a team that stayed.",
+    "quote": "My first two hires are still with me, because I hired the right way."
+  }
+]

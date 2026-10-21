@@ -1,0 +1,254 @@
+/* Free course player. Renders the sidebar and lessons from the course data module. */
+import { renderIcons } from "../modules/icons.js";
+import { initVideos } from "../modules/video.js";
+
+const PREMIUM_URL = "/courses/cleaning/premium/";
+
+export function initCoursePlayer(course, links) {
+  const flat = [];
+  course.categories.forEach((c, ci) => c.lessons.forEach((l, li) => flat.push({ ...l, ci, li })));
+  const total = flat.length;
+
+  const storeKey = `hsh-progress-${course.id}`;
+  let done = new Set();
+  try { done = new Set(JSON.parse(localStorage.getItem(storeKey) || "[]")); } catch (e) {}
+  const save = () => { try { localStorage.setItem(storeKey, JSON.stringify([...done])); } catch (e) {} };
+
+  const $ = (sel) => document.querySelector(sel);
+  const arrow = (name = "arrow-right") => `<span class="dot"><span data-i="${name}"></span></span>`;
+
+  /* Player */
+  function initPlayer() {
+    const sideEl = $("#course-modules");
+    const side = $(".course-side");
+    const backdrop = $(".course-backdrop");
+    let current = 0;
+    let track = "quick";
+
+    const fromHash = () => {
+      const slug = location.hash.replace(/^#/, "").split("/")[0];
+      const idx = flat.findIndex((l) => l.slug === slug);
+      return idx >= 0 ? idx : null;
+    };
+
+    function renderSidebar() {
+      const openCats = new Set([...sideEl.querySelectorAll(".cs-module.open")].map((m) => m.dataset.ci));
+      sideEl.innerHTML = course.categories
+        .map((c, ci) => {
+          const count = c.lessons.filter((l) => done.has(l.slug)).length;
+          const lessons = c.lessons
+            .map((l) => {
+              const idx = flat.findIndex((f) => f.slug === l.slug);
+              return `<button class="cs-lesson${done.has(l.slug) ? " done" : ""}" data-idx="${idx}" type="button">
+                <span class="chk"><span data-i="check"></span></span>
+                <span>${l.title}</span>
+                <span class="dur">${l.num}</span>
+              </button>`;
+            })
+            .join("");
+          const cls = ["cs-module", openCats.has(String(ci)) ? "open" : "", count === c.lessons.length ? "done-all" : ""].join(" ");
+          return `<div class="${cls}" data-ci="${ci}">
+            <button class="cs-module-btn" type="button">
+              <span class="num">${ci + 1}</span>
+              <span class="ttl">${c.title}<small>${count} of ${c.lessons.length} complete</small></span>
+              <span data-i="chevron-down"></span>
+            </button>
+            <div class="cs-lessons">${lessons}</div>
+          </div>`;
+        })
+        .join("");
+
+      sideEl.querySelectorAll(".cs-module-btn").forEach((b) =>
+        b.addEventListener("click", () => b.parentElement.classList.toggle("open"))
+      );
+      sideEl.querySelectorAll(".cs-lesson").forEach((b) =>
+        b.addEventListener("click", () => {
+          track = "quick";
+          go(Number(b.dataset.idx));
+          closeSide();
+        })
+      );
+      renderIcons(sideEl);
+
+      const l = flat[current];
+      sideEl.querySelectorAll(".cs-lesson").forEach((b) => b.classList.toggle("active", Number(b.dataset.idx) === current));
+      sideEl.querySelector(`.cs-module[data-ci="${l.ci}"]`)?.classList.add("open");
+    }
+
+    function renderProgress() {
+      const pct = Math.round((done.size / total) * 100);
+      $("#progress-bar").style.width = pct + "%";
+      $("#progress-text").textContent = `${done.size} of ${total} guides`;
+      $("#progress-pct").textContent = pct + "%";
+    }
+
+    // Same markup as the vsl.njk component, so the shared video module drives it.
+    function introBox() {
+      return `<div class="vsl lesson-intro" id="course-intro" data-vsl data-src="${course.introVideo || ""}" data-title="Course intro">
+        <img class="vsl-poster" src="/assets/img/photos/cleaners-living.jpg" alt="">
+        <span class="vsl-chip"><span data-i="volume"></span>Watch with sound</span>
+        <button class="vsl-start" type="button" aria-label="Play the course intro"><span class="vsl-play"><span data-i="play"></span></span></button>
+        <div class="vsl-caption"><div><b>Must watch before you begin</b><small>For new cleaning business owners</small></div></div>
+        <div class="vsl-end">
+          <h3>${course.introVideo ? "Ready for guide 01?" : "The intro video is almost ready"}</h3>
+          <p>Keep going with the free written guides, or see what Premium adds.</p>
+          <div class="btn-row"><a class="btn btn-primary" href="#guide-body">Read guide 01${arrow()}</a><a class="btn btn-light" href="${PREMIUM_URL}">See Premium</a></div>
+          ${course.introVideo ? '<button class="vsl-replay" type="button"><span data-i="replay"></span>Watch again</button>' : ""}
+        </div>
+      </div>`;
+    }
+
+    function curriculumBox() {
+      const rows = course.categories
+        .map((c, ci) => {
+          const first = flat.findIndex((f) => f.ci === ci);
+          return `<button type="button" class="fc-row" data-go="${first}"><span class="fc-num">${String(ci + 1).padStart(2, "0")}</span><span class="fc-title"><b>${c.title}</b><small>${c.lessons.length} guides</small></span><span data-i="arrow-right"></span></button>`;
+        })
+        .join("");
+      return `<div class="free-curr">
+        <div class="fc-head"><span class="tag tag-soft">Free curriculum</span><b>${total} written guides in ${course.categories.length} modules</b><span>Work through them in order. Your progress saves in this browser.</span></div>
+        <div class="fc-list">${rows}</div>
+      </div>`;
+    }
+
+    function premiumStrip(l) {
+      return `<div class="premium-strip">
+        <span class="ps-icon"><span data-i="play"></span></span>
+        <div><b>Watch this as a video lesson</b><span>The video version of ${l.title} is part of Premium.</span></div>
+        <button class="btn btn-primary btn-sm" type="button" data-to="detailed">See Premium${arrow("lock")}</button>
+      </div>`;
+    }
+
+    function nudgeHtml(type) {
+      if (type === "crewty") {
+        return `<div class="nudge">
+          <span class="nudge-icon"><img src="/assets/img/crewty-logo.png" alt=""></span>
+          <div class="nudge-text"><b>Set it up while you read</b><span>Open Crewty in another tab and follow along. Every plan starts with a 7 day free trial.</span></div>
+          <a class="btn btn-primary btn-sm" href="${links.crewty}" target="_blank" rel="noopener">Open Crewty${arrow()}</a>
+        </div>`;
+      }
+      return `<div class="nudge">
+        <span class="nudge-icon discord"><span data-i="discord"></span></span>
+        <div class="nudge-text"><b>Questions on this guide?</b><span>Ask in #ask-questions on the Discord. Working owners answer for free.</span></div>
+        <a class="btn btn-primary btn-sm" href="${links.discord}" target="_blank" rel="noopener">Open the Discord${arrow()}</a>
+      </div>`;
+    }
+
+    function lockedHtml(l) {
+      const items = ["The full video lesson", ...l.detail, "Premium channels in the Discord and live group calls"];
+      return `<div class="locked">
+        <div class="locked-video">
+          <span class="locked-play"><span data-i="play"></span></span>
+          <span class="locked-badge"><span data-i="lock"></span>Premium video lesson</span>
+        </div>
+        <div class="locked-body">
+          <span class="tag">Premium lesson ${l.num}</span>
+          <h2>${l.title}, the video lesson</h2>
+          <p>The free guide gives you the essentials in writing. Premium is in production: a filmed lesson for every topic, the in-depth guides and templates, Premium channels in the Discord, live group calls and a free month of Crewty.</p>
+          <ul class="locked-list">${items.map((i) => `<li><span data-i="check-circle"></span>${i}</li>`).join("")}</ul>
+          <div class="btn-row">
+            <a class="btn btn-light" href="${PREMIUM_URL}">See what is included${arrow()}</a>
+            <button class="btn btn-ghost-light" type="button" data-to="quick">Read the free guide${arrow()}</button>
+          </div>
+        </div>
+      </div>`;
+    }
+
+    function renderLesson() {
+      const l = flat[current];
+      const cat = course.categories[l.ci];
+      const isDone = done.has(l.slug);
+      document.title = `${l.title} | ${course.title} Course | Home Service Hub`;
+
+      const quick = `
+        ${current === 0 ? introBox() + curriculumBox() : premiumStrip(l)}
+        <div class="prose" id="guide-body">${l.body}</div>
+        ${nudgeHtml(l.nudge || "discord")}
+        <div class="lesson-actions">
+          <button class="btn btn-outline" type="button" id="prev" ${current === 0 ? "disabled" : ""}>${arrow("arrow-left")}Previous</button>
+          <div class="btn-row">
+            <button class="btn btn-outline complete-btn${isDone ? " is-done" : ""}" type="button" id="complete">${isDone ? "Completed" : "Mark complete"}${arrow("check")}</button>
+            ${current < total - 1
+              ? `<button class="btn btn-primary" type="button" id="next">Next guide${arrow()}</button>`
+              : `<a class="btn btn-primary" href="${links.discord}" target="_blank" rel="noopener">Join the community${arrow()}</a>`}
+          </div>
+        </div>`;
+
+      $("#lesson").innerHTML = `
+        <div class="lesson-top">
+          <div class="lesson-crumb"><a href="../">${course.title}</a><span data-i="chevron-right"></span>${cat.title}</div>
+          <button class="btn btn-outline btn-sm side-toggle" type="button" id="side-open">All guides${arrow("list")}</button>
+        </div>
+        <h1 class="lesson-title">${l.title}</h1>
+        <p class="lesson-sub">${l.sub}</p>
+        <div class="lesson-meta">
+          <span><span data-i="file-text"></span>Guide ${l.num} of 19</span>
+          <span><span data-i="clock"></span>${l.mins} min read</span>
+          ${isDone ? '<span class="ok"><span data-i="check-circle"></span>Completed</span>' : ""}
+        </div>
+        <div class="track-switch" role="tablist" aria-label="Guide version">
+          <button type="button" role="tab" data-to="quick" aria-selected="${track === "quick"}"><span data-i="file-text"></span>Written guide<em>Free</em></button>
+          <button type="button" role="tab" data-to="detailed" aria-selected="${track === "detailed"}"><span data-i="play"></span>Video lesson<em class="m">Premium</em></button>
+        </div>
+        ${track === "quick" ? quick : lockedHtml(l)}
+      `;
+      renderIcons($("#lesson"));
+
+      $("#lesson").querySelectorAll("[data-go]").forEach((b) =>
+        b.addEventListener("click", () => { track = "quick"; go(Number(b.dataset.go)); })
+      );
+      $("#lesson").querySelectorAll("[data-to]").forEach((b) =>
+        b.addEventListener("click", () => {
+          track = b.dataset.to;
+          renderLesson();
+          if (b.closest(".locked")) window.scrollTo({ top: 0 });
+        })
+      );
+      $("#side-open").addEventListener("click", openSide);
+
+      initVideos($("#lesson"));
+
+      if (track !== "quick") return;
+      $("#prev").addEventListener("click", () => go(current - 1));
+      $("#next")?.addEventListener("click", () => {
+        done.add(l.slug);
+        save();
+        go(current + 1);
+      });
+      $("#complete").addEventListener("click", () => {
+        if (done.has(l.slug)) done.delete(l.slug);
+        else done.add(l.slug);
+        save();
+        renderSidebar();
+        renderProgress();
+        renderLesson();
+      });
+    }
+
+    function go(idx) {
+      if (idx < 0 || idx >= total) return;
+      current = idx;
+      history.replaceState(null, "", `#${flat[current].slug}`);
+      renderSidebar();
+      renderProgress();
+      renderLesson();
+      window.scrollTo({ top: 0, behavior: "auto" });
+    }
+
+    function openSide() { side.classList.add("open"); backdrop.classList.add("open"); }
+    function closeSide() { side.classList.remove("open"); backdrop.classList.remove("open"); }
+    backdrop.addEventListener("click", closeSide);
+    $("#side-close")?.addEventListener("click", closeSide);
+
+    const h = fromHash();
+    if (h !== null) current = h;
+    else {
+      const firstOpen = flat.findIndex((l) => !done.has(l.slug));
+      current = firstOpen >= 0 ? firstOpen : 0;
+    }
+    if (/\/(detailed|premium)$/.test(location.hash)) track = "detailed";
+    go(current);
+  }
+
+  if ($("#course-modules")) initPlayer();
+}

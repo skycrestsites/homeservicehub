@@ -1,0 +1,108 @@
+{#- Shared building blocks. Import with: {% import "components/ui.njk" as ui with context %} -#}
+
+{#- Intro video with poster and an end screen. "end" holds the two next steps. The course player builds the same markup in JS. -#}
+{% macro vsl(id, video, caption, end) %}
+<div class="vsl" id="{{ id }}" data-vsl data-src="{{ video.src }}" data-title="{{ video.title }}">
+  <img class="vsl-poster" src="{{ video.poster }}" alt="" fetchpriority="high">
+  <span class="vsl-chip">{% icon "volume" %}Watch with sound</span>
+  <button class="vsl-start" type="button" aria-label="Play {{ video.title }}"><span class="vsl-play">{% icon "play" %}</span></button>
+  <div class="vsl-caption">
+    <div><b>{{ video.title }}</b><small>{{ caption }}</small></div>
+    <span class="len">{{ video.length }}</span>
+  </div>
+  <div class="vsl-end">
+    <h3>{{ end.title if video.src else "The video is almost ready" }}</h3>
+    <p>{{ end.text }}</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="{{ end.primary.url }}"{% if end.primary.continue %} data-continue{% endif %}><span class="label">{{ end.primary.label }}</span>{% icon "arrow-right" %}</a>
+      <a class="btn btn-light" href="{{ end.secondary.url }}">{{ end.secondary.label }}</a>
+    </div>
+    {% if video.src %}<button class="vsl-replay" type="button">{% icon "replay" %}Watch again</button>{% endif %}
+  </div>
+</div>
+{% endmacro %}
+
+{% macro head(eyebrow, title, lead, center = true) %}
+<div class="sec-head{% if center %} center{% endif %}">
+  {% if eyebrow %}<span class="eyebrow">{{ eyebrow }}</span>{% endif %}
+  <h2 class="h2">{{ title | safe }}</h2>
+  {% if lead %}<p class="lead">{{ lead }}</p>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro sampleFlag(item) %}{% if item.sample %}<span class="sample-flag">Sample</span>{% endif %}{% endmacro %}
+
+{% macro storyCard(s) %}
+<article class="card">
+  <div class="story-media">
+    <img src="{{ s.image }}" alt="" loading="lazy" width="640" height="400">
+    <div class="story-result"><b>{{ s.result }}</b><span>{{ s.period }}</span></div>
+    {{ sampleFlag(s) }}
+  </div>
+  <div class="story-body">
+    <h3>{{ s.name }}</h3>
+    <span class="biz">{{ s.business }}, {{ s.trade }}</span>
+    <p>{{ s.story }}</p>
+    <blockquote class="story-quote">"{{ s.quote }}"</blockquote>
+  </div>
+</article>
+{% endmacro %}
+
+{% macro courseCard(c) %}
+<a class="card" href="{{ c.url }}">
+  <div class="trade-media">
+    <img src="{{ c.image }}" alt="{{ c.alt }}" loading="lazy" width="640" height="400">
+    {% if c.status == "soon" %}<span class="tag tag-soon">Coming soon</span>{% else %}<span class="tag tag-soft">Free course</span>{% endif %}
+  </div>
+  <div class="trade-body">
+    <small>{{ c.audience or ("Live now" if c.status == "live" else "Join the waitlist") }}</small>
+    <h3>{{ c.title }}</h3>
+    <p>{{ c.summary }}</p>
+    <span class="link-arrow">{{ "Start the course" if c.status == "live" else "See what is coming" }}{% icon "arrow-right" %}</span>
+  </div>
+</a>
+{% endmacro %}
+
+{% macro faq(items, eyebrow = "FAQ", title = "Questions owners <em>ask us</em>") %}
+<div class="faq-wrap">
+  <div class="sec-head">
+    <span class="eyebrow">{{ eyebrow }}</span>
+    <h2 class="h2">{{ title | safe }}</h2>
+    <p class="lead">Still unsure? Ask in the Discord. Working owners answer for free.</p>
+    <a class="btn btn-discord" href="{{ links.discord }}" target="_blank" rel="noopener">{% icon "discord" %}Ask the community</a>
+  </div>
+  <div class="faq">
+    {% for q in items %}
+      <details{% if loop.first %} open{% endif %}>
+        <summary>{{ q.q }}{% icon "plus" %}</summary>
+        <p>{{ q.a }}</p>
+      </details>
+    {% endfor %}
+  </div>
+</div>
+<script type="application/ld+json">{{ items | faqSchema | json | safe }}</script>
+{% endmacro %}
+
+{% macro waitlist(list, button = "Join the waitlist") %}
+<form class="waitlist" data-waitlist="{{ list }}" novalidate>
+  <div class="waitlist-row">
+    <label class="sr-only" for="wl-{{ list }}">Email address</label>
+    <input id="wl-{{ list }}" type="email" name="email" placeholder="you@business.com" autocomplete="email" required maxlength="254">
+    <button class="btn btn-primary" type="submit">{{ button }}{% icon "arrow-right" %}</button>
+  </div>
+  <div class="hp" aria-hidden="true"><label>Leave this empty <input type="text" name="company" tabindex="-1" autocomplete="off"></label></div>
+  <p class="waitlist-msg" role="status" aria-live="polite"></p>
+  <p class="fine">We email you when it launches. No spam, and we never share your email.</p>
+</form>
+{% endmacro %}
+
+{% macro rec(text) %}
+<div class="rec">
+  <img src="/assets/img/crewty-logo.png" alt="" width="48" height="48" loading="lazy">
+  <div>
+    <b>What we recommend for running the business: Crewty</b>
+    <span>{{ text or "Booking, scheduling, invoicing and payments in one app. We use it in the course and explain why." }}</span>
+  </div>
+  <a class="btn btn-outline btn-sm" href="/management/">Why we recommend it{% icon "arrow-right" %}</a>
+</div>
+{% endmacro %}

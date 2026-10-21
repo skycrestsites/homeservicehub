@@ -1,0 +1,51 @@
+.legal {
+  color: var(--text);
+  font-size: 16.5px;
+  line-height: 1.75;
+}
+
+.legal h2 {
+  margin: 44px 0 12px;
+  color: var(--ink);
+  font-size: 22px;
+}
+
+.legal h2:first-child {
+  margin-top: 0;
+}
+
+.legal p + p,
+.legal ul + p,
+.legal p + ul {
+  margin-top: 14px;
+}
+
+.legal ul {
+  display: grid;
+  gap: 8px;
+}
+
+.legal li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.legal li::before {
+  content: "";
+  position: absolute;
+  top: 12px;
+  left: 4px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.legal a {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.legal strong {
+  color: var(--ink);
+}

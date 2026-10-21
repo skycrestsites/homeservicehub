@@ -1,0 +1,327 @@
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+a.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+/* Owner story */
+.story-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--soft);
+}
+
+.story-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+a.card:hover .story-media img {
+  transform: scale(1.04);
+}
+
+.story-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(11 15 25 / 0%) 35%, rgb(11 15 25 / 55%));
+}
+
+.story-result {
+  position: absolute;
+  right: 14px;
+  top: 14px;
+  z-index: 2;
+  padding: 8px 12px;
+  border-radius: var(--r-sm);
+  background: var(--primary);
+  color: #fff;
+  text-align: right;
+  box-shadow: var(--shadow);
+}
+
+.story-result b {
+  display: block;
+  font-size: 26px;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.story-result span {
+  display: block;
+  margin-top: 3px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.story-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 22px 22px 24px;
+}
+
+.story-body h3 {
+  font-size: 19px;
+}
+
+.story-body .biz {
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 13.5px;
+  font-weight: 600;
+}
+
+.story-body p {
+  margin: 12px 0 18px;
+  color: var(--text);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.story-body .link-arrow {
+  margin-top: auto;
+}
+
+.story-quote {
+  margin: 12px 0 0;
+  padding-left: 14px;
+  border-left: 3px solid var(--primary-100);
+  color: var(--ink);
+  font-size: 14.5px;
+  font-weight: 600;
+  line-height: 1.55;
+}
+
+/* Trade / course card */
+.trade-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  background: var(--soft);
+}
+
+.trade-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+a.card:hover .trade-media img {
+  transform: scale(1.04);
+}
+
+.trade-media .tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+}
+
+.trade-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 22px;
+}
+
+.trade-body small {
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 700;
+}
+
+.trade-body h3 {
+  margin-top: 2px;
+  font-size: 20px;
+}
+
+.trade-body p {
+  margin: 10px 0 18px;
+  color: var(--text);
+  font-size: 14.5px;
+  line-height: 1.6;
+}
+
+.trade-body .link-arrow {
+  margin-top: auto;
+}
+
+/* Feature card */
+.feature {
+  padding: 28px;
+}
+
+.feature .ic {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  background: var(--primary-50);
+  color: var(--primary);
+}
+
+.feature .ic .i {
+  width: 24px;
+  height: 24px;
+}
+
+.feature .ic img {
+  width: 28px;
+  height: 28px;
+}
+
+.feature h3 {
+  font-size: 18px;
+  letter-spacing: -0.02em;
+}
+
+.feature p {
+  margin-top: 8px;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* Coach */
+.coach-media {
+  position: relative;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background: var(--soft);
+}
+
+.coach-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(1);
+}
+
+.coach-body {
+  padding: 16px 16px 18px;
+}
+
+.coach-body b {
+  display: block;
+  font-size: 15px;
+}
+
+.coach-body small {
+  display: block;
+  color: var(--muted);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.coach-body p {
+  margin-top: 8px;
+  color: var(--text);
+  font-size: 13.5px;
+  line-height: 1.55;
+}
+
+/* Recommendation strip (Crewty) */
+.rec {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: #fff;
+  box-shadow: var(--shadow-sm);
+}
+
+.rec-wrap {
+  margin-top: 48px;
+}
+
+.rec img {
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+}
+
+.rec div {
+  flex: 1;
+  min-width: 0;
+}
+
+.rec b {
+  display: block;
+  font-size: 16px;
+}
+
+.rec span {
+  display: block;
+  margin-top: 2px;
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@media (width <= 1024px) {
+  .grid-3,
+  .grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width <= 640px) {
+  .grid-3,
+  .grid-4,
+  .grid-2 {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .feature {
+    padding: 22px;
+  }
+
+  .rec {
+    flex-wrap: wrap;
+    padding: 18px;
+  }
+
+  .rec .btn {
+    flex: 1 1 100%;
+  }
+}

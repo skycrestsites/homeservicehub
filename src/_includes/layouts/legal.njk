@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+---
+<section class="page-hero center">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{% icon "chevron-right" %}<span>{{ heading }}</span></nav>
+    <h1 class="h1">{{ heading }}</h1>
+    <p class="lead">Last updated {{ updated }}</p>
+  </div>
+</section>
+
+<section class="section tight">
+  <div class="container narrow">
+    <div class="legal">
+      {{ content | safe }}
+      <h2>Contact</h2>
+      <p>{% if site.contactEmail %}Email <a href="mailto:{{ site.contactEmail }}">{{ site.contactEmail }}</a>{% else %}Message us in the <a href="{{ links.discord }}" target="_blank" rel="noopener">Discord</a>{% endif %} with any question about this page.</p>
+    </div>
+  </div>
+</section>

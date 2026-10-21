@@ -1,0 +1,23 @@
+{
+  "name": "Home Service Hub",
+  "url": "https://www.learnhomeservices.com",
+  "locale": "en_US",
+  "themeColor": "#1152d4",
+  "description": "A free course and a community of 300+ owners for cleaning, junk removal and landscaping businesses. Set up, get clients, hire and grow to $10k+ a month.",
+  "ogImage": "/assets/img/og-share.jpg",
+  "ogImageVersion": "1",
+  "members": "300+",
+  "contactEmail": "",
+  "clarityId": "z0989rm0ed",
+  "firebase": {
+    "apiKey": "AIzaSyAoMwmaOCNkFn-1fsELaTsMPN2mKaVvbYQ",
+    "authDomain": "homeservicehub-fd4ba.firebaseapp.com",
+    "projectId": "homeservicehub-fd4ba",
+    "appId": "1:57410729905:web:3909f997484d8f3d9faf90",
+    "appCheckSiteKey": ""
+  },
+  "premium": {
+    "stripePriceId": "price_1UT549GNlJtLfmqJO2CHMK6U",
+    "url": "/courses/cleaning/premium/"
+  }
+}

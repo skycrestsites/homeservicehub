@@ -1,0 +1,52 @@
+---
+layout: layouts/base.njk
+title: "Premium Cleaning Business Course, Coming Soon | Home Service Hub"
+description: "The full Cleaning Business course: a video lesson for every topic, in-depth guides and templates, Premium Discord channels, live group calls and a free month of Crewty."
+---
+{% import "components/ui.njk" as ui with context %}
+{% set includes = [
+  { "icon": "video", "title": "A video lesson for every topic", "text": "Every guide filmed and walked through step by step, from setup to hiring." },
+  { "icon": "file-text", "title": "In-depth guides and templates", "text": "Pricing sheets, checklists, scripts and agreements you can use the same day." },
+  { "icon": "discord", "title": "Premium Discord channels", "text": "Private channels with other Premium owners and the coaches." },
+  { "icon": "users", "title": "Live group calls", "text": "Regular calls to ask questions, review numbers and get unstuck." },
+  { "icon": "crewty", "title": "A free month of Crewty", "text": "Run booking, scheduling, invoicing and payments the way the course shows." },
+  { "icon": "check-circle", "title": "Everything in the free course", "text": "The intro video, all 19 written guides and the community." }
+] %}
+
+<section class="page-hero center">
+  <div class="container">
+    <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{% icon "chevron-right" %}<a href="/courses/cleaning/">Cleaning</a>{% icon "chevron-right" %}<span>Premium</span></nav>
+    <span class="pill soon"><i></i>In production</span>
+    <h1 class="h1">The full Cleaning course. <em>Premium.</em></h1>
+    <p class="lead">Every topic as a video lesson, with the templates, the Premium community and live calls. Join the waitlist and we will email you the day it opens.</p>
+    {{ ui.waitlist("cleaning-premium", "Get early access") }}
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    {{ ui.head("What is included", "Everything you need to <em>build it properly.</em>") }}
+    <div class="grid-3" data-swipe>
+      {% for f in includes %}
+        <div class="card feature">
+          <span class="ic">{% if f.icon == "crewty" %}<img src="/assets/img/crewty-logo.png" alt="" width="28" height="28" loading="lazy">{% else %}{% icon f.icon %}{% endif %}</span>
+          <h3>{{ f.title }}</h3>
+          <p>{{ f.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft tight">
+  <div class="container">
+    <div class="cta-panel on-dark">
+      <h2 class="h2">Start with the free course <em>today.</em></h2>
+      <p>Premium builds on the free guides. Everything you read now carries over.</p>
+      <div class="btn-row">
+        <a class="btn btn-light btn-lg" href="/courses/cleaning/guides/" data-continue><span class="label">Start the free course</span>{% icon "arrow-right" %}</a>
+        <a class="btn btn-ghost-light btn-lg" href="{{ links.discord }}" target="_blank" rel="noopener">{% icon "discord" %}Join the Discord</a>
+      </div>
+    </div>
+  </div>
+</section>

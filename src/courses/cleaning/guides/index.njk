@@ -1,0 +1,33 @@
+---
+layout: layouts/base.njk
+title: "Free Cleaning Business Guides | Home Service Hub"
+description: "19 free written guides to start and grow a cleaning business: setup, pricing, marketing, systems and hiring. Your progress saves in your browser."
+pageScript: player
+bodyClass: is-player
+hideFooter: true
+---
+<script type="application/json" id="player-config">{{ { "introVideo": links.videos.cleaning.src, "links": { "discord": links.discord, "crewty": links.crewty } } | json | safe }}</script>
+
+<div class="course-layout">
+  <aside class="course-side" aria-label="Course guides">
+    <div class="cs-head">
+      <div class="cs-head-top">
+        <span class="tag tag-soft">Free course</span>
+        <button class="side-toggle" type="button" id="side-close" aria-label="Close guides">{% icon "x" %}</button>
+      </div>
+      <h2>Cleaning Business</h2>
+      <div class="cs-progress">
+        <div class="cs-progress-top"><span id="progress-text">0 of 19 guides</span><b id="progress-pct">0%</b></div>
+        <div class="bar"><i id="progress-bar"></i></div>
+      </div>
+    </div>
+    <nav class="cs-modules" id="course-modules" aria-label="Guides"></nav>
+  </aside>
+  <div class="course-backdrop"></div>
+
+  <div class="course-main">
+    <article class="lesson-wrap" id="lesson">
+      <noscript><p>Please enable JavaScript to read the guides.</p></noscript>
+    </article>
+  </div>
+</div>

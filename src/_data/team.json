@@ -1,0 +1,19 @@
+{
+  "founder": {
+    "sample": true,
+    "name": "Founder name",
+    "role": "Founder of Home Service Hub",
+    "image": "/assets/img/photos/owner-laptop.jpg",
+    "timeline": [
+      { "label": "The start", "text": "Started a cleaning business with one client and no system." },
+      { "label": "The hard part", "text": "Did every job, every quote and every invoice alone, and hit a ceiling." },
+      { "label": "The fix", "text": "Put the business on a system, hired the first cleaner and handed over the work." },
+      { "label": "Today", "text": "Runs a team, and teaches the same steps to 300+ owners through Home Service Hub." }
+    ]
+  },
+  "coaches": [
+    { "sample": true, "name": "Coach name", "role": "Coach", "business": "Royale Luxury", "image": "/assets/img/photos/cleaner-portrait.jpg", "bio": "Built a cleaning business to multiple crews using the same steps." },
+    { "sample": true, "name": "Coach name", "role": "Coach", "business": "Sparkle Works", "image": "/assets/img/photos/crew-van.jpg", "bio": "Runs recurring residential routes and teaches hiring." },
+    { "sample": true, "name": "Coach name", "role": "Coach", "business": "Novo Home Services", "image": "/assets/img/photos/team-kitchen.jpg", "bio": "Added commercial contracts to a residential business." }
+  ]
+}

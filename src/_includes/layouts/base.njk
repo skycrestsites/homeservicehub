@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% include "partials/meta.njk" %}
+  <link rel="preload" href="/assets/fonts/manrope-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="{{ assets.css }}">
+  <script type="module" src="{{ assets.js.main }}"></script>
+  {% if pageScript %}<script type="module" src="{{ assets.js[pageScript] }}"></script>{% endif %}
+  <script type="application/json" id="site-config">{{ { "firebase": site.firebase, "clarityId": site.clarityId, "production": env.production } | json | safe }}</script>
+</head>
+<body{% if bodyClass %} class="{{ bodyClass }}"{% endif %}>
+  {% include "partials/header.njk" %}
+  <main id="main">
+    {{ content | safe }}
+  </main>
+  {% if not hideFooter %}{% include "partials/footer.njk" %}{% endif %}
+</body>
+</html>

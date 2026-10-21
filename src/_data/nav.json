@@ -1,0 +1,44 @@
+{
+  "left": [
+    { "label": "Courses", "url": "/courses/", "menu": "courses" },
+    { "label": "Community", "url": "/#community" }
+  ],
+  "right": [
+    { "label": "Stories", "url": "/stories/" },
+    { "label": "Run your business", "url": "/management/" }
+  ],
+  "cta": { "label": "Watch the intro", "url": "/#watch" },
+  "footer": [
+    {
+      "title": "Courses",
+      "links": [
+        { "label": "Cleaning Business", "url": "/courses/cleaning/" },
+        { "label": "Junk Removal", "url": "/courses/junk-removal/" },
+        { "label": "Landscaping", "url": "/courses/landscaping/" },
+        { "label": "Scaling Beyond", "url": "/courses/scaling-beyond/" },
+        { "label": "All courses", "url": "/courses/" }
+      ]
+    },
+    {
+      "title": "Run your business",
+      "links": [
+        { "label": "Why we recommend Crewty", "url": "/management/" },
+        { "label": "Tools used in the course", "url": "/tools/" },
+        { "label": "Owner stories", "url": "/stories/" }
+      ]
+    },
+    {
+      "title": "Community",
+      "links": [
+        { "label": "Discord", "link": "discord" },
+        { "label": "Facebook group", "link": "facebook" },
+        { "label": "FAQ", "url": "/#faq" }
+      ]
+    }
+  ],
+  "legal": [
+    { "label": "Terms", "url": "/terms/" },
+    { "label": "Privacy", "url": "/privacy/" },
+    { "label": "Disclaimer", "url": "/disclaimer/" }
+  ]
+}

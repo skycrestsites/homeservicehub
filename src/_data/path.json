@@ -1,0 +1,35 @@
+[
+  {
+    "phase": "Phase 1",
+    "title": "Set up",
+    "intro": "Build the foundation before you spend a dollar on marketing.",
+    "steps": [
+      { "n": "01", "title": "Pick your niche and market", "text": "Residential, move outs, rentals or commercial, chosen from the numbers in your area.", "guide": "choosing-your-niche" },
+      { "n": "02", "title": "Legal, banking and insurance", "text": "Register, open a business account and get insured, in the right order.", "guide": "legal-setup-usa" },
+      { "n": "03", "title": "Name, brand and pricing", "text": "A name people remember and prices that leave you a real margin.", "guide": "pricing-your-cleans" }
+    ],
+    "outcome": "A registered business with prices that make money."
+  },
+  {
+    "phase": "Phase 2",
+    "title": "Grow",
+    "intro": "Get found, get booked and get paid on one system.",
+    "steps": [
+      { "n": "04", "title": "Website and Google profile", "text": "The free listing and simple site that bring in your first local leads.", "guide": "google-business-and-lsa" },
+      { "n": "05", "title": "Social and paid ads", "text": "Before and afters, then ads once you know what a client is worth.", "guide": "paid-ads" },
+      { "n": "06", "title": "Booking and payments", "text": "Clients, schedule, invoices and card payments in one place from day one.", "guide": "setting-up-crewty" }
+    ],
+    "outcome": "Leads from more than one channel, booked into one system."
+  },
+  {
+    "phase": "Phase 3",
+    "title": "Scale",
+    "intro": "Hire, hand over the work and run the business.",
+    "steps": [
+      { "n": "07", "title": "Hiring your team", "text": "Where to find cleaners, how to screen them and the agreement to sign.", "guide": "hiring-cleaners" },
+      { "n": "08", "title": "Client operations", "text": "Checklists, quality checks and the follow ups that keep clients for years.", "guide": "client-operations" },
+      { "n": "09", "title": "Scaling beyond", "text": "A VA, your numbers and the next crew, so you step out of the day to day.", "guide": "scaling-beyond" }
+    ],
+    "outcome": "A team doing the work while you run the business."
+  }
+]

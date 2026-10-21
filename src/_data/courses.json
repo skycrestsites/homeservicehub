@@ -1,0 +1,73 @@
+[
+  {
+    "slug": "cleaning",
+    "title": "Cleaning Business",
+    "status": "live",
+    "url": "/courses/cleaning/",
+    "image": "/assets/img/photos/cleaners-living.jpg",
+    "alt": "Two cleaners vacuuming a living room",
+    "summary": "Grow your cleaning business to $10k+ a month. Setup, pricing, marketing, systems and hiring."
+  },
+  {
+    "slug": "junk-removal",
+    "title": "Junk Removal",
+    "status": "soon",
+    "url": "/courses/junk-removal/",
+    "image": "/assets/img/photos/junk-truck.jpg",
+    "alt": "Crew loading debris into a truck",
+    "summary": "Trucks, pricing by volume, dump fees and the local marketing that keeps the schedule full.",
+    "headline": "Junk Removal",
+    "accent": "Business.",
+    "lead": "A practical course on starting and growing a junk removal company. We are finishing it now. Join the waitlist and we will email you the day it goes live.",
+    "coverTitle": "Built from how junk removal owners actually run it",
+    "cover": [
+      { "icon": "truck", "title": "Truck and equipment", "text": "Trailer or box truck, the gear you need on day one and what the setup really costs." },
+      { "icon": "dollar", "title": "Pricing by volume", "text": "Load based pricing, dump fees, minimums and quoting from a photo without losing money." },
+      { "icon": "map-pin", "title": "Local marketing", "text": "Google Business, Local Services Ads and the channels that keep the schedule full." },
+      { "icon": "crewty", "title": "Running it in Crewty", "text": "Booking, scheduling, invoicing and payments in one app, set up the way working owners run it." }
+    ]
+  },
+  {
+    "slug": "landscaping",
+    "title": "Landscaping",
+    "status": "soon",
+    "url": "/courses/landscaping/",
+    "image": "/assets/img/photos/lawn-mowing.jpg",
+    "alt": "Landscaper mowing a lawn",
+    "summary": "Residential routes, seasonal contracts, equipment and building a crew that shows up.",
+    "headline": "Landscaping",
+    "accent": "Business.",
+    "lead": "A practical course on starting and growing a landscaping and lawn care company. We are finishing it now. Join the waitlist and we will email you the day it goes live.",
+    "coverTitle": "Built from how landscaping owners actually run it",
+    "cover": [
+      { "icon": "sprout", "title": "Routes and equipment", "text": "Mowers, trailers and trucks, and a tight residential route that saves drive time." },
+      { "icon": "calendar", "title": "Seasonal contracts", "text": "Pricing by the season, recurring agreements and steady cash flow through winter." },
+      { "icon": "users", "title": "Building a crew", "text": "Hiring seasonal help, paying fairly and running crews that show up on time." },
+      { "icon": "crewty", "title": "Running it in Crewty", "text": "Booking, scheduling, invoicing and payments in one app, set up the way working owners run it." }
+    ]
+  },
+  {
+    "slug": "scaling-beyond",
+    "title": "Scaling Beyond",
+    "status": "soon",
+    "audience": "For established businesses",
+    "url": "/courses/scaling-beyond/",
+    "image": "/assets/img/photos/team-kitchen.jpg",
+    "alt": "A home service team in a client's kitchen",
+    "summary": "Already stable? Run the company, build a VA system, scale with ads and win bigger and commercial contracts.",
+    "headline": "Scaling",
+    "accent": "beyond.",
+    "lead": "For home service companies that already have steady clients and a stable month, and are ready for a team that runs without them, bigger contracts and commercial work.",
+    "coverTitle": "The playbook for the next stage",
+    "cover": [
+      { "icon": "layout", "title": "Managing the company", "text": "Roles, reporting and the weekly rhythm that runs the business when you are not on the job." },
+      { "icon": "users", "title": "Hiring VAs", "text": "Where to find virtual assistants, what to hand over first and how to train them." },
+      { "icon": "layers", "title": "An effective VA system", "text": "Scripts, checklists and the daily workflow for booking, scheduling and follow-ups." },
+      { "icon": "target", "title": "Scaling with ads", "text": "Budgets, tracking and creative that bring in steady leads at a cost you can plan around." },
+      { "icon": "award", "title": "Team branding and equipment", "text": "Uniforms, vehicles and gear that make a growing team look and work like one company." },
+      { "icon": "file-text", "title": "More and bigger contracts", "text": "Recurring agreements, larger homes and the proposals that win them." },
+      { "icon": "briefcase", "title": "Adding commercial", "text": "Offices, property managers and commercial bids, and how to price and staff them." },
+      { "icon": "plus", "title": "And much more", "text": "Finance, KPIs, retention and the systems owners use to keep growing." }
+    ]
+  }
+]
