@@ -66,6 +66,10 @@
   gap: 16px;
 }
 
+.auth-form[data-mode="reset"] {
+  margin-top: 24px;
+}
+
 .field {
   display: grid;
   gap: 6px;
