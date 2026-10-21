@@ -61,7 +61,9 @@ export async function signUp(a, name, email, password) {
   return cred;
 }
 
-export const resetPassword = (a, email) => sendPasswordResetEmail(a, email);
+// The link in the email opens Firebase's reset page, then "Continue" returns to continueUrl.
+export const resetPassword = (a, email, continueUrl) =>
+  sendPasswordResetEmail(a, email, continueUrl ? { url: continueUrl } : undefined);
 export const resendVerification = (user) => sendEmailVerification(user);
 export const logOut = (a) => signOut(a);
 

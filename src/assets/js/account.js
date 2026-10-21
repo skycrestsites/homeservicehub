@@ -49,16 +49,26 @@ function initLogin(auth) {
   };
   const done = () => location.replace(nextPath());
 
+  const sub = document.querySelector("[data-auth-sub]");
+  const intro = sub.textContent;
+  const MODES = {
+    login: { title: "Log in", button: "Log in", sub: intro },
+    signup: { title: "Create your account", button: "Create account", sub: intro },
+    reset: { title: "Reset your password", button: "Send reset link", sub: "Enter the email you signed up with and we will send you a link to set a new password." },
+  };
   const setMode = (mode) => {
     form.dataset.mode = mode;
-    document.querySelectorAll("[data-only]").forEach((el) => (el.hidden = el.dataset.only !== mode));
-    document.querySelector("[data-auth-title]").textContent = mode === "signup" ? "Create your account" : "Log in";
-    submit.textContent = mode === "signup" ? "Create account" : "Log in";
+    document.querySelectorAll("[data-only]").forEach((el) => (el.hidden = !el.dataset.only.split(" ").includes(mode)));
+    document.querySelector("[data-auth-title]").textContent = MODES[mode].title;
+    sub.textContent = MODES[mode].sub;
+    submit.textContent = MODES[mode].button;
     fields.password.autocomplete = mode === "signup" ? "new-password" : "current-password";
     say("");
+    (mode === "reset" ? fields.email : null)?.focus();
   };
   document.querySelectorAll("[data-mode-to]").forEach((b) => b.addEventListener("click", () => setMode(b.dataset.modeTo)));
-  setMode(new URLSearchParams(location.search).get("mode") === "signup" ? "signup" : "login");
+  const startMode = new URLSearchParams(location.search).get("mode");
+  setMode(MODES[startMode] ? startMode : "login");
 
   google.addEventListener("click", async () => {
     busy(true);
@@ -76,8 +86,10 @@ function initLogin(auth) {
     e.preventDefault();
     const email = fields.email.value.trim().toLowerCase();
     const password = fields.password.value;
-    const signup = form.dataset.mode === "signup";
+    const mode = form.dataset.mode;
+    const signup = mode === "signup";
     if (!EMAIL_RE.test(email)) return say("Enter a valid email address.");
+    if (mode === "reset") return sendReset(email);
     if (signup && password.length < 8) return say("Use at least 8 characters for your password.");
     if (!password) return say("Enter your password.");
 
@@ -93,16 +105,21 @@ function initLogin(auth) {
     }
   });
 
-  document.getElementById("forgot").addEventListener("click", async () => {
-    const email = fields.email.value.trim().toLowerCase();
-    if (!EMAIL_RE.test(email)) return say("Enter your email above, then press Forgot password again.");
+  async function sendReset(email) {
+    busy(true);
+    say("");
     try {
-      await resetPassword(auth, email);
-    } catch {
-      // Same reply either way, so the form does not reveal which emails have accounts.
+      await resetPassword(auth, email, `${location.origin}/login/`);
+    } catch (err) {
+      if (err?.code === "auth/too-many-requests" || err?.code === "auth/network-request-failed") {
+        busy(false);
+        return say(authMessage(err));
+      }
+      // Any other error gets the same reply, so the form does not reveal which emails have accounts.
     }
-    say("If that email has an account, a reset link is on its way.", "ok");
-  });
+    busy(false);
+    say(`If ${email} has an account, a reset link is on its way. Check your inbox and spam folder.`, "ok");
+  }
 }
 
 function initAccount(auth, user) {
