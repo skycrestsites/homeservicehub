@@ -245,8 +245,12 @@
   display: none;
 }
 
+.side-tab {
+  display: none;
+}
+
 .side-close {
-  display: grid;
+  display: none;
   place-items: center;
   width: 36px;
   height: 36px;
@@ -285,8 +289,42 @@
     transition: opacity 0.2s ease, visibility 0s linear 0.2s;
   }
 
-  .course-layout.is-collapsed .side-toggle {
-    display: inline-flex;
+  /* Arrow tab on the sidebar edge. It slides to the screen edge when the sidebar is hidden. */
+  .side-tab {
+    position: fixed;
+    top: 50%;
+    left: 320px;
+    z-index: 46;
+    display: grid;
+    place-items: center;
+    width: 28px;
+    height: 56px;
+    border: 1px solid var(--line);
+    border-left: 0;
+    border-radius: 0 var(--r-sm) var(--r-sm) 0;
+    background: #fff;
+    color: var(--muted);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-50%);
+    transition: left 0.25s ease, color 0.15s ease;
+  }
+
+  .side-tab:hover {
+    color: var(--primary);
+  }
+
+  .side-tab .i {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.25s ease;
+  }
+
+  .course-layout.is-collapsed .side-tab {
+    left: 0;
+  }
+
+  .course-layout.is-collapsed .side-tab .i {
+    transform: rotate(180deg);
   }
 }
 
@@ -877,6 +915,10 @@
 
   .side-toggle {
     display: inline-flex;
+  }
+
+  .side-close {
+    display: grid;
   }
 }
 

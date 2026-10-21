@@ -204,7 +204,7 @@ export function initCoursePlayer(course, links) {
           if (b.closest(".locked")) window.scrollTo({ top: 0 });
         })
       );
-      $("#side-open").addEventListener("click", openSide);
+      $("#side-open").addEventListener("click", openDrawer);
 
       initVideos($("#lesson"));
 
@@ -239,19 +239,21 @@ export function initCoursePlayer(course, links) {
     const layout = $(".course-layout");
     const wide = window.matchMedia("(width > 900px)");
     const sideKey = "hsh-side-collapsed";
+    const tab = $("#side-tab");
     const setCollapsed = (on) => {
       layout.classList.toggle("is-collapsed", on);
       side.inert = on && wide.matches;
+      tab.setAttribute("aria-expanded", String(!on));
+      tab.setAttribute("aria-label", on ? "Show the guide list" : "Hide the guide list");
       try { localStorage.setItem(sideKey, on ? "1" : ""); } catch (e) {}
     };
     function openDrawer() { side.classList.add("open"); backdrop.classList.add("open"); }
     function closeDrawer() { side.classList.remove("open"); backdrop.classList.remove("open"); }
-    function openSide() { if (wide.matches) setCollapsed(false); else openDrawer(); }
-    function closeSide() { if (wide.matches) setCollapsed(true); else closeDrawer(); }
     try { if (localStorage.getItem(sideKey)) setCollapsed(true); } catch (e) {}
     wide.addEventListener("change", () => { side.inert = wide.matches && layout.classList.contains("is-collapsed"); closeDrawer(); });
     backdrop.addEventListener("click", closeDrawer);
-    $("#side-close")?.addEventListener("click", closeSide);
+    $("#side-close")?.addEventListener("click", closeDrawer);
+    tab.addEventListener("click", () => setCollapsed(!layout.classList.contains("is-collapsed")));
 
     const h = fromHash();
     if (h !== null) current = h;
