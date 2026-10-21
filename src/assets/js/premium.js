@@ -86,9 +86,19 @@ function initReader(lessons) {
   render(start);
 }
 
+function ownsPremium(user) {
+  return !!user && (user.email || "").toLowerCase() === ALLOWED && user.emailVerified;
+}
+
 async function start() {
   const auth = getAuthInstance(readConfig().firebase || {});
   const user = await whenReady(auth);
+  const offer = document.querySelector("[data-premium-public]");
+  if (offer && ownsPremium(user)) {
+    offer.hidden = true;
+    document.querySelector("[data-premium-owner]").hidden = false;
+  }
+  if (!document.getElementById("premium-app")) return;
   if (!user) {
     const next = `${location.pathname}${location.search}${location.hash}`;
     location.replace(`/login/?next=${encodeURIComponent(next)}`);

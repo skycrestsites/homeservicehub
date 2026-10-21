@@ -2,6 +2,7 @@
 layout: layouts/base.njk
 title: "Premium Cleaning Business Course, Coming Soon | Home Service Hub"
 description: "The full Cleaning Business course: a video lesson for every topic, in-depth guides and templates, Premium Discord channels, live group calls and a free month of Crewty."
+pageScript: premium
 ---
 {% import "components/ui.njk" as ui with context %}
 {% set includes = [
@@ -18,9 +19,15 @@ description: "The full Cleaning Business course: a video lesson for every topic,
     <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a>{% icon "chevron-right" %}<a href="/courses/cleaning/">Cleaning</a>{% icon "chevron-right" %}<span>Premium</span></nav>
     <span class="pill soon"><i></i>In production</span>
     <h1 class="h1">The full Cleaning course. <em>Premium.</em></h1>
-    <p class="lead">Every topic as a video lesson, with the templates, the Premium community and live calls. Join the waitlist and we will email you the day it opens.</p>
-    {{ ui.waitlist("cleaning-premium", "Get early access") }}
-    <p class="fine"><a href="/courses/cleaning/premium/learn/">Already have access? Open the course</a></p>
+    <div data-premium-public>
+      <p class="lead">Every topic as a video lesson, with the templates, the Premium community and live calls. Join the waitlist and we will email you the day it opens.</p>
+      {{ ui.waitlist("cleaning-premium", "Get early access") }}
+      <p class="fine"><a href="/courses/cleaning/premium/learn/">Already have access? Open the course</a></p>
+    </div>
+    <div data-premium-owner hidden>
+      <p class="lead">Your Premium course is unlocked on this account.</p>
+      <div class="btn-row"><a class="btn btn-primary btn-lg" href="/courses/cleaning/premium/learn/">Open the course{% icon "arrow-right" %}</a></div>
+    </div>
   </div>
 </section>
 
