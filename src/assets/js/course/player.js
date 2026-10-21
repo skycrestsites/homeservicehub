@@ -65,7 +65,7 @@ export function initCoursePlayer(course, links) {
         b.addEventListener("click", () => {
           track = "quick";
           go(Number(b.dataset.idx));
-          closeSide();
+          closeDrawer();
         })
       );
       renderIcons(sideEl);
@@ -235,9 +235,22 @@ export function initCoursePlayer(course, links) {
       window.scrollTo({ top: 0, behavior: "auto" });
     }
 
-    function openSide() { side.classList.add("open"); backdrop.classList.add("open"); }
-    function closeSide() { side.classList.remove("open"); backdrop.classList.remove("open"); }
-    backdrop.addEventListener("click", closeSide);
+    // Wide screens collapse the sidebar into the page (remembered per browser). Narrow screens use a drawer.
+    const layout = $(".course-layout");
+    const wide = window.matchMedia("(width > 900px)");
+    const sideKey = "hsh-side-collapsed";
+    const setCollapsed = (on) => {
+      layout.classList.toggle("is-collapsed", on);
+      side.inert = on && wide.matches;
+      try { localStorage.setItem(sideKey, on ? "1" : ""); } catch (e) {}
+    };
+    function openDrawer() { side.classList.add("open"); backdrop.classList.add("open"); }
+    function closeDrawer() { side.classList.remove("open"); backdrop.classList.remove("open"); }
+    function openSide() { if (wide.matches) setCollapsed(false); else openDrawer(); }
+    function closeSide() { if (wide.matches) setCollapsed(true); else closeDrawer(); }
+    try { if (localStorage.getItem(sideKey)) setCollapsed(true); } catch (e) {}
+    wide.addEventListener("change", () => { side.inert = wide.matches && layout.classList.contains("is-collapsed"); closeDrawer(); });
+    backdrop.addEventListener("click", closeDrawer);
     $("#side-close")?.addEventListener("click", closeSide);
 
     const h = fromHash();

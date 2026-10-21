@@ -245,6 +245,51 @@
   display: none;
 }
 
+.side-close {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  margin-right: -6px;
+  border-radius: var(--r-sm);
+  color: var(--muted);
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.side-close:hover {
+  background: var(--soft);
+  color: var(--ink);
+}
+
+.side-close .i {
+  width: 20px;
+  height: 20px;
+}
+
+@media (width > 900px) {
+  .course-layout {
+    transition: grid-template-columns 0.25s ease;
+  }
+
+  .course-side {
+    transition: opacity 0.2s ease, visibility 0s linear 0s;
+  }
+
+  .course-layout.is-collapsed {
+    grid-template-columns: 0 minmax(0, 1fr);
+  }
+
+  .course-layout.is-collapsed .course-side {
+    visibility: hidden;
+    opacity: 0%;
+    transition: opacity 0.2s ease, visibility 0s linear 0.2s;
+  }
+
+  .course-layout.is-collapsed .side-toggle {
+    display: inline-flex;
+  }
+}
+
 .lesson-title {
   margin-top: 18px;
   font-size: clamp(30px, 3.6vw, 44px);
