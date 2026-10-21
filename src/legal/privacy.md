@@ -13,7 +13,7 @@ Home Service Hub ("we") runs learnhomeservices.com. This page explains what we c
 
 **Waitlist emails.** When you join a waitlist we store your email address, the waitlist you joined and the time. We use it only to tell you when that course opens. We do not sell or share it.
 
-**Accounts.** If you create an account we store your name, email address and how you sign in (Google or email and password) in Firebase Authentication. If you use Google, we receive your name and email from Google. We never see your Google password, and email passwords are stored by Firebase in hashed form. We use your account only to sign you in and, when Premium opens, to give you access to what you bought. You can ask us to delete your account at any time.
+**Accounts and Google sign-in.** If you create an account we store your name, email address, profile picture and how you sign in (Google or email and password) in Firebase Authentication. If you use Google, Google shares your name, email address and profile picture with us. We never see your Google password. Email passwords are stored by Firebase in hashed form. We use this only to sign you in, show your name on your account page and, when Premium opens, to give you access to what you bought. We do not sell it or share it with advertisers. You can ask us to delete your account at any time.
 
 **Course progress.** The free course saves which guides you completed in your own browser (local storage). It never leaves your device and we cannot see it.
 

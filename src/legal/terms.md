@@ -1,9 +1,9 @@
 ---
 layout: layouts/legal.njk
 permalink: /terms/
-title: "Terms of Use | Home Service Hub"
+title: "Terms of Service | Home Service Hub"
 description: "The terms for using Home Service Hub and its free courses."
-heading: Terms of Use
+heading: Terms of Service
 updated: October 21, 2026
 ---
 
